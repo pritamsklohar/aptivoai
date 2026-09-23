@@ -1,0 +1,6 @@
+{
+  "name": "Aptivo AI — Career Intelligence Infrastructure",
+  "description": "Aptivo AI transforms career preparation into an adaptive, connected system connecting goals, skills, projects, resumes, interviews, and enterprise opportunities.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

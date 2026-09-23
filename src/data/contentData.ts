@@ -1,0 +1,366 @@
+import { PlatformModule, ArchitectureLayer, JobPosition, ResourceArticle } from '../types';
+
+export const PLATFORM_MODULES: PlatformModule[] = [
+  {
+    id: 'career-intelligence',
+    code: '01',
+    title: 'Career Intelligence',
+    eyebrow: 'FOUNDATIONAL REASONING',
+    description: 'Synthesizes your real-time skills, target role, company preferences, and time bandwidth into a continuous vector-mapped career trajectory.',
+    features: [
+      'Target role & company criteria deconstruction',
+      'Dynamic multi-dimensional skill graph evaluation',
+      'Real-time market requirement alignment',
+      'Non-linear adaptive milestone calculation',
+    ],
+    mockupType: 'graph',
+    aiFeedbackExample: 'Analysis indicates high frontend mastery (88%). To achieve Tier-1 Full-Stack threshold, shift next sprint to distributed event systems and cache consistency.',
+  },
+  {
+    id: 'build',
+    code: '02',
+    title: 'Build Engine',
+    eyebrow: 'PROOF OF COMPETENCE',
+    description: 'Replaces toy tutorials with production-grade architecture challenges, real pull request evaluations, and structured team formation.',
+    features: [
+      'Production architecture blueprint generators',
+      'Automated pull request & code depth reviews',
+      'Cross-functional team formation for real builds',
+      'Live portfolio deployment with verifiable commit telemetry',
+    ],
+    mockupType: 'build',
+    aiFeedbackExample: 'Your project demonstrates strong frontend ability. Add authentication, role-based access, and deployment architecture to increase backend depth.',
+  },
+  {
+    id: 'prepare',
+    code: '03',
+    title: 'Interview Prepare',
+    eyebrow: 'SIMULATED RIGOR',
+    description: 'Interactive voice and technical mock evaluations tailored directly to target company rubrics, system design constraints, and behavioral indicators.',
+    features: [
+      'Target company-calibrated rubrics (FAANG, unicorn, high-growth SaaS)',
+      'Real-time system design whiteboarding evaluation',
+      'Role-specific technical questioning with instant depth scoring',
+      'Behavioral STAR framework precision feedback',
+    ],
+    mockupType: 'prepare',
+    aiFeedbackExample: 'Response to database partitioning demonstrated good conceptual grasp. In company rubric for Stripe/Datadog, explicitly quantify horizontal sharding vs read replicas.',
+  },
+  {
+    id: 'profile',
+    code: '04',
+    title: 'Profile & Resume Optimization',
+    eyebrow: 'SIGNAL MAXIMIZATION',
+    description: 'Transforms fragmented work experience into quantified, high-signal engineering profiles that pass recruiter filters and hiring manager scrutiny.',
+    features: [
+      'Semantic ATS parse verification and score modeling',
+      'Impact quantification engine (X-Y-Z formula reinforcement)',
+      'Automated skill gap detection against live target job postings',
+      'LinkedIn narrative and GitHub profile signal alignment',
+    ],
+    mockupType: 'profile',
+    aiFeedbackExample: 'Bullet 3 lacks quantitative scale. Updated recommendation: "Architected asynchronous worker pool in Go, reducing webhook ingestion latency by 41% across 1.2M daily payloads."',
+  },
+  {
+    id: 'discover',
+    code: '05',
+    title: 'Discover & Opportunities',
+    eyebrow: 'PRECISION MATCHING',
+    description: 'Not a generic job board. Matches candidate profiles to verified hiring requisitions using high-dimensional readiness vectors and verified proof points.',
+    features: [
+      'Readiness-weighted job matching (94%, 87%, 81%)',
+      'Direct-to-engineering pipeline dispatch without black-hole queues',
+      'Explicit match criteria breakdown showing exact overlap',
+      'One-click targeted application packet generation',
+    ],
+    mockupType: 'discover',
+  },
+  {
+    id: 'employers',
+    code: '06',
+    title: 'Employers & Enterprise Pipeline',
+    eyebrow: 'TALENT TELEMETRY',
+    description: 'Empowers engineering leaders and talent teams to discover high-readiness candidates based on verified project proof, code depth, and technical readiness.',
+    features: [
+      'Role requirement vector synthesis and skill indexing',
+      'Verified candidate readiness scores before interview scheduling',
+      'Full technical portfolio and simulated interview audits',
+      'Seamless pipeline synchronization with enterprise ATS systems',
+    ],
+    mockupType: 'employer',
+  },
+];
+
+export const ARCHITECTURE_LAYERS: ArchitectureLayer[] = [
+  {
+    name: 'INPUT LAYER',
+    code: '01',
+    description: 'Ingests raw, heterogeneous profile signals, aspirational goals, and market criteria into clean structured vectors.',
+    items: [
+      { title: 'Profile & Resume Vectors', desc: 'Normalized parse of professional history, educational baseline, and credentials' },
+      { title: 'Verified Skills & GitHub Telemetry', desc: 'Static code analysis, commit frequency, architecture patterns, and test coverage' },
+      { title: 'Target Role & Company Archetypes', desc: 'Target company tier, technical stack requirements, compensation brackets, and level' },
+      { title: 'Temporal & Bandwidth Constraints', desc: 'Available hours/week, target hiring window (30d, 90d, 180d), learning velocity' },
+    ],
+  },
+  {
+    name: 'INTELLIGENCE LAYER',
+    code: '02',
+    description: 'The core reasoning engine combining multi-agent graphs, market ontology, and capability gap detection.',
+    items: [
+      { title: 'Dynamic Skill Graph', desc: 'Interconnected graph of 4,800+ technical competencies and dependencies' },
+      { title: 'Role & Company Intelligence', desc: 'Continuously refreshed hiring rubrics from 2,500+ technology organizations' },
+      { title: 'Gap Detection Matrix', desc: 'Vector difference between current readiness state and target role expectations' },
+      { title: 'Predictive Recommendation Engine', desc: 'Calculates the highest-ROI sequence of actions to close critical gaps' },
+    ],
+  },
+  {
+    name: 'DECISION LAYER',
+    code: '03',
+    description: 'Translates high-dimensional intelligence into concrete, day-by-day actionable engineering work.',
+    items: [
+      { title: 'Personalized Adaptive Roadmap', desc: 'Phased milestones with deterministic checkpoints and measurable outcomes' },
+      { title: 'Production Project Blueprints', desc: 'Architectural specifications designed to provide irrefutable hiring proof' },
+      { title: 'Interview Strategy Rubrics', desc: 'Precision mock schedules focused specifically on historical weak points' },
+      { title: 'Direct Opportunity Matches', desc: 'Algorithmic routing to open enterprise requisitions when readiness passes 85%' },
+    ],
+  },
+  {
+    name: 'FEEDBACK LOOP',
+    code: '04',
+    description: 'Continuously measures actual performance during development, practice, and live market interaction.',
+    items: [
+      { title: 'Milestone Completion Velocity', desc: 'Tracks actual hours versus anticipated mastery velocity across phases' },
+      { title: 'Code Review & PR Evaluations', desc: 'Measures architectural complexity, edge-case handling, and security rigor' },
+      { title: 'Mock Interview Telemetry', desc: 'Evaluates clarity, algorithmic optimality, system scalability, and confidence' },
+      { title: 'Market Application Signals', desc: 'Monitors recruiter responses, screening pass rates, and interview progression' },
+    ],
+  },
+  {
+    name: 'ADAPTIVE AI',
+    code: '05',
+    description: 'The perpetual reconfiguration engine that prevents career preparation from becoming stale.',
+    items: [
+      { title: 'Real-Time Trajectory Recalibration', desc: 'Instantly re-routes next sprint tasks if a milestone is conquered or blocked' },
+      { title: 'Role Pivot Optimization', desc: 'If candidate targets change (e.g., Backend to Platform Engineer), adjusts seamlessly' },
+      { title: 'Evolving Market Weights', desc: 'Re-weights skill importance as enterprise technology stacks shift in real time' },
+    ],
+  },
+];
+
+export const ADAPTIVE_LOOP_STEPS = [
+  { step: '01', title: 'DEFINE', desc: 'Target role, dream companies, timeline, and weekly bandwidth.' },
+  { step: '02', title: 'ANALYZE', desc: 'Deep-vector scan of current code, projects, and resume baseline.' },
+  { step: '03', title: 'BUILD', desc: 'Execute production-level architecture projects with live AI PR review.' },
+  { step: '04', title: 'PRACTICE', desc: 'Simulated technical & system design rounds on company rubrics.' },
+  { step: '05', title: 'APPLY', desc: 'Algorithmic routing directly to high-match hiring managers.' },
+  { step: '06', title: 'MEASURE', desc: 'Track interview conversions, code depth, and feedback telemetry.' },
+  { step: '07', title: 'ADAPT', desc: 'Engine instantly recalculates roadmap and priority based on real outcomes.' },
+];
+
+export const HOW_IT_WORKS_STEPS = [
+  {
+    num: '01',
+    title: 'DEFINE YOUR GOAL',
+    eyebrow: 'OBJECTIVE SYNTHESIS',
+    description: 'Input your aspirational career target — specific job titles (e.g. Senior Distributed Systems Engineer), target companies, timeline constraints, and weekly focus capacity.',
+    detailPoints: ['Granular role targeting beyond generic titles', 'Target organization culture & engineering tier selection', 'Realistic bandwidth calibration (4 to 25+ hours/week)'],
+  },
+  {
+    num: '02',
+    title: 'BUILD YOUR PROFILE',
+    eyebrow: 'DEEP BASELINE SCAN',
+    description: 'Connect GitHub, upload your resume, or complete a 10-minute diagnostic. Aptivo maps your historical code commits, project complexity, and technical breadth.',
+    detailPoints: ['AST parsing of public repositories', 'Quantified skill extraction and depth verification', 'Identification of blind spots and hidden strengths'],
+  },
+  {
+    num: '03',
+    title: 'MEET YOUR AI',
+    eyebrow: 'CAREER ENGINE INITIALIZATION',
+    description: 'The Aptivo AI Engine configures your unique career model. It benchmarks your profile against current hiring bars at your target companies.',
+    detailPoints: ['Neural graph mapping across 4,800+ tech competencies', 'Clear readiness score generation with gap attribution', 'Transparent reasoning on what hiring managers expect'],
+  },
+  {
+    num: '04',
+    title: 'FOLLOW YOUR ROADMAP',
+    eyebrow: 'DYNAMIC SEQUENCING',
+    description: 'Receive an unambiguous, phased execution plan. Each phase contains prioritized concepts, code milestones, and verifiable deliverables.',
+    detailPoints: ['Zero fluff or repetitive tutorial loops', 'Clear prerequisites and dependency chains', 'Milestones weighted by hiring conversion impact'],
+  },
+  {
+    num: '05',
+    title: 'BUILD PROOF',
+    eyebrow: 'PRODUCTION-GRADE ARTIFACTS',
+    description: 'Create non-trivial software systems. Aptivo reviews your architectural schemas, pulls requests, and provides actionable senior-level engineering feedback.',
+    detailPoints: ['Architectural blueprints with scalable constraints', 'Automated code reviews checking concurrency and performance', 'Deployable systems that command recruiter attention'],
+  },
+  {
+    num: '06',
+    title: 'PRACTICE',
+    eyebrow: 'RIGOROUS EVALUATION',
+    description: 'Step into company-specific interview simulations. Practice live coding, system design architecture, and behavioral STAR scenarios under realistic pressure.',
+    detailPoints: ['Real rubrics matching target company engineering bars', 'Instant breakdown of algorithmic time/space complexity', 'Behavioral scoring on communication clarity and leadership'],
+  },
+  {
+    num: '07',
+    title: 'DISCOVER OPPORTUNITIES',
+    eyebrow: 'READINESS-DRIVEN ROUTING',
+    description: 'As your readiness crosses target thresholds, get surfaced directly to partner employers and engineering teams actively searching for verified competence.',
+    detailPoints: ['No blind job applications into black holes', 'Direct signal sharing with engineering hiring leads', 'Interview invitations pre-qualified by your verified project proof'],
+  },
+  {
+    num: '08',
+    title: 'KEEP ADAPTING',
+    eyebrow: 'CONTINUOUS EVOLUTION',
+    description: 'Careers are non-linear. Whether you hit a roadblock, clear an interview early, or pivot your focus, Aptivo recalculates your optimal path in real time.',
+    detailPoints: ['Roadmap adapts based on practice performance', 'Feedback from actual interviews feeds back into the engine', 'Lifelong trajectory optimization across every career phase'],
+  },
+];
+
+export const OPEN_POSITIONS: JobPosition[] = [
+  {
+    id: 'staff-ai-researcher',
+    title: 'Staff AI / ML Research Engineer',
+    department: 'AI / ML',
+    location: 'Bengaluru / San Francisco / Remote',
+    type: 'Full-time',
+    description: 'Lead the architecture of our multi-agent career graph and dynamic vector reasoning engine.',
+    responsibilities: [
+      'Design graph neural networks modeling skills, role evolutions, and competency gaps',
+      'Optimize multi-agent planning frameworks for real-time roadmap synthesis',
+      'Scale vector indexing and semantic retrieval over millions of technical criteria',
+    ],
+    requirements: [
+      '5+ years building and deploying deep learning or graph representation systems in production',
+      'Deep fluency with PyTorch, distributed training, and LLM orchestration',
+      'Demonstrated passion for education systems or talent intelligence',
+    ],
+  },
+  {
+    id: 'senior-distributed-systems',
+    title: 'Senior Distributed Systems Engineer',
+    department: 'Engineering',
+    location: 'Bengaluru / Remote',
+    type: 'Full-time',
+    description: 'Build the low-latency backbone powering real-time code evaluation and telemetry ingestion.',
+    responsibilities: [
+      'Architect robust event streams handling AST parsing and live repo indexing',
+      'Ensure sub-100ms response times across complex neural graph querying',
+      'Maintain enterprise-grade security and isolation for user source code sandbox environments',
+    ],
+    requirements: [
+      'Strong expertise with Go or Rust, Kafka, gRPC, and PostgreSQL',
+      'Experience containerizing and sandboxing untrusted execution environments',
+      'Rigorous focus on high availability, telemetry, and distributed profiling',
+    ],
+  },
+  {
+    id: 'lead-product-designer',
+    title: 'Lead Product Designer',
+    department: 'Design',
+    location: 'Bengaluru / Remote',
+    type: 'Full-time',
+    description: 'Define the visual and interaction language of next-generation career intelligence systems.',
+    responsibilities: [
+      'Translate intricate neural graph models into intuitive, empowering user interfaces',
+      'Design complex data visualizations for skill gaps, roadmaps, and candidate readiness',
+      'Uphold our minimalist, high-contrast, technical design constitution',
+    ],
+    requirements: [
+      'Portfolio demonstrating exceptional craft in developer tools, complex SaaS, or financial UI',
+      'Mastery of Figma design systems, motion principles, and frontend execution',
+      'Deep empathy for engineers, students, and talent leaders',
+    ],
+  },
+  {
+    id: 'principal-product-manager',
+    title: 'Principal Product Manager, Talent Infrastructure',
+    department: 'Product',
+    location: 'Bengaluru / Remote',
+    type: 'Full-time',
+    description: 'Spearhead the product roadmap connecting student readiness signals to enterprise hiring workflows.',
+    responsibilities: [
+      'Define feature roadmaps for both candidate preparation and enterprise discovery suites',
+      'Collaborate closely with AI research and engineering to translate capabilities into customer value',
+      'Engage directly with engineering hiring managers and university placement deans',
+    ],
+    requirements: [
+      '6+ years technical product management in developer tools, enterprise HRTech, or AI SaaS',
+      'Proven track record scaling B2B or B2C products from 0 to 1 and 1 to 10',
+      'Exceptional analytical rigor and technical fluency',
+    ],
+  },
+  {
+    id: 'enterprise-growth-lead',
+    title: 'Enterprise Growth & Partnerships Lead',
+    department: 'Growth',
+    location: 'Bengaluru / Hybrid',
+    type: 'Full-time',
+    description: 'Build strategic hiring partnerships with high-growth technology companies and premier universities.',
+    responsibilities: [
+      'Drive enterprise adoption of Aptivo AI Candidate Discovery across tech companies',
+      'Establish institutional deployment programs with leading engineering universities',
+      'Build long-term pipeline trust with engineering VPs and Heads of Talent',
+    ],
+    requirements: [
+      '4+ years B2B tech sales, strategic partnerships, or corporate talent solutions',
+      'Strong existing network among CTOs, engineering directors, and campus recruiting leads',
+      'Ability to clearly articulate deep technical product value',
+    ],
+  },
+];
+
+export const RESOURCE_ARTICLES: ResourceArticle[] = [
+  {
+    id: 'skill-graph-revolution',
+    title: 'The Death of the Static Resume: How Graph Embeddings Map Verified Capability',
+    category: 'Career Intelligence',
+    readTime: '6 min read',
+    date: 'September 2026',
+    summary: 'Why PDF resumes fail both engineers and hiring managers, and how multidimensional skill graphs represent actual engineering capacity with mathematical fidelity.',
+    content: [
+      'For thirty years, hiring in technology has relied on a flat, two-dimensional document invented in the industrial era: the resume. In an age where engineering requires nuanced mastery of distributed systems, concurrency primitives, and dynamic cloud environments, a bullet point stating "worked on microservices" conveys almost zero useful signal.',
+      'Aptivo AI approaches capability through graph representation learning. Rather than treating skills as isolated buzzwords, our ontology models the dependency structures between conceptual knowledge and execution artifacts. A developer who demonstrates clean cache eviction strategies and atomic database transactions in production code is mathematically mapped to system reliability readiness.',
+      'By decoupling career assessment from self-reported credentials and anchoring it in verifiable telemetry, both candidates and employers save hundreds of hours of wasted interview loops.',
+    ],
+  },
+  {
+    id: 'backend-system-design-rubrics',
+    title: 'Deconstructing Top-Tier System Design Interviews: What Real Rubrics Measure',
+    category: 'Engineering Careers',
+    readTime: '9 min read',
+    date: 'September 2026',
+    summary: 'A deep dive into the evaluation criteria used by high-scale software organizations to differentiate Staff-level architects from mid-level implementers.',
+    content: [
+      'In senior engineering interviews, candidates rarely fail because they cannot draw boxes for load balancers or databases. They fail because they fail to articulate back-of-the-envelope throughput calculations, fail to identify single points of failure under partition, and treat distributed consensus as a trivial plug-in.',
+      'Aptivo AI simulated interview modules analyze your structural trade-offs in real time. Are you considering read-heavy versus write-heavy caching ratios? How does your design handle catastrophic node failover?',
+      'When you practice with clear, quantified feedback on each architectural decision, your ability to defend design decisions under pressure accelerates exponentially.',
+    ],
+  },
+  {
+    id: 'ai-native-career-infrastructure',
+    title: 'Adaptive Career Engines: Why Linear Curriculums Are Obsolete',
+    category: 'AI & Careers',
+    readTime: '7 min read',
+    date: 'August 2026',
+    summary: 'Traditional bootcamps and courses force every learner through the same static sequential steps. Here is how adaptive AI loops dynamically recalculate learning vectors.',
+    content: [
+      'Linear education models operate under the false assumption that all individuals start with identical baselines and learn at identical rates. If you are already fluent in React component lifecycles, forcing you through 40 hours of beginner JavaScript syntax is not merely inefficient — it drains motivation.',
+      'Aptivo AI treats your preparation as an optimization function with constraints: target role, target timeline, and available hours per week. If you grasp asynchronous event streaming in half the projected time, the engine immediately elevates your next challenge to distributed tracing or raft consensus.',
+      'Continuous reassessment ensures that every hour you invest yields maximum marginal increase in your career readiness score.',
+    ],
+  },
+  {
+    id: 'hiring-beyond-pedigree',
+    title: 'Signal Over Pedigree: How Enterprise Engineering Teams Discover Hidden Talent',
+    category: 'Hiring',
+    readTime: '5 min read',
+    date: 'August 2026',
+    summary: 'How leading tech companies are shifting away from college tier filtering and towards verified code depth, PR quality, and real problem-solving proof.',
+    content: [
+      'College pedigree and historical brand names have long served as crude proxies for engineering aptitude. But in a global talent market, this filter excludes thousands of exceptional engineers who learned through non-traditional pathways or lesser-known universities.',
+      'Aptivo AI provides hiring partners with candidate telemetry that matters: pull request quality, test coverage discipline, architectural coherence, and performance under simulated technical scrutiny.',
+      'The result is a meritocratic pipeline where talent is discovered and hired based purely on verifiable engineering readiness.',
+    ],
+  },
+];
