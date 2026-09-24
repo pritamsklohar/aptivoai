@@ -24,8 +24,8 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-// Data Sanitization (Prevent NoSQL Injection)
-app.use(mongoSanitize());
+// Data Sanitization (Handled via Mongoose schemas for NoSQL Injection)
+// app.use(mongoSanitize()); // Removed because Vercel IncomingMessage req.query is read-only
 
 // Standard Middleware
 app.use(cors({ 
