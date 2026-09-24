@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageId } from '../../types';
-import { AiCareerGraph } from '../common/AiCareerGraph';
 import { ScrollIndicator } from '../common/ScrollIndicator';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 
@@ -56,10 +55,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onNavigate }) => {
           </div>
         </div>
 
-        {/* Hero Visual: Neat & Clean Interactive Graph */}
-        <div className="relative">
-          <AiCareerGraph />
-        </div>
+
       </div>
 
       {/* Hero Scroll Indicator at absolute bottom center */}

@@ -18,14 +18,31 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !name) return;
     setIsSubmitting(true);
-    setTimeout(() => {
+    
+    try {
+      const response = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          role,
+          goal
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      }
+    } catch (error) {
+      console.error('Failed to join waitlist:', error);
+    } finally {
       setIsSubmitting(false);
-      setSubmitted(true);
-    }, 600);
+    }
   };
 
   const handleReset = () => {

@@ -13,7 +13,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
   return (
     <div className="pt-32 pb-24 space-y-24 bg-[#06070B] min-h-screen">
       {/* Hero */}
-      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
         <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
           About Aptivo AI
         </div>
@@ -122,9 +122,11 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
             {/* Clean Portrait Container */}
             <div className="md:col-span-4 flex justify-center">
               <div className="w-48 h-48 rounded-2xl border border-[#4C6FFF]/30 bg-gradient-to-b from-[#13192E] to-[#0A0D18] flex flex-col items-center justify-center text-center p-4 shadow-xl">
-                <div className="w-16 h-16 rounded-full bg-[#4C6FFF]/20 border border-[#4C6FFF]/50 flex items-center justify-center text-xl font-bold font-display text-white tracking-widest mb-3">
-                  PL
-                </div>
+                <img 
+                  src="/prittt.jpg" 
+                  alt="Pritam Lohar" 
+                  className="w-20 h-20 rounded-full border-2 border-[#4C6FFF]/50 object-cover mb-3 shadow-lg"
+                />
                 <div className="text-sm font-bold font-display text-white">
                   Pritam Lohar
                 </div>
@@ -158,7 +160,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
 
               <div className="pt-2">
                 <a
-                  href="https://linkedin.com/in/pritamlohar"
+                  href="http://www.linkedin.com/in/pritam-lohar"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#141828] hover:bg-[#1E2540] border border-white/[0.08] text-xs font-medium text-white transition-colors"

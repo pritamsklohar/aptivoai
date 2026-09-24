@@ -109,12 +109,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Right Action CTAs */}
           <div className="hidden sm:flex items-center gap-3">
             <button
-              onClick={onOpenLogin}
-              className="px-4 py-2 text-xs font-medium text-slate-300 hover:text-white transition-colors"
-            >
-              Log in
-            </button>
-            <button
               onClick={() => onOpenWaitlist()}
               className="px-4 py-2 text-xs font-semibold text-white bg-[#4C6FFF] hover:bg-[#3B5BDB] rounded-lg shadow-sm hover:shadow-[#4C6FFF]/20 transition-all flex items-center gap-1.5"
             >
@@ -242,15 +236,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="pt-4 border-t border-white/[0.08] space-y-3">
-            <button
-              onClick={() => {
-                setMobileOpen(false);
-                onOpenLogin();
-              }}
-              className="w-full py-2.5 rounded-lg border border-white/[0.1] text-xs font-mono text-slate-300 text-center"
-            >
-              Log in to Portal
-            </button>
             <button
               onClick={() => {
                 setMobileOpen(false);

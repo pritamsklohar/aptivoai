@@ -19,7 +19,7 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
   return (
     <div className="pt-32 pb-24 space-y-24 bg-[#06070B] min-h-screen">
       {/* Hero Section */}
-      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
         <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
           Autonomous Career Computation
         </div>

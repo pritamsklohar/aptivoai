@@ -25,19 +25,38 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
     "Partnership",
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!email || !message) return;
     setLoading(true);
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          organization: org,
+          message,
+          type: roleType
+        })
+      });
+
+      if (response.ok) {
+        setSubmitted(true);
+      }
+    } catch (error) {
+      console.error('Failed to send message:', error);
+    } finally {
       setLoading(false);
-      setSubmitted(true);
-    }, 600);
+    }
   };
 
   return (
     <div className="pt-32 pb-24 space-y-20 bg-[#06070B] min-h-screen">
       {/* Hero */}
-      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
         <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
           Contact & Partnerships
         </div>

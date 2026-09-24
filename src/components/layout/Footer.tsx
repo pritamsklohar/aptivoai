@@ -34,31 +34,13 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
 
             <div className="pt-2 flex items-center gap-2.5">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/aptivo-ai"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-lg bg-[#0F121C] border border-white/[0.06] flex items-center justify-center text-slate-400 hover:text-white hover:border-[#4C6FFF]/40 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Briefcase className="w-4 h-4" />
-              </a>
-              <a
-                href="https://x.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#0F121C] border border-white/[0.06] flex items-center justify-center text-slate-400 hover:text-white hover:border-[#4C6FFF]/40 transition-colors"
-                aria-label="X / Twitter"
-              >
-                <MessageCircle className="w-4 h-4" />
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#0F121C] border border-white/[0.06] flex items-center justify-center text-slate-400 hover:text-white hover:border-[#4C6FFF]/40 transition-colors"
-                aria-label="GitHub"
-              >
-                <Code className="w-4 h-4" />
               </a>
             </div>
           </div>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { PageId, JobPosition } from '../types';
-import { OPEN_POSITIONS } from '../data/contentData';
 import { ScrollIndicator } from '../components/common/ScrollIndicator';
 import { ArrowRight, MapPin, CheckCircle2, X } from 'lucide-react';
 
@@ -19,27 +18,68 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onNavigate, onOpenWait
 
   const departments = ['All', 'Engineering', 'AI / ML', 'Product', 'Design', 'Growth'];
 
-  const filteredJobs = selectedDept === 'All'
-    ? OPEN_POSITIONS
-    : OPEN_POSITIONS.filter((j) => j.department === selectedDept);
+  const [jobs, setJobs] = React.useState<JobPosition[]>([]);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [error, setError] = React.useState<string | null>(null);
 
-  const handleSubmitApplication = (e: React.FormEvent) => {
+  React.useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        // Replace with actual backend API endpoint later
+        const response = await fetch('/api/jobs');
+        if (!response.ok) throw new Error('Failed to fetch jobs');
+        const data = await response.json();
+        setJobs(data);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+        // Fallback for development if backend isn't ready
+        setJobs([]); 
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchJobs();
+  }, []);
+
+  const filteredJobs = selectedDept === 'All'
+    ? jobs
+    : jobs.filter((j) => j.department === selectedDept);
+
+  const handleSubmitApplication = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!applicantEmail) return;
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setActiveJob(null);
-      setApplicantName('');
-      setApplicantEmail('');
-      setApplicantPortfolio('');
-    }, 2500);
+    if (!applicantEmail || !activeJob) return;
+
+    try {
+      const response = await fetch('/api/applications', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: applicantName,
+          email: applicantEmail,
+          portfolio: applicantPortfolio,
+          jobId: activeJob.id
+        })
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+          setActiveJob(null);
+          setApplicantName('');
+          setApplicantEmail('');
+          setApplicantPortfolio('');
+        }, 2500);
+      }
+    } catch (error) {
+      console.error('Error submitting application:', error);
+    }
   };
 
   return (
     <div className="pt-32 pb-24 space-y-24 bg-[#06070B] min-h-screen">
       {/* Hero */}
-      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
         <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
           Join the Founding Team
         </div>
@@ -81,51 +121,58 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onNavigate, onOpenWait
         </div>
 
         <div className="space-y-3">
-          {filteredJobs.map((job) => (
-            <div
-              key={job.id}
-              className="p-6 rounded-2xl border border-white/[0.08] bg-[#0C0F1A] hover:border-white/[0.16] transition-all space-y-3"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <div className="flex items-center gap-2 text-xs">
-                    <span className="text-[#8AA0FF] font-medium">{job.department}</span>
-                    <span className="text-slate-600">·</span>
-                    <span className="text-slate-400 flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {job.location}
-                    </span>
+          {filteredJobs.length === 0 ? (
+            <div className="p-12 text-center rounded-2xl border border-white/[0.08] bg-[#0C0F1A]">
+              <h3 className="text-xl font-display font-bold text-white mb-2">No Openings Currently</h3>
+              <p className="text-sm text-slate-400">New Opening will come soon</p>
+            </div>
+          ) : (
+            filteredJobs.map((job) => (
+              <div
+                key={job.id}
+                className="p-6 rounded-2xl border border-white/[0.08] bg-[#0C0F1A] hover:border-white/[0.16] transition-all space-y-3"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <div className="flex items-center gap-2 text-xs">
+                      <span className="text-[#8AA0FF] font-medium">{job.department}</span>
+                      <span className="text-slate-600">·</span>
+                      <span className="text-slate-400 flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />
+                        {job.location}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold font-display text-white mt-1">
+                      {job.title}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-bold font-display text-white mt-1">
-                    {job.title}
-                  </h3>
+
+                  <button
+                    onClick={() => setActiveJob(job)}
+                    className="px-4 py-2 rounded-lg bg-[#141828] hover:bg-[#4C6FFF] border border-white/[0.08] text-xs font-semibold text-white flex items-center gap-1.5 whitespace-nowrap self-start sm:self-auto transition-colors"
+                  >
+                    <span>View Role</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
                 </div>
 
-                <button
-                  onClick={() => setActiveJob(job)}
-                  className="px-4 py-2 rounded-lg bg-[#141828] hover:bg-[#4C6FFF] border border-white/[0.08] text-xs font-semibold text-white flex items-center gap-1.5 whitespace-nowrap self-start sm:self-auto transition-colors"
-                >
-                  <span>View Role</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </button>
-              </div>
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  {job.description}
+                </p>
 
-              <p className="text-xs text-slate-300 leading-relaxed">
-                {job.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 pt-1">
-                {job.requirements.slice(0, 3).map((req) => (
-                  <span
-                    key={req}
-                    className="px-2.5 py-0.5 rounded-md bg-[#080B14] border border-white/[0.04] text-[11px] text-slate-400"
-                  >
-                    {req}
-                  </span>
-                ))}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {job.requirements.slice(0, 3).map((req) => (
+                    <span
+                      key={req}
+                      className="px-2.5 py-0.5 rounded-md bg-[#080B14] border border-white/[0.04] text-[11px] text-slate-400"
+                    >
+                      {req}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </section>
 

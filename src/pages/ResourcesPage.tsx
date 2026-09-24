@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageId, ResourceArticle } from '../types';
-import { RESOURCE_ARTICLES } from '../data/contentData';
 import { ScrollIndicator } from '../components/common/ScrollIndicator';
 import { ArrowRight, Clock, X } from 'lucide-react';
 
@@ -12,17 +11,39 @@ interface ResourcesPageProps {
 export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpenWaitlist }) => {
   const [selectedTag, setSelectedTag] = useState<string>('All');
   const [readingArticle, setReadingArticle] = useState<ResourceArticle | null>(null);
+  const [articles, setArticles] = useState<ResourceArticle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await fetch('/api/articles');
+        if (!response.ok) {
+          throw new Error('Failed to fetch articles');
+        }
+        const data = await response.json();
+        setArticles(data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchArticles();
+  }, []);
 
   const categories = ['All', 'Career Intelligence', 'AI & Careers', 'Engineering Careers', 'Interview Preparation', 'Hiring', 'Future of Work'];
 
   const filteredArticles = selectedTag === 'All'
-    ? RESOURCE_ARTICLES
-    : RESOURCE_ARTICLES.filter((a) => a.category === selectedTag);
+    ? articles
+    : articles.filter((a) => a.category === selectedTag);
 
   return (
     <div className="pt-32 pb-24 space-y-24 bg-[#06070B] min-h-screen">
       {/* Hero */}
-      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-24">
+      <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
         <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
           Research & Insights
         </div>
@@ -57,41 +78,49 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
       </section>
 
       {/* Articles Grid */}
-      <section id="articles-grid" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredArticles.map((art) => (
-            <div
-              key={art.id}
-              onClick={() => setReadingArticle(art)}
-              className="p-6 rounded-2xl border border-white/[0.08] bg-[#0C0F1A] hover:border-white/[0.16] transition-all cursor-pointer flex flex-col justify-between space-y-4 group"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-[#8AA0FF] font-medium">{art.category}</span>
-                  <span className="text-slate-400 flex items-center gap-1 text-[11px]">
-                    <Clock className="w-3 h-3" />
-                    {art.readTime}
-                  </span>
+      <section id="articles-grid" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[40vh]">
+        {loading ? (
+          <div className="flex justify-center items-center py-20 text-slate-400">Loading articles...</div>
+        ) : error ? (
+          <div className="flex justify-center items-center py-20 text-red-400">Error: {error}</div>
+        ) : filteredArticles.length === 0 ? (
+          <div className="flex justify-center items-center py-20 text-slate-400">No articles found for this category.</div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filteredArticles.map((art) => (
+              <div
+                key={art.id}
+                onClick={() => setReadingArticle(art)}
+                className="p-6 rounded-2xl border border-white/[0.08] bg-[#0C0F1A] hover:border-white/[0.16] transition-all cursor-pointer flex flex-col justify-between space-y-4 group"
+              >
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-[#8AA0FF] font-medium">{art.category}</span>
+                    <span className="text-slate-400 flex items-center gap-1 text-[11px]">
+                      <Clock className="w-3 h-3" />
+                      {art.readTime}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-bold font-display text-white group-hover:text-[#8AA0FF] transition-colors leading-snug">
+                    {art.title}
+                  </h3>
+
+                  <p className="text-xs text-slate-400 leading-relaxed line-clamp-3">
+                    {art.summary}
+                  </p>
                 </div>
 
-                <h3 className="text-base font-bold font-display text-white group-hover:text-[#8AA0FF] transition-colors leading-snug">
-                  {art.title}
-                </h3>
-
-                <p className="text-xs text-slate-400 leading-relaxed line-clamp-3">
-                  {art.summary}
-                </p>
+                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-500">
+                  <span>{art.date}</span>
+                  <span className="text-slate-300 group-hover:text-white flex items-center gap-1 transition-colors">
+                    Read article <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
               </div>
-
-              <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-500">
-                <span>{art.date}</span>
-                <span className="text-slate-300 group-hover:text-white flex items-center gap-1 transition-colors">
-                  Read article <ArrowRight className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Article Reader Modal */}
@@ -121,12 +150,9 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
               <p className="font-medium text-white">
                 {readingArticle.summary}
               </p>
-              <p>
-                As tech stacks evolve and autonomous AI systems handle routine boilerplate coding, the definition of a high-value engineer is fundamentally changing. It is no longer about syntax memorization or algorithmic tricks practiced in a vacuum. It is about systems design, architectural discernment, and the ability to verify reliability under high-concurrency real-world constraints.
-              </p>
-              <p>
-                At Aptivo AI, our research indicates that telemetry-backed candidate validation—examining real pull requests, architectural trade-offs, and calibrated simulated interviews—outperforms traditional resume keyword parsing by over 400% in long-term engineering success.
-              </p>
+              {readingArticle.content?.map((paragraph, idx) => (
+                <p key={idx}>{paragraph}</p>
+              ))}
             </div>
 
             <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
