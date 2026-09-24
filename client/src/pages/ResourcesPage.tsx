@@ -18,7 +18,8 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-        const response = await fetch('/api/articles');
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${API_URL}/api/articles`);
         if (!response.ok) {
           throw new Error('Failed to fetch articles');
         }

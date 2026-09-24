@@ -26,7 +26,8 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onNavigate, onOpenWait
     const fetchJobs = async () => {
       try {
         // Replace with actual backend API endpoint later
-        const response = await fetch('/api/jobs');
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${API_URL}/api/jobs`);
         if (!response.ok) throw new Error('Failed to fetch jobs');
         const data = await response.json();
         setJobs(data);
@@ -50,7 +51,8 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onNavigate, onOpenWait
     if (!applicantEmail || !activeJob) return;
 
     try {
-      const response = await fetch('/api/applications', {
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${API_URL}/api/applications`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

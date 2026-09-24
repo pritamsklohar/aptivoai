@@ -24,7 +24,8 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('/api/waitlist', {
+      const API_URL = import.meta.env.VITE_API_URL || '';
+      const response = await fetch(`${API_URL}/api/waitlist`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
