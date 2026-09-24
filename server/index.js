@@ -13,6 +13,9 @@ const formRoutes = require('./routes/formRoutes');
 
 const app = express();
 
+// Trust Vercel's proxy for express-rate-limit
+app.set('trust proxy', 1);
+
 // Security Middleware
 app.use(helmet()); // Sets security HTTP headers
 
