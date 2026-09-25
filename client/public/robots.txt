@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aptivo.ai/sitemap.xml
+Sitemap: https://aptivoai.in/sitemap.xml
