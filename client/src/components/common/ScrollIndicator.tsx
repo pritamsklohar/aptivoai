@@ -38,7 +38,7 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
       >
         {/* Subtle, sleek label */}
         {label && (
-          <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.25em] uppercase text-slate-400 group-hover:text-[#8AA0FF] transition-colors duration-200">
+          <span className="text-[9px] sm:text-[10px] font-mono tracking-[0.25em] uppercase text-muted group-hover:text-accent-blue transition-colors duration-200">
             {label}
           </span>
         )}
@@ -46,7 +46,7 @@ export const ScrollIndicator: React.FC<ScrollIndicatorProps> = ({
         {/* Vertical Glowing Blue Line with Animated Pulsing Dot */}
         <div className="relative w-[18px] h-11 sm:h-14 flex items-center justify-center">
           {/* Ambient glow around the line */}
-          <div className="absolute inset-0 bg-[#4C6FFF]/20 blur-sm rounded-full pointer-events-none" />
+          <div className="absolute inset-0 bg-accent-blue/20 blur-sm rounded-full pointer-events-none" />
 
           {/* Vertical Glowing Line */}
           <div className="relative w-[2px] h-full rounded-full bg-gradient-to-b from-[#4C6FFF]/10 via-[#4C6FFF] to-[#4C6FFF]/20 animate-line-glow" />

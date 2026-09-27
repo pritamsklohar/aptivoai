@@ -8,9 +8,9 @@ interface CardContainerProps {
 
 export const CornerBracket: React.FC<CardContainerProps> = ({ children, className = '', tag }) => {
   return (
-    <div className={`relative rounded-xl border border-white/[0.08] bg-[#0E111A] p-6 sm:p-8 transition-all duration-200 ${className}`}>
+    <div className={`relative rounded-3xl border border-border bg-[#0E111A] p-6 sm:p-8 transition-all duration-200 ${className}`}>
       {tag && (
-        <div className="text-[11px] font-mono tracking-wider text-slate-400 uppercase select-none mb-3">
+        <div className="text-[11px] font-mono tracking-wider text-muted uppercase select-none mb-3">
           {tag}
         </div>
       )}

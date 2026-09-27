@@ -53,17 +53,17 @@ const AUDIENCE_CARDS = [
 
 export const AudienceSection: React.FC<AudienceSectionProps> = ({ onNavigate }) => {
   return (
-    <section className="py-24 relative bg-[#06070B]">
+    <section className="py-24 relative bg-bg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="text-xs font-medium text-slate-400 tracking-wider uppercase">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <div className="text-xs font-bold text-accent-blue tracking-wider uppercase bg-accent-blue/10 px-3 py-1.5 rounded-full inline-block">
             Tailored Pathways
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-            Built around your career objective.
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
+            Built around your <span className="text-accent-orange">career</span> objective.
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-muted leading-relaxed">
             Whether starting out, seeking a senior promotion, or building high-performing engineering teams, Aptivo AI adapts to your context.
           </p>
         </div>
@@ -75,27 +75,27 @@ export const AudienceSection: React.FC<AudienceSectionProps> = ({ onNavigate }) 
             return (
               <div
                 key={card.id}
-                className="p-8 rounded-2xl border border-white/[0.08] bg-[#0C0F19] hover:border-white/[0.18] transition-all duration-200 flex flex-col justify-between space-y-6"
+                className="p-8 rounded-[24px] border border-border bg-surface hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-8"
               >
                 <div>
-                  <div className="w-10 h-10 rounded-xl bg-[#4C6FFF]/10 border border-[#4C6FFF]/20 flex items-center justify-center text-[#8AA0FF] mb-5">
+                  <div className="w-12 h-12 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-accent-blue mb-6">
                     <Icon className="w-5 h-5" />
                   </div>
 
-                  <div className="text-xs text-[#8AA0FF] font-medium tracking-wide mb-1">
+                  <div className="text-xs text-accent-blue font-bold tracking-wider uppercase mb-1.5">
                     {card.kicker}
                   </div>
-                  <h3 className="text-xl font-bold font-display text-white mb-2.5">
+                  <h3 className="text-2xl font-bold font-display text-ink mb-3">
                     {card.title}
                   </h3>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-6">
+                  <p className="text-sm text-muted leading-relaxed mb-8">
                     {card.description}
                   </p>
 
-                  <div className="space-y-2.5 pt-4 border-t border-white/[0.06]">
+                  <div className="space-y-3 pt-6 border-t border-border">
                     {card.features.map((feat, i) => (
-                      <div key={i} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <Check className="w-3.5 h-3.5 text-[#8AA0FF] shrink-0 mt-0.5" />
+                      <div key={i} className="flex items-start gap-3 text-sm text-ink font-medium">
+                        <Check className="w-4 h-4 text-accent-orange shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -104,10 +104,10 @@ export const AudienceSection: React.FC<AudienceSectionProps> = ({ onNavigate }) 
 
                 <button
                   onClick={() => onNavigate(card.id)}
-                  className="w-full py-2.5 px-4 rounded-lg bg-[#141724] hover:bg-[#4C6FFF] border border-white/[0.08] hover:border-transparent text-xs font-semibold text-white flex items-center justify-center gap-2 transition-all group"
+                  className="w-full py-3.5 px-6 rounded-full bg-surface-2 hover:bg-border border border-border hover:border-border/80 text-sm font-semibold text-ink flex items-center justify-center gap-2 transition-all group"
                 >
                   <span>{card.cta}</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             );

@@ -69,18 +69,18 @@ const SOLUTIONS_DATA = [
 
 export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onNavigate, onOpenWaitlist }) => {
   return (
-    <div className="pt-32 pb-24 space-y-20 bg-[#06070B] min-h-screen">
+    <div className="pt-32 pb-24 space-y-20 bg-bg min-h-screen">
       {/* Hero */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
+        <div className="text-xs font-bold text-accent-blue tracking-wider uppercase">
           Ecosystem Solutions
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-bold font-display text-white tracking-tight leading-tight">
-          Intelligence for every stage of your career.
+        <h1 className="text-4xl sm:text-6xl font-bold font-display text-ink tracking-tight leading-tight">
+          <span className="text-accent-blue">Intelligence</span> for every stage of your career.
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+        <p className="text-base sm:text-lg text-ink/70 max-w-2xl mx-auto font-normal leading-relaxed">
           From first-year CS students building foundational projects to tech companies discovering pre-vetted engineers, Aptivo AI connects the entire talent lifecycle.
         </p>
 
@@ -95,49 +95,49 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onNavigate, onOpen
           return (
             <div
               key={sol.id}
-              className="p-8 sm:p-10 rounded-2xl border border-white/[0.08] bg-[#0C0F1A] grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
-              <div className="lg:col-span-5 space-y-4">
-                <div className="w-10 h-10 rounded-xl bg-[#4C6FFF]/10 border border-[#4C6FFF]/20 flex items-center justify-center text-[#8AA0FF]">
-                  <Icon className="w-5 h-5" />
+              <div className="lg:col-span-5 space-y-6">
+                <div className="w-12 h-12 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-accent-blue">
+                  <Icon className="w-6 h-6" />
                 </div>
 
-                <h2 className="text-2xl font-bold font-display text-white">
+                <h2 className="text-2xl font-bold font-display text-ink">
                   {sol.title}
                 </h2>
 
-                <div className="space-y-2 text-xs">
-                  <div className="p-3.5 rounded-xl bg-[#080B14] border border-white/[0.04]">
-                    <div className="text-red-400/90 font-medium mb-1">The Friction</div>
-                    <p className="text-slate-400 leading-relaxed">{sol.problem}</p>
+                <div className="space-y-3 text-sm">
+                  <div className="p-4 rounded-[20px] bg-red-50 border border-red-100">
+                    <div className="text-red-500 font-bold mb-1">The Friction</div>
+                    <p className="text-ink/80 leading-relaxed font-medium">{sol.problem}</p>
                   </div>
-                  <div className="p-3.5 rounded-xl bg-[#12172A] border border-[#4C6FFF]/20">
-                    <div className="text-[#8AA0FF] font-medium mb-1">Aptivo AI Solution</div>
-                    <p className="text-slate-300 leading-relaxed">{sol.solution}</p>
+                  <div className="p-4 rounded-[20px] bg-accent-blue-soft border border-accent-blue/20">
+                    <div className="text-accent-blue font-bold mb-1">Aptivo AI Solution</div>
+                    <p className="text-ink leading-relaxed font-medium">{sol.solution}</p>
                   </div>
                 </div>
 
                 <div className="pt-2">
                   <button
                     onClick={() => onNavigate(sol.targetPage)}
-                    className="px-5 py-2.5 rounded-lg bg-[#141828] hover:bg-[#4C6FFF] border border-white/[0.08] text-xs font-semibold text-white flex items-center gap-2 transition-colors"
+                    className="px-6 py-3 rounded-full bg-surface-2 hover:bg-border border border-border text-sm font-semibold text-ink flex items-center gap-2 transition-colors"
                   >
                     <span>Explore Solution</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
 
               <div className="lg:col-span-7">
-                <div className="p-6 rounded-xl border border-white/[0.06] bg-[#0E1220] space-y-4">
-                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                <div className="p-8 rounded-[24px] border border-border bg-white shadow-sm space-y-5">
+                  <div className="text-xs font-bold text-muted uppercase tracking-wider">
                     Core Capabilities
                   </div>
 
-                  <div className="space-y-3">
+                  <div className="space-y-4">
                     {sol.features.map((feat, fidx) => (
-                      <div key={fidx} className="flex items-start gap-2.5 text-xs text-slate-300">
-                        <CheckCircle2 className="w-4 h-4 text-[#8AA0FF] shrink-0 mt-0.5" />
+                      <div key={fidx} className="flex items-start gap-3 text-sm text-ink font-medium">
+                        <CheckCircle2 className="w-5 h-5 text-accent-blue shrink-0" />
                         <span className="leading-relaxed">{feat}</span>
                       </div>
                     ))}

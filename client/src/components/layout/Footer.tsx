@@ -15,7 +15,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
   };
 
   return (
-    <footer className="border-t border-white/[0.06] bg-[#06070B] text-slate-400 relative">
+    <footer className="border-t border-border bg-bg text-muted relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10 mb-16">
           {/* Brand Column */}
@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
               <AptivoLogo variant="full" size="md" showTagline={true} glow={true} />
             </button>
 
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm pt-2">
+            <p className="text-xs text-muted leading-relaxed max-w-sm pt-2">
               Autonomous career computation infrastructure connecting goals, skills, projects, and opportunities.
             </p>
 
@@ -37,7 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
                 href="https://www.linkedin.com/company/aptivo-ai"
                 target="_blank"
                 rel="noreferrer"
-                className="w-8 h-8 rounded-lg bg-[#0F121C] border border-white/[0.06] flex items-center justify-center text-slate-400 hover:text-white hover:border-[#4C6FFF]/40 transition-colors"
+                className="w-8 h-8 rounded-full bg-surface-2 border border-border flex items-center justify-center text-muted hover:text-ink hover:border-accent-blue/40 transition-colors"
                 aria-label="LinkedIn"
               >
                 <Briefcase className="w-4 h-4" />
@@ -47,27 +47,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
 
           {/* Platform Links */}
           <div className="space-y-3">
-            <div className="text-xs font-semibold text-white uppercase tracking-wider">
+            <div className="text-xs font-semibold text-ink uppercase tracking-wider">
               Platform
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('platform')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('platform')} className="hover:text-ink transition-colors">
                   Overview
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('ai-engine')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('ai-engine')} className="hover:text-ink transition-colors">
                   AI Engine
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('platform')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('platform')} className="hover:text-ink transition-colors">
                   Build Engine
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('platform')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('platform')} className="hover:text-ink transition-colors">
                   Interview Prep
                 </button>
               </li>
@@ -76,27 +76,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
 
           {/* Solutions Links */}
           <div className="space-y-3">
-            <div className="text-xs font-semibold text-white uppercase tracking-wider">
+            <div className="text-xs font-semibold text-ink uppercase tracking-wider">
               Solutions
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('students')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('students')} className="hover:text-ink transition-colors">
                   Students
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('job-seekers')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('job-seekers')} className="hover:text-ink transition-colors">
                   Job Seekers
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('solutions')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('solutions')} className="hover:text-ink transition-colors">
                   Colleges
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('hr-industry')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('hr-industry')} className="hover:text-ink transition-colors">
                   Companies
                 </button>
               </li>
@@ -105,27 +105,27 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
 
           {/* Company Links */}
           <div className="space-y-3">
-            <div className="text-xs font-semibold text-white uppercase tracking-wider">
+            <div className="text-xs font-semibold text-ink uppercase tracking-wider">
               Company
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('company')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('company')} className="hover:text-ink transition-colors">
                   About
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('company')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('company')} className="hover:text-ink transition-colors">
                   Founder
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('careers')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('careers')} className="hover:text-ink transition-colors">
                   Careers
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('contact')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('contact')} className="hover:text-ink transition-colors">
                   Contact
                 </button>
               </li>
@@ -134,22 +134,22 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
 
           {/* Resources */}
           <div className="space-y-3">
-            <div className="text-xs font-semibold text-white uppercase tracking-wider">
+            <div className="text-xs font-semibold text-ink uppercase tracking-wider">
               Resources
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('resources')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('resources')} className="hover:text-ink transition-colors">
                   Research & Insights
                 </button>
               </li>
               <li>
-                <button onClick={() => handleNav('how-it-works')} className="hover:text-white transition-colors">
+                <button onClick={() => handleNav('how-it-works')} className="hover:text-ink transition-colors">
                   How It Works
                 </button>
               </li>
               <li>
-                <button onClick={onOpenWaitlist} className="hover:text-white transition-colors text-[#8AA0FF]">
+                <button onClick={onOpenWaitlist} className="hover:text-ink transition-colors text-[#8AA0FF]">
                   Early Access
                 </button>
               </li>
@@ -158,15 +158,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenWaitlist }) =>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted">
           <div>
             © 2026 Aptivo AI Inc. All rights reserved.
           </div>
           <div className="flex items-center gap-6 text-xs">
-            <a href="#privacy" onClick={(e) => { e.preventDefault(); alert("Privacy Policy: Aptivo AI protects candidate data with strict zero-retention encryption."); }} className="hover:text-slate-200">
+            <a href="#privacy" onClick={(e) => { e.preventDefault(); alert("Privacy Policy: Aptivo AI protects candidate data with strict zero-retention encryption."); }} className="hover:text-ink/80">
               Privacy
             </a>
-            <a href="#terms" onClick={(e) => { e.preventDefault(); alert("Terms of Service: Candidate and enterprise data use complies with SOC2 standards."); }} className="hover:text-slate-200">
+            <a href="#terms" onClick={(e) => { e.preventDefault(); alert("Terms of Service: Candidate and enterprise data use complies with SOC2 standards."); }} className="hover:text-ink/80">
               Terms
             </a>
             <span>SOC2 Type II</span>

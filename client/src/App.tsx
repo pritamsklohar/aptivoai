@@ -96,7 +96,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#06070B] text-slate-100 selection:bg-[#4C6FFF]/30 selection:text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-[#06070B] text-ink selection:bg-[#4C6FFF]/30 selection:text-ink flex flex-col font-sans">
       {/* Top Fixed Header Navigation */}
       <Navbar
         currentPage={currentPage}

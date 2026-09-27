@@ -18,8 +18,8 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
   useEffect(() => {
     const fetchArticles = async () => {
       try {
-      const API_URL = import.meta.env.VITE_API_URL || '';
-      const response = await fetch(`${API_URL}/api/articles`);
+        const API_URL = import.meta.env.VITE_API_URL || '';
+        const response = await fetch(`${API_URL}/api/articles`);
         if (!response.ok) {
           throw new Error('Failed to fetch articles');
         }
@@ -42,31 +42,31 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
     : articles.filter((a) => a.category === selectedTag);
 
   return (
-    <div className="pt-32 pb-24 space-y-24 bg-[#06070B] min-h-screen">
+    <div className="pt-32 pb-24 space-y-24 bg-bg min-h-screen">
       {/* Hero */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
+        <div className="text-xs font-bold text-accent-blue tracking-wider uppercase">
           Research & Insights
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-bold font-display text-white tracking-tight leading-tight">
-          Ideas for the future of career engineering.
+        <h1 className="text-4xl sm:text-6xl font-bold font-display text-ink tracking-tight leading-tight">
+          Ideas for the <span className="text-accent-orange">future</span> of career engineering.
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+        <p className="text-base sm:text-lg text-ink/70 max-w-2xl mx-auto font-normal leading-relaxed">
           Deep-dives into career neural graph ontologies, modern engineering rubrics, telemetry verification, and the shift from credentials to proof.
         </p>
 
         {/* Category Filters */}
-        <div className="pt-4 flex flex-wrap items-center justify-center gap-2">
+        <div className="pt-6 flex flex-wrap items-center justify-center gap-3">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedTag(cat)}
-              className={`px-3.5 py-1.5 rounded-lg text-xs transition-colors ${
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
                 selectedTag === cat
-                  ? 'bg-[#4C6FFF] text-white font-medium shadow-sm'
-                  : 'bg-[#101320] text-slate-400 hover:text-white border border-white/[0.06]'
+                  ? 'bg-accent-blue text-white shadow-sm border border-transparent'
+                  : 'bg-surface text-ink border border-border hover:bg-surface-2'
               }`}
             >
               {cat}
@@ -79,43 +79,43 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
       </section>
 
       {/* Articles Grid */}
-      <section id="articles-grid" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[40vh]">
+      <section id="articles-grid" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[40vh]">
         {loading ? (
-          <div className="flex justify-center items-center py-20 text-slate-400">Loading articles...</div>
+          <div className="flex justify-center items-center py-20 text-muted font-bold">Loading articles...</div>
         ) : error ? (
-          <div className="flex justify-center items-center py-20 text-red-400">Error: {error}</div>
+          <div className="flex justify-center items-center py-20 text-red-500 font-bold">Error: {error}</div>
         ) : filteredArticles.length === 0 ? (
-          <div className="flex justify-center items-center py-20 text-slate-400">No articles found for this category.</div>
+          <div className="flex justify-center items-center py-20 text-muted font-bold">No articles found for this category.</div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredArticles.map((art) => (
               <div
                 key={art.id}
                 onClick={() => setReadingArticle(art)}
-                className="p-6 rounded-2xl border border-white/[0.08] bg-[#0C0F1A] hover:border-white/[0.16] transition-all cursor-pointer flex flex-col justify-between space-y-4 group"
+                className="p-8 rounded-[24px] border border-border bg-surface hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between space-y-6 group"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between text-xs">
-                    <span className="text-[#8AA0FF] font-medium">{art.category}</span>
-                    <span className="text-slate-400 flex items-center gap-1 text-[11px]">
-                      <Clock className="w-3 h-3" />
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                    <span className="text-accent-blue bg-accent-blue-soft px-2.5 py-1 rounded-md border border-accent-blue/20">{art.category}</span>
+                    <span className="text-muted flex items-center gap-1.5 bg-surface-2 px-2.5 py-1 rounded-md border border-border">
+                      <Clock className="w-3.5 h-3.5" />
                       {art.readTime}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold font-display text-white group-hover:text-[#8AA0FF] transition-colors leading-snug">
+                  <h3 className="text-xl font-bold font-display text-ink group-hover:text-accent-blue transition-colors leading-snug">
                     {art.title}
                   </h3>
 
-                  <p className="text-xs text-slate-400 leading-relaxed line-clamp-3">
+                  <p className="text-sm text-ink/80 leading-relaxed line-clamp-3 font-medium">
                     {art.summary}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between text-xs text-slate-500">
+                <div className="pt-4 border-t border-border flex items-center justify-between text-xs font-bold text-muted">
                   <span>{art.date}</span>
-                  <span className="text-slate-300 group-hover:text-white flex items-center gap-1 transition-colors">
-                    Read article <ArrowRight className="w-3.5 h-3.5" />
+                  <span className="text-accent-blue flex items-center gap-1.5 group-hover:translate-x-1 transition-transform">
+                    Read article <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
               </div>
@@ -126,29 +126,29 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
 
       {/* Article Reader Modal */}
       {readingArticle && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-          <div className="relative w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-2xl border border-white/[0.1] bg-[#0C0F1A] p-6 sm:p-8 text-slate-100 shadow-2xl space-y-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm">
+          <div className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-[24px] border border-border bg-white p-6 sm:p-10 text-ink shadow-2xl space-y-8">
             <button
               onClick={() => setReadingArticle(null)}
-              className="absolute top-5 right-5 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition-colors"
+              className="absolute top-6 right-6 p-2 rounded-full text-muted hover:text-ink hover:bg-surface-2 transition-colors border border-transparent hover:border-border"
             >
-              <X className="w-4 h-4" />
+              <X className="w-5 h-5" />
             </button>
 
-            <div className="space-y-2">
-              <span className="text-xs text-[#8AA0FF] font-medium uppercase tracking-wider">
+            <div className="space-y-3">
+              <span className="text-xs font-bold text-accent-blue uppercase tracking-wider bg-accent-blue-soft px-3 py-1.5 rounded-full border border-accent-blue/20">
                 {readingArticle.category} · {readingArticle.readTime}
               </span>
-              <h2 className="text-2xl font-bold font-display text-white">
+              <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink leading-tight">
                 {readingArticle.title}
               </h2>
-              <div className="text-xs text-slate-500">
+              <div className="text-sm font-bold text-muted">
                 Published on {readingArticle.date}
               </div>
             </div>
 
-            <div className="prose prose-invert max-w-none text-xs sm:text-sm text-slate-300 leading-relaxed space-y-4">
-              <p className="font-medium text-white">
+            <div className="prose prose-slate max-w-none text-sm sm:text-base text-ink/80 leading-relaxed font-medium space-y-5">
+              <p className="font-bold text-ink text-lg">
                 {readingArticle.summary}
               </p>
               {readingArticle.content?.map((paragraph, idx) => (
@@ -156,10 +156,10 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
               ))}
             </div>
 
-            <div className="pt-4 border-t border-white/[0.06] flex items-center justify-between">
+            <div className="pt-6 border-t border-border flex items-center justify-between">
               <button
                 onClick={() => setReadingArticle(null)}
-                className="text-xs text-slate-400 hover:text-white transition-colors"
+                className="text-sm font-bold text-muted hover:text-ink transition-colors"
               >
                 Close article
               </button>
@@ -168,7 +168,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
                   setReadingArticle(null);
                   onOpenWaitlist();
                 }}
-                className="px-4 py-2 rounded-lg bg-[#4C6FFF] hover:bg-[#3B5BDB] text-white text-xs font-semibold"
+                className="px-6 py-3 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-bold shadow-sm"
               >
                 Join Waitlist
               </button>

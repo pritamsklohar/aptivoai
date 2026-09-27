@@ -36,43 +36,43 @@ const COMPARISON_ROWS = [
 
 export const WhyAptivoSection: React.FC<WhyAptivoSectionProps> = () => {
   return (
-    <section className="py-24 relative bg-[#06070B]">
+    <section className="py-24 relative bg-bg">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="text-xs font-medium text-slate-400 tracking-wider uppercase">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <div className="text-xs font-bold text-accent-orange tracking-wider uppercase bg-accent-orange/10 px-3 py-1.5 rounded-full inline-block">
             The Difference
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-            Scattered preparation vs. One intelligent system.
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
+            Scattered preparation vs. One <span className="text-accent-blue">intelligent</span> system.
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-muted leading-relaxed">
             Replace guesswork with a unified career intelligence platform.
           </p>
         </div>
 
         {/* Clean Comparison Table / Cards */}
-        <div className="rounded-2xl border border-white/[0.08] bg-[#0C0F1A] overflow-hidden">
-          <div className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 border-b border-white/[0.06] bg-[#090B12] text-xs font-medium text-slate-400">
+        <div className="rounded-[24px] border border-border bg-surface overflow-hidden shadow-sm">
+          <div className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 border-b border-border bg-surface-2 text-xs font-semibold text-muted">
             <div className="md:col-span-4 uppercase tracking-wider">Dimension</div>
-            <div className="md:col-span-4 uppercase tracking-wider text-red-400/90 hidden md:block">Traditional Preparation</div>
-            <div className="md:col-span-4 uppercase tracking-wider text-[#8AA0FF] hidden md:block">Aptivo AI Platform</div>
+            <div className="md:col-span-4 uppercase tracking-wider text-muted hidden md:block">Traditional Preparation</div>
+            <div className="md:col-span-4 uppercase tracking-wider text-accent-blue hidden md:block">Aptivo AI Platform</div>
           </div>
 
-          <div className="divide-y divide-white/[0.06]">
+          <div className="divide-y divide-border">
             {COMPARISON_ROWS.map((row, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 gap-3 md:gap-4 items-center">
-                <div className="md:col-span-4 text-xs font-semibold text-white">
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 gap-3 md:gap-4 items-center bg-bg/50 hover:bg-bg transition-colors">
+                <div className="md:col-span-4 text-sm font-semibold text-ink">
                   {row.topic}
                 </div>
 
-                <div className="md:col-span-4 text-xs text-slate-400 flex items-start gap-2">
-                  <X className="w-3.5 h-3.5 text-red-400/80 shrink-0 mt-0.5" />
+                <div className="md:col-span-4 text-sm text-muted flex items-start gap-2">
+                  <X className="w-4 h-4 text-muted/60 shrink-0 mt-0.5" />
                   <span className="leading-relaxed">{row.traditional}</span>
                 </div>
 
-                <div className="md:col-span-4 text-xs text-slate-200 flex items-start gap-2">
-                  <Check className="w-3.5 h-3.5 text-[#8AA0FF] shrink-0 mt-0.5" />
+                <div className="md:col-span-4 text-sm text-ink flex items-start gap-2">
+                  <Check className="w-4 h-4 text-accent-orange shrink-0 mt-0.5" />
                   <span className="leading-relaxed font-medium">{row.aptivo}</span>
                 </div>
               </div>

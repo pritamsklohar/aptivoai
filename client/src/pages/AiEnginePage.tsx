@@ -17,25 +17,25 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
   const [selectedLayerIndex, setSelectedLayerIndex] = useState(1);
 
   return (
-    <div className="pt-32 pb-24 space-y-24 bg-[#06070B] min-h-screen">
+    <div className="pt-32 pb-24 space-y-24 bg-bg min-h-screen">
       {/* Hero Section */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
+        <div className="text-xs font-bold text-accent-orange tracking-wider uppercase">
           Autonomous Career Computation
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-bold font-display text-white tracking-tight leading-tight">
-          The AI engine for high-stakes career decisions.
+        <h1 className="text-4xl sm:text-6xl font-bold font-display text-ink tracking-tight leading-tight">
+          The <span className="text-accent-blue">AI engine</span> for high-stakes career decisions.
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+        <p className="text-base sm:text-lg text-ink/70 max-w-2xl mx-auto font-normal leading-relaxed">
           Aptivo AI connects candidate baselines, target standards, verified project telemetry, and hiring rubrics into one continuously evolving neural model.
         </p>
 
         <div className="pt-4 flex items-center justify-center gap-3">
           <button
             onClick={onOpenWaitlist}
-            className="px-6 py-3 rounded-lg bg-[#4C6FFF] hover:bg-[#3B5BDB] text-white text-xs font-semibold tracking-wide shadow-md shadow-[#4C6FFF]/20 transition-all"
+            className="px-8 py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-semibold tracking-wide shadow-sm transition-all"
           >
             Request Architecture Demo
           </button>
@@ -47,68 +47,68 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
 
       {/* 5-Layer Architecture Diagram */}
       <section id="architecture-layers" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="text-center mb-8 space-y-2">
-          <div className="text-xs font-medium text-slate-400 tracking-wider uppercase">
+        <div className="text-center mb-8 space-y-3">
+          <div className="text-xs font-bold text-accent-blue tracking-wider uppercase bg-accent-blue-soft/50 px-3 py-1.5 rounded-full inline-block border border-accent-blue/20">
             Layered Pipeline
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold font-display text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold font-display text-ink">
             Architecture & Reasoning Layers
           </h2>
-          <p className="text-xs text-slate-400">
+          <p className="text-sm text-muted font-medium">
             Select any layer to inspect the components and reasoning rules.
           </p>
         </div>
 
         {/* Vertical Stack */}
-        <div className="space-y-4">
+        <div className="space-y-5">
           {ARCHITECTURE_LAYERS.map((layer, idx) => {
             const isSelected = selectedLayerIndex === idx;
 
             return (
-              <div key={layer.name} className="space-y-3">
+              <div key={layer.name} className="space-y-4">
                 {/* Layer Card */}
                 <div
                   onClick={() => setSelectedLayerIndex(idx)}
-                  className={`p-6 sm:p-7 rounded-2xl border transition-all cursor-pointer ${
+                  className={`p-6 sm:p-8 rounded-[24px] border transition-all cursor-pointer ${
                     isSelected
-                      ? 'border-[#4C6FFF]/60 bg-gradient-to-r from-[#11172A] to-[#0A0D17] shadow-lg'
-                      : 'border-white/[0.08] bg-[#0C0E18] hover:border-white/[0.16]'
+                      ? 'border-accent-blue bg-accent-blue-soft shadow-sm'
+                      : 'border-border bg-surface hover:bg-surface-2'
                   }`}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-4 border-b border-white/[0.06]">
-                    <div className="flex items-center gap-3">
-                      <span className={`w-7 h-7 rounded-lg flex items-center justify-center font-mono text-xs font-semibold ${
-                        isSelected ? 'bg-[#4C6FFF] text-white' : 'bg-white/[0.06] text-slate-400'
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-border">
+                    <div className="flex items-center gap-4">
+                      <span className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs font-bold ${
+                        isSelected ? 'bg-accent-blue text-white' : 'bg-border text-muted'
                       }`}>
                         {layer.code}
                       </span>
                       <div>
-                        <h3 className="text-lg font-bold font-display text-white">
+                        <h3 className="text-xl font-bold font-display text-ink">
                           {layer.name}
                         </h3>
-                        <p className="text-xs text-slate-400 mt-0.5">
+                        <p className="text-sm text-ink/70 mt-1 font-medium">
                           {layer.description}
                         </p>
                       </div>
                     </div>
 
-                    <span className="text-xs text-[#8AA0FF] font-medium">
+                    <span className={`text-xs font-bold px-3 py-1.5 rounded-full ${isSelected ? 'bg-white text-accent-blue border border-accent-blue/20' : 'text-muted'}`}>
                       {layer.items.length} Subsystems
                     </span>
                   </div>
 
                   {/* Components Grid */}
-                  <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                  <div className="pt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {layer.items.map((comp) => (
                       <div
                         key={comp.title}
-                        className="p-3 rounded-xl bg-[#080B14] border border-white/[0.04] text-xs space-y-1"
+                        className="p-4 rounded-[20px] bg-white border border-border text-sm space-y-1.5 shadow-sm"
                       >
-                        <div className="font-semibold text-white flex items-center gap-1.5">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-[#8AA0FF]" />
+                        <div className="font-bold text-ink flex items-center gap-2">
+                          <CheckCircle2 className={`w-4 h-4 ${isSelected ? 'text-accent-blue' : 'text-muted'}`} />
                           <span>{comp.title}</span>
                         </div>
-                        <p className="text-[11px] text-slate-400 leading-snug pl-5">
+                        <p className="text-xs text-muted leading-snug pl-6 font-medium">
                           {comp.desc}
                         </p>
                       </div>
@@ -118,8 +118,8 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
 
                 {/* Subtle Connector Arrow */}
                 {idx < ARCHITECTURE_LAYERS.length - 1 && (
-                  <div className="flex justify-center py-0.5">
-                    <ArrowDown className="w-3.5 h-3.5 text-slate-600" />
+                  <div className="flex justify-center py-1">
+                    <ArrowDown className="w-5 h-5 text-border" />
                   </div>
                 )}
               </div>

@@ -155,32 +155,32 @@ export const AiCareerGraph: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-[28px] border border-white/[0.08] bg-[#080B13] shadow-[0_30px_100px_rgba(0,0,0,0.35)]">
+    <section className="relative w-full max-w-6xl mx-auto overflow-hidden rounded-[28px] border border-border bg-[#080B13] shadow-[0_30px_100px_rgba(0,0,0,0.35)]">
 
       {/* Ambient lighting */}
-      <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-[#4C6FFF]/[0.08] blur-[120px]" />
+      <div className="pointer-events-none absolute -top-40 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-accent-blue/[0.08] blur-[120px]" />
 
       <div className="pointer-events-none absolute bottom-0 left-1/2 h-[260px] w-[500px] -translate-x-1/2 rounded-full bg-cyan-400/[0.035] blur-[100px]" />
 
       {/* Header */}
-      <div className="relative z-10 flex flex-col gap-5 border-b border-white/[0.07] px-6 py-6 sm:px-8 lg:px-10 lg:flex-row lg:items-center lg:justify-between">
+      <div className="relative z-10 flex flex-col gap-5 border-b border-border px-6 py-6 sm:px-8 lg:px-10 lg:flex-row lg:items-center lg:justify-between">
 
         <div>
           <div className="mb-2 flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-md border border-[#4C6FFF]/30 bg-[#4C6FFF]/10">
-              <BrainCircuit className="h-3.5 w-3.5 text-[#8AA0FF]" />
+            <span className="flex h-6 w-6 items-center justify-center rounded-md border border-accent-blue/30 bg-accent-blue/10">
+              <BrainCircuit className="h-3.5 w-3.5 text-accent-blue" />
             </span>
 
-            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#8AA0FF]">
+            <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent-blue">
               Aptivo Intelligence
             </span>
           </div>
 
-          <h3 className="font-display text-base font-semibold tracking-tight text-white sm:text-lg">
+          <h3 className="font-display text-base font-semibold tracking-tight text-ink sm:text-lg">
             Interactive Career Intelligence
           </h3>
 
-          <p className="mt-1 max-w-xl text-xs leading-relaxed text-slate-400 sm:text-sm">
+          <p className="mt-1 max-w-xl text-xs leading-relaxed text-muted sm:text-sm">
             A connected view of your career goal, skills, proof of work,
             preparation and opportunities.
           </p>
@@ -201,7 +201,7 @@ export const AiCareerGraph: React.FC = () => {
       {/* Graph */}
       <div className="relative px-3 py-5 sm:px-6 lg:px-10">
 
-        <div className="relative mx-auto aspect-[1.55/1] w-full max-w-[900px] min-h-[390px] overflow-hidden rounded-2xl border border-white/[0.05] bg-[#090D17]">
+        <div className="relative mx-auto aspect-[1.55/1] w-full max-w-[900px] min-h-[390px] overflow-hidden rounded-[24px] border border-border bg-[#090D17]">
 
           {/* Background grid */}
           <div
@@ -215,9 +215,9 @@ export const AiCareerGraph: React.FC = () => {
 
           {/* Top system label */}
           <div className="absolute left-5 top-5 z-20 flex items-center gap-2">
-            <Gauge className="h-3.5 w-3.5 text-[#8AA0FF]" />
+            <Gauge className="h-3.5 w-3.5 text-accent-blue" />
 
-            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-slate-500">
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink0">
               Career Graph / Live Model
             </span>
           </div>
@@ -461,12 +461,12 @@ export const AiCareerGraph: React.FC = () => {
                   <div className="mb-1 flex items-center gap-1.5">
                     <Sparkles className="h-3 w-3 text-[#19D9FF]" />
 
-                    <span className="text-[11px] font-bold tracking-tight text-white">
+                    <span className="text-[11px] font-bold tracking-tight text-ink">
                       APTIVO AI
                     </span>
                   </div>
 
-                  <span className="font-mono text-[8px] uppercase tracking-widest text-[#8AA0FF]">
+                  <span className="font-mono text-[8px] uppercase tracking-widest text-accent-blue">
                     Career Engine
                   </span>
                 </div>
@@ -539,8 +539,8 @@ export const AiCareerGraph: React.FC = () => {
                         strokeWidth={1.8}
                         className={
                           selected
-                            ? 'text-[#8AA0FF]'
-                            : 'text-slate-500'
+                            ? 'text-accent-blue'
+                            : 'text-ink0'
                         }
                       />
                     </div>
@@ -597,20 +597,20 @@ export const AiCareerGraph: React.FC = () => {
           </div>
 
           {/* Readiness floating card */}
-          <div className="absolute bottom-4 right-5 hidden rounded-xl border border-white/[0.08] bg-[#0C111D]/90 px-4 py-3 backdrop-blur-xl sm:block">
+          <div className="absolute bottom-4 right-5 hidden rounded-3xl border border-border bg-[#0C111D]/90 px-4 py-3 backdrop-blur-xl sm:block">
             <div className="flex items-center gap-3">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-[#4C6FFF]/30 bg-[#4C6FFF]/10">
-                <span className="text-xs font-bold text-white">
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-full border border-accent-blue/30 bg-accent-blue/10">
+                <span className="text-xs font-bold text-ink">
                   {readiness}%
                 </span>
               </div>
 
               <div>
-                <div className="text-[9px] uppercase tracking-widest text-slate-500">
+                <div className="text-[9px] uppercase tracking-widest text-ink0">
                   Career readiness
                 </div>
 
-                <div className="mt-0.5 text-xs font-medium text-slate-200">
+                <div className="mt-0.5 text-xs font-medium text-ink/80">
                   Target alignment
                 </div>
               </div>
@@ -620,17 +620,17 @@ export const AiCareerGraph: React.FC = () => {
       </div>
 
       {/* Selected node panel */}
-      <div className="relative z-10 border-t border-white/[0.07] px-6 py-5 sm:px-8 lg:px-10">
+      <div className="relative z-10 border-t border-border px-6 py-5 sm:px-8 lg:px-10">
 
         <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
 
           <div>
             <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-[#4C6FFF]/20 bg-[#4C6FFF]/10">
-                <ActiveIcon className="h-3.5 w-3.5 text-[#8AA0FF]" />
+              <span className="flex h-7 w-7 items-center justify-center rounded-[24px] border border-accent-blue/20 bg-accent-blue/10">
+                <ActiveIcon className="h-3.5 w-3.5 text-accent-blue" />
               </span>
 
-              <span className="text-sm font-semibold text-white">
+              <span className="text-sm font-semibold text-ink">
                 {activeNode.name}
               </span>
 
@@ -638,13 +638,13 @@ export const AiCareerGraph: React.FC = () => {
                 /
               </span>
 
-              <span className="text-xs font-medium text-[#8AA0FF]">
+              <span className="text-xs font-medium text-accent-blue">
                 {activeNode.metric}
               </span>
             </div>
 
             <div className="mb-2 flex items-center gap-2">
-              <span className="rounded-full border border-white/[0.07] bg-white/[0.025] px-2 py-1 text-[9px] uppercase tracking-wider text-slate-500">
+              <span className="rounded-full border border-border bg-white/[0.025] px-2 py-1 text-[9px] uppercase tracking-wider text-ink0">
                 {activeNode.category}
               </span>
 
@@ -656,43 +656,43 @@ export const AiCareerGraph: React.FC = () => {
               )}
             </div>
 
-            <p className="max-w-2xl text-xs leading-relaxed text-slate-400 sm:text-sm">
+            <p className="max-w-2xl text-xs leading-relaxed text-muted sm:text-sm">
               {activeNode.detail}
             </p>
           </div>
 
           <button
             onClick={handleNext}
-            className="group flex w-fit items-center gap-3 rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3 text-xs font-medium text-slate-200 transition-all duration-300 hover:border-[#4C6FFF]/30 hover:bg-[#4C6FFF]/[0.06]"
+            className="group flex w-fit items-center gap-3 rounded-3xl border border-border bg-white/[0.025] px-4 py-3 text-xs font-medium text-ink/80 transition-all duration-300 hover:border-accent-blue/30 hover:bg-accent-blue/[0.06]"
           >
             <span>Explore next signal</span>
 
             <span className="flex h-6 w-6 items-center justify-center rounded-md bg-white/[0.05] transition-transform duration-300 group-hover:translate-x-0.5">
-              <ArrowRight className="h-3.5 w-3.5 text-[#8AA0FF]" />
+              <ArrowRight className="h-3.5 w-3.5 text-accent-blue" />
             </span>
           </button>
         </div>
 
         {/* AI recommendation */}
-        <div className="mt-5 flex flex-col gap-3 rounded-xl border border-[#4C6FFF]/10 bg-[#4C6FFF]/[0.035] p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-5 flex flex-col gap-3 rounded-3xl border border-accent-blue/10 bg-accent-blue/[0.035] p-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-start gap-3">
-            <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[#4C6FFF]/10">
-              <Zap className="h-3.5 w-3.5 text-[#8AA0FF]" />
+            <div className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-[24px] bg-accent-blue/10">
+              <Zap className="h-3.5 w-3.5 text-accent-blue" />
             </div>
 
             <div>
-              <div className="text-[9px] font-semibold uppercase tracking-[0.15em] text-[#8AA0FF]">
+              <div className="text-[9px] font-semibold uppercase tracking-[0.15em] text-accent-blue">
                 AI next action
               </div>
 
-              <p className="mt-1 text-xs text-slate-300">
+              <p className="mt-1 text-xs text-ink/70">
                 Strengthen system design to improve alignment with your
                 target Full-Stack Engineer role.
               </p>
             </div>
           </div>
 
-          <div className="whitespace-nowrap font-mono text-[10px] text-slate-500">
+          <div className="whitespace-nowrap font-mono text-[10px] text-ink0">
             Recommended next
           </div>
         </div>

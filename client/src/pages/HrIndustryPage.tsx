@@ -20,25 +20,25 @@ const EMPLOYER_WORKFLOW = [
 
 export const HrIndustryPage: React.FC<HrIndustryPageProps> = ({ onNavigate, onOpenWaitlist }) => {
   return (
-    <div className="pt-32 pb-24 space-y-24 bg-[#06070B] min-h-screen">
+    <div className="pt-32 pb-24 space-y-24 bg-bg min-h-screen">
       {/* Hero */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-medium text-[#8AA0FF] tracking-wider uppercase">
+        <div className="text-xs font-bold text-accent-blue tracking-wider uppercase">
           Enterprise Talent Intelligence
         </div>
 
-        <h1 className="text-4xl sm:text-6xl font-bold font-display text-white tracking-tight leading-tight">
-          Hire beyond the resume.
+        <h1 className="text-4xl sm:text-6xl font-bold font-display text-ink tracking-tight leading-tight">
+          Hire <span className="text-accent-blue">beyond</span> the resume.
         </h1>
 
-        <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+        <p className="text-base sm:text-lg text-ink/70 max-w-2xl mx-auto font-normal leading-relaxed">
           Stop reviewing keyword-stuffed resumes and unverified claims. Discover engineering talent using verified code depth, PR quality, and calibrated readiness signals.
         </p>
 
         <div className="pt-4 flex items-center justify-center">
           <button
             onClick={onOpenWaitlist}
-            className="px-6 py-3 rounded-lg bg-[#4C6FFF] hover:bg-[#3B5BDB] text-white text-xs font-semibold tracking-wide shadow-md shadow-[#4C6FFF]/20 transition-all"
+            className="px-8 py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-semibold tracking-wide shadow-sm transition-all"
           >
             Deploy Enterprise Pilot
           </button>
@@ -49,29 +49,29 @@ export const HrIndustryPage: React.FC<HrIndustryPageProps> = ({ onNavigate, onOp
       </section>
 
       {/* Employer 7-Step Workflow */}
-      <section id="employer-funnel" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="text-center mb-8 space-y-2">
-          <div className="text-xs font-medium text-slate-400 tracking-wider uppercase">
+      <section id="employer-funnel" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div className="text-center mb-10 space-y-3">
+          <div className="text-xs font-bold text-muted tracking-wider uppercase bg-surface px-3 py-1.5 rounded-full inline-block border border-border">
             Hiring Workflow
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold font-display text-white">
+          <h2 className="text-2xl sm:text-3xl font-bold font-display text-ink">
             Verified Talent Discovery Funnel
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2.5">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
           {EMPLOYER_WORKFLOW.map((wf) => (
             <div
               key={wf.step}
-              className="p-3.5 rounded-xl border border-white/[0.08] bg-[#0C0F1A] space-y-1.5"
+              className="p-5 rounded-[24px] border border-border bg-white shadow-sm space-y-3 hover:shadow-md transition-shadow"
             >
-              <div className="text-xs font-mono text-[#8AA0FF]">
+              <div className="w-8 h-8 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-xs font-bold text-accent-blue">
                 {wf.step}
               </div>
-              <div className="text-xs font-semibold text-white">
+              <div className="text-sm font-bold text-ink">
                 {wf.title}
               </div>
-              <p className="text-[11px] text-slate-400 leading-snug">
+              <p className="text-xs text-muted font-medium leading-relaxed">
                 {wf.desc}
               </p>
             </div>
@@ -81,37 +81,37 @@ export const HrIndustryPage: React.FC<HrIndustryPageProps> = ({ onNavigate, onOp
 
       {/* Enterprise Talent Console Preview */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 rounded-2xl border border-white/[0.08] bg-[#0C0F1A] space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/[0.06] pb-4">
+        <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-5">
             <div>
-              <span className="text-xs text-[#8AA0FF] font-medium">Enterprise Console</span>
-              <h3 className="text-lg font-bold font-display text-white mt-0.5">
+              <span className="text-xs text-accent-orange font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md border border-accent-orange/20">Enterprise Console</span>
+              <h3 className="text-2xl font-bold font-display text-ink mt-3">
                 Pre-Screened Engineering Cohort
               </h3>
             </div>
-            <div className="text-xs text-slate-400">
+            <div className="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">
               Verified Readiness ≥ 85%
             </div>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {[
               { id: 'Candidate #4029', role: 'Full-Stack Engineer', readiness: 92, verifiedStack: 'TypeScript, React, Node.js, Distributed Caching', prCoverage: '94% Test Coverage' },
               { id: 'Candidate #7118', role: 'Systems Backend Engineer', readiness: 89, verifiedStack: 'Go, Kafka, Docker, Postgres Indexing', prCoverage: '91% Concurrency Verification' },
               { id: 'Candidate #9420', role: 'Infrastructure SRE', readiness: 87, verifiedStack: 'Kubernetes, Terraform, AWS, Prometheus', prCoverage: 'Zero Production Incident History' },
             ].map((cand, i) => (
-              <div key={i} className="p-4 rounded-xl border border-white/[0.04] bg-[#080B14] space-y-2">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div key={i} className="p-5 rounded-[20px] border border-border bg-white shadow-sm space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
-                    <h4 className="text-sm font-semibold text-white">{cand.id} · {cand.role}</h4>
-                    <p className="text-xs text-slate-400">{cand.verifiedStack}</p>
+                    <h4 className="text-base font-bold text-ink">{cand.id} <span className="text-muted font-normal mx-1">·</span> {cand.role}</h4>
+                    <p className="text-sm text-muted font-medium mt-1">{cand.verifiedStack}</p>
                   </div>
-                  <span className="text-xs font-semibold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md self-start sm:self-auto">
+                  <span className="text-xs font-bold text-accent-blue bg-accent-blue-soft px-3 py-1.5 rounded-md border border-accent-blue/20 self-start sm:self-auto">
                     {cand.readiness}% Readiness Score
                   </span>
                 </div>
-                <div className="text-[11px] text-slate-400 flex items-center gap-1.5 pt-1 border-t border-white/[0.04]">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#8AA0FF] shrink-0" />
+                <div className="text-xs text-ink/80 font-medium flex items-center gap-2 pt-3 border-t border-border">
+                  <CheckCircle2 className="w-4 h-4 text-accent-blue shrink-0" />
                   <span>{cand.prCoverage}</span>
                 </div>
               </div>

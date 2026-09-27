@@ -4,24 +4,30 @@
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  --color-brand-bg: #06070B;
-  --color-brand-surface: #0D0F17;
-  --color-brand-card: #11141D;
-  --color-brand-elevated: #151925;
-  --color-brand-blue: #4C6FFF;
-  --color-brand-blue-light: #8AA0FF;
+  
+  --color-bg: #FFFFFF;
+  --color-surface: #F4F5F7;
+  --color-surface-2: #EDEFF3;
+  --color-border: #E4E6EB;
+  --color-ink: #111318;
+  --color-muted: #6B7280;
+  
+  --color-accent-blue: #3B5BFF;
+  --color-accent-orange: #F5941C;
+  --color-accent-blue-soft: #E7ECFF;
 }
 
 @layer base {
   body {
-    background-color: #06070B;
-    color: #F1F5F9;
+    background-color: var(--color-bg);
+    color: var(--color-ink);
     font-family: var(--font-sans);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.02em;
+    color: var(--color-ink);
   }
 }
 

@@ -55,73 +55,73 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm">
       <div 
-        className="relative w-full max-w-lg rounded-2xl border border-white/[0.1] bg-[#0C0F1A] p-6 sm:p-8 shadow-2xl text-slate-100 space-y-6"
+        className="relative w-full max-w-lg rounded-[24px] border border-border bg-white p-6 sm:p-8 shadow-2xl text-ink space-y-6"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-white/[0.06] transition-colors"
+          className="absolute top-5 right-5 p-2 text-muted hover:text-ink rounded-full hover:bg-surface-2 transition-colors border border-transparent hover:border-border"
           aria-label="Close modal"
         >
-          <X className="w-4 h-4" />
+          <X className="w-5 h-5" />
         </button>
 
         {submitted ? (
-          <div className="py-8 text-center space-y-3">
-            <div className="w-12 h-12 mx-auto rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400">
-              <CheckCircle2 className="w-6 h-6" />
+          <div className="py-10 text-center space-y-4">
+            <div className="w-16 h-16 mx-auto rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500">
+              <CheckCircle2 className="w-8 h-8" />
             </div>
-            <h3 className="text-xl font-bold font-display text-white">
+            <h3 className="text-2xl font-bold font-display text-ink">
               Waitlist Priority Confirmed
             </h3>
-            <p className="text-xs text-slate-300 max-w-sm mx-auto leading-relaxed">
-              Welcome, <span className="text-white font-medium">{name}</span>. Your priority access invitation for the <span className="text-[#8AA0FF] font-medium">{role}</span> cohort has been sent to <span className="text-white">{email}</span>.
+            <p className="text-sm text-ink/80 max-w-sm mx-auto font-medium leading-relaxed">
+              Welcome, <span className="text-ink font-bold">{name}</span>. Your priority access invitation for the <span className="text-accent-blue font-bold">{role}</span> cohort has been sent to <span className="text-ink font-bold">{email}</span>.
             </p>
-            <div className="pt-2">
+            <div className="pt-4">
               <button
                 onClick={handleReset}
-                className="px-5 py-2 rounded-lg bg-[#141828] border border-white/[0.08] text-xs font-medium text-slate-300 hover:text-white transition-colors"
+                className="px-6 py-2.5 rounded-full bg-surface-2 border border-border text-sm font-semibold text-ink hover:bg-border transition-colors"
               >
                 Close Window
               </button>
             </div>
           </div>
         ) : (
-          <div className="space-y-5">
+          <div className="space-y-6">
             <div>
-              <div className="mb-3">
-                <AptivoLogo variant="lockup" size="sm" glow={true} />
+              <div className="mb-4">
+                <AptivoLogo variant="lockup" size="sm" glow={false} />
               </div>
-              <div className="text-xs font-medium text-[#8AA0FF] uppercase tracking-wider">
+              <div className="text-xs font-bold text-accent-blue uppercase tracking-wider bg-accent-blue-soft px-3 py-1 rounded-full inline-block border border-accent-blue/20">
                 Early Access
               </div>
-              <h2 className="text-xl font-bold font-display text-white mt-1">
+              <h2 className="text-2xl font-bold font-display text-ink mt-3">
                 Join the Aptivo AI Waitlist
               </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-sm font-medium text-muted mt-1.5">
                 Be the first to build your career on adaptive intelligence infrastructure.
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-5">
               {/* Profile Selector */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-slate-300">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-ink/80">
                   Select Your Profile
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {['Student', 'Job Seeker', 'Company', 'College'].map((r) => (
                     <button
                       key={r}
                       type="button"
                       onClick={() => setRole(r)}
-                      className={`px-3 py-2 text-xs font-medium rounded-lg border transition-all text-center ${
+                      className={`px-3 py-2 text-sm font-semibold rounded-[16px] transition-all text-center ${
                         role === r
-                          ? 'bg-[#4C6FFF] border-transparent text-white shadow-sm'
-                          : 'bg-[#080B14] border-white/[0.06] text-slate-400 hover:text-white'
+                          ? 'bg-accent-blue text-white shadow-sm border border-transparent'
+                          : 'bg-surface border border-border text-muted hover:text-ink hover:bg-surface-2'
                       }`}
                     >
                       {r}
@@ -131,8 +131,8 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
               </div>
 
               {/* Full Name */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-slate-300">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-ink/80">
                   Full Name
                 </label>
                 <input
@@ -141,13 +141,13 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
                   placeholder="e.g. Alex Chen"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#080B14] border border-white/[0.08] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#4C6FFF]"
+                  className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all"
                 />
               </div>
 
               {/* Email Address */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-slate-300">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-ink/80">
                   Email Address
                 </label>
                 <input
@@ -156,13 +156,13 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
                   placeholder="name@domain.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#080B14] border border-white/[0.08] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#4C6FFF]"
+                  className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all"
                 />
               </div>
 
               {/* Target Role */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-medium text-slate-300">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-ink/80">
                   Primary Target Role or Focus
                 </label>
                 <input
@@ -170,22 +170,22 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
                   placeholder="e.g. Full-Stack Engineer, AI Systems, Talent Hiring"
                   value={goal}
                   onChange={(e) => setGoal(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-lg bg-[#080B14] border border-white/[0.08] text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#4C6FFF]"
+                  className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all"
                 />
               </div>
 
-              <div className="pt-2">
+              <div className="pt-3">
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-2.5 px-4 rounded-lg bg-[#4C6FFF] hover:bg-[#3B5BDB] text-white text-xs font-semibold tracking-wide flex items-center justify-center gap-2 transition-colors disabled:opacity-50 shadow-md shadow-[#4C6FFF]/20"
+                  className="w-full py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-bold tracking-wide flex items-center justify-center gap-2 transition-colors disabled:opacity-50 shadow-sm"
                 >
                   {isSubmitting ? 'Securing Access...' : 'Request Priority Access'}
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="text-[11px] text-slate-400 text-center pt-1">
+              <div className="text-xs font-medium text-muted text-center pt-2">
                 Zero spam policy · Early cohort invitations active
               </div>
             </form>

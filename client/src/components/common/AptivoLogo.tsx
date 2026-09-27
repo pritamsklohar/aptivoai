@@ -47,7 +47,7 @@ export const AptivoLogo: React.FC<AptivoLogoProps> = ({
   // Wordmark: "Aptivo" in crisp white + "AI" in cyan-to-purple gradient
   const Wordmark = (
     <div className="flex items-baseline tracking-tight font-display font-bold leading-none select-none">
-      <span className={`text-white font-extrabold ${currentSize.text} tracking-tight`}>
+      <span className={`text-ink font-extrabold ${currentSize.text} tracking-tight`}>
         Aptivo
       </span>
       <span
@@ -71,7 +71,7 @@ export const AptivoLogo: React.FC<AptivoLogoProps> = ({
         <div className="mt-1 flex items-center gap-2 w-full pt-0.5">
           {/* Cyan gradient line */}
           <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#00CFFF] to-[#3B82F6] opacity-75" />
-          <span className={`${currentSize.sub} font-medium tracking-wider text-slate-300 uppercase whitespace-nowrap`}>
+          <span className={`${currentSize.sub} font-medium tracking-wider text-ink/70 uppercase whitespace-nowrap`}>
             Build Smarter. Grow Faster.
           </span>
           {/* Purple gradient line */}

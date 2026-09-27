@@ -6,37 +6,37 @@ export const AdaptiveCareerLoopSection: React.FC = () => {
   const [activeStep, setActiveStep] = useState(1);
 
   return (
-    <section className="py-24 relative bg-[#06070B] overflow-hidden">
+    <section className="py-24 relative bg-bg overflow-hidden border-y border-border">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <div className="text-xs font-medium text-slate-400 tracking-wider uppercase">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <div className="text-xs font-bold text-accent-blue tracking-wider uppercase bg-accent-blue/10 px-3 py-1.5 rounded-full inline-block">
             Continuous Evolution
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display text-white tracking-tight">
-            Your roadmap evolves as you do.
+          <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
+            Your roadmap <span className="text-accent-blue">evolves</span> as you do.
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 leading-relaxed">
+          <p className="text-sm sm:text-base text-muted leading-relaxed">
             Curricula shouldn't be static. Aptivo AI adapts your trajectory every time you commit code or complete an evaluation.
           </p>
         </div>
 
         {/* Stepper Grid */}
         <div className="max-w-4xl mx-auto space-y-6">
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
             {ADAPTIVE_LOOP_STEPS.map((s, idx) => {
               const isCurrent = activeStep === idx;
               return (
                 <button
                   key={s.step}
                   onClick={() => setActiveStep(idx)}
-                  className={`p-3 rounded-xl border text-left transition-all ${
+                  className={`p-4 rounded-[20px] border text-left transition-all ${
                     isCurrent
-                      ? 'border-[#4C6FFF] bg-[#4C6FFF]/15 text-white shadow-sm'
-                      : 'border-white/[0.06] bg-[#0C0F1A] text-slate-400 hover:text-white'
+                      ? 'border-accent-blue bg-accent-blue-soft text-ink shadow-sm'
+                      : 'border-border bg-surface text-muted hover:text-ink hover:bg-surface-2'
                   }`}
                 >
-                  <div className="text-[10px] font-mono mb-1 text-slate-500">
+                  <div className={`text-[10px] font-mono mb-1.5 font-bold ${isCurrent ? 'text-accent-blue' : 'text-muted'}`}>
                     {s.step}
                   </div>
                   <div className="text-xs font-semibold">
@@ -48,30 +48,30 @@ export const AdaptiveCareerLoopSection: React.FC = () => {
           </div>
 
           {/* Active Step Showcase */}
-          <div className="p-8 rounded-2xl border border-white/[0.08] bg-[#0E111D] space-y-4">
-            <div className="flex items-center justify-between border-b border-white/[0.06] pb-4">
+          <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-4 mt-8">
+            <div className="flex items-center justify-between border-b border-border pb-5">
               <div>
-                <span className="text-xs font-mono text-[#8AA0FF]">Step {ADAPTIVE_LOOP_STEPS[activeStep].step}</span>
-                <h3 className="text-xl font-bold font-display text-white mt-0.5">
+                <span className="text-xs font-mono font-bold text-accent-blue uppercase tracking-wider">Step {ADAPTIVE_LOOP_STEPS[activeStep].step}</span>
+                <h3 className="text-2xl font-bold font-display text-ink mt-1">
                   {ADAPTIVE_LOOP_STEPS[activeStep].title}
                 </h3>
               </div>
-              <span className="text-xs text-slate-400">
+              <span className="text-xs text-muted font-medium bg-surface-2 px-3 py-1.5 rounded-full hidden sm:inline-block">
                 Closed-Loop Recalibration
               </span>
             </div>
 
-            <p className="text-sm text-slate-300 leading-relaxed max-w-2xl">
+            <p className="text-base text-ink/80 leading-relaxed max-w-3xl pt-2">
               {ADAPTIVE_LOOP_STEPS[activeStep].desc}
             </p>
 
-            <div className="pt-2 flex items-center gap-6 text-xs text-slate-400">
-              <span className="flex items-center gap-1.5 text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-[#8AA0FF]" />
+            <div className="pt-6 flex items-center gap-6 text-sm text-muted">
+              <span className="flex items-center gap-2 text-ink font-medium">
+                <CheckCircle2 className="w-4 h-4 text-accent-orange" />
                 <span>Automated Feedback</span>
               </span>
-              <span className="flex items-center gap-1.5 text-slate-300">
-                <CheckCircle2 className="w-4 h-4 text-[#8AA0FF]" />
+              <span className="flex items-center gap-2 text-ink font-medium">
+                <CheckCircle2 className="w-4 h-4 text-accent-orange" />
                 <span>Adaptive Milestones</span>
               </span>
             </div>
