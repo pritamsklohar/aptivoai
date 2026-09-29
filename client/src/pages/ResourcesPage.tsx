@@ -87,12 +87,12 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
         ) : filteredArticles.length === 0 ? (
           <div className="flex justify-center items-center py-20 text-muted font-bold">No articles found for this category.</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredArticles.map((art) => (
               <div
                 key={art.id}
                 onClick={() => setReadingArticle(art)}
-                className="p-8 rounded-[24px] border border-border bg-surface hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between space-y-6 group"
+                className="p-8 rounded-[24px] border border-border bg-surface hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between space-y-5 group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
@@ -103,7 +103,7 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold font-display text-ink group-hover:text-accent-blue transition-colors leading-snug">
+                  <h3 className="text-lg sm:text-xl font-bold font-display text-ink group-hover:text-accent-blue transition-colors leading-snug">
                     {art.title}
                   </h3>
 
