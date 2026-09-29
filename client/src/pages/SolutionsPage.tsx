@@ -98,13 +98,15 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onNavigate, onOpen
               className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               <div className="lg:col-span-5 space-y-6">
-                <div className="w-12 h-12 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-accent-blue">
-                  <Icon className="w-6 h-6" />
-                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-accent-blue shrink-0">
+                    <Icon className="w-6 h-6" />
+                  </div>
 
-                <h2 className="text-2xl font-bold font-display text-ink">
-                  {sol.title}
-                </h2>
+                  <h2 className="text-2xl font-bold font-display text-ink">
+                    {sol.title}
+                  </h2>
+                </div>
 
                 <div className="space-y-3 text-sm">
                   <div className="p-4 rounded-[20px] bg-red-50 border border-red-100">
