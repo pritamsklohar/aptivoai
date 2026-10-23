@@ -12,46 +12,111 @@ export interface MegaMenuGroup {
   links: MegaMenuLink[];
 }
 
-export const NAV_ITEMS: { id: PageId; label: string; menuKey?: 'platform' | 'solutions' | 'company' | 'resources' }[] = [
-  { id: 'platform', label: 'Platform', menuKey: 'platform' },
-  { id: 'solutions', label: 'Solutions', menuKey: 'solutions' },
-  { id: 'ai-engine', label: 'AI Engine' },
-  { id: 'how-it-works', label: 'How It Works' },
+export const NAV_ITEMS: { id: PageId; label: string; menuKey?: 'products' | 'services' | 'company' | 'resources' }[] = [
+  { id: 'products', label: 'Products', menuKey: 'products' },
+  { id: 'services', label: 'Services', menuKey: 'services' },
   { id: 'company', label: 'Company', menuKey: 'company' },
   { id: 'resources', label: 'Resources', menuKey: 'resources' },
 ];
 
 export const MEGA_MENUS: Record<string, MegaMenuGroup[]> = {
-  platform: [
+  products: [
     {
       title: 'CORE PLATFORM',
       links: [
-        { title: 'Platform Overview', desc: 'Unified intelligence layer for career evolution', pageId: 'platform' },
-        { title: 'AI Career Engine', desc: 'Neural graph computing optimal preparation trajectories', pageId: 'ai-engine' },
+        { 
+          title: 'Platform Overview', 
+          desc: 'Unified intelligence layer for career evolution and roadmap tracking', 
+          pageId: 'platform' 
+        },
+        { 
+          title: 'AI Career Engine', 
+          desc: 'Neural graph computing optimal preparation trajectories and skill gaps', 
+          pageId: 'ai-engine' 
+        },
+        { 
+          title: 'Aptivo Careers (Flagship)', 
+          desc: 'Targeted roadmaps, verified projects & daily interview mastery', 
+          pageId: 'products/aptivo-careers' 
+        },
+        { 
+          title: 'How It Works', 
+          desc: 'How our adaptive AI engine generates and tracks your personalized roadmap', 
+          pageId: 'how-it-works' 
+        },
+        { 
+          title: 'Pricing Plans', 
+          desc: 'Free, Pro, and Premium tiers engineered for students & professionals', 
+          pageId: 'products/pricing' 
+        },
       ],
     },
     {
       title: 'SPECIALIZED ACCESS',
       links: [
-        { title: 'Students', desc: 'Step-by-step roadmap from baseline to verified skills', pageId: 'students' },
-        { title: 'Job Seekers', desc: 'High-leverage conversion for experienced candidates', pageId: 'job-seekers' },
-        { title: 'HR & Industry', desc: 'Signal-based hiring and candidate readiness analytics', pageId: 'hr-industry' },
+        { 
+          title: 'Students & Undergrads', 
+          desc: 'Step-by-step roadmap from baseline to verified skills and hiring signals', 
+          pageId: 'students' 
+        },
+        { 
+          title: 'Job Seekers & Lateral', 
+          desc: 'High-leverage role conversion, targeted resume audit and interview prep', 
+          pageId: 'job-seekers' 
+        },
+        { 
+          title: 'HR, Talent Teams & Industry', 
+          desc: 'Signal-based hiring and candidate readiness analytics without resume noise', 
+          pageId: 'hr-industry' 
+        },
+        { 
+          title: 'Help Center', 
+          desc: 'Guides, tutorials, FAQs, and product roadmap documentation', 
+          pageId: 'products/help' 
+        },
       ],
     },
   ],
-  solutions: [
+  services: [
     {
-      title: 'INDIVIDUALS',
+      title: 'DEVELOPMENT & ENGINEERING',
       links: [
-        { title: 'For Students', desc: 'Structured milestones, verified projects, and interview mastery', pageId: 'students' },
-        { title: 'For Job Seekers', desc: 'Targeted role alignment, resume optimization, and pipeline readiness', pageId: 'job-seekers' },
+        { 
+          title: 'Services Overview', 
+          desc: 'Production-grade software & web development built on client requirement', 
+          pageId: 'services' 
+        },
+        { 
+          title: 'Website Solutions', 
+          desc: 'High-converting, responsive, modern web applications built at lightning speed', 
+          pageId: 'services/websites' 
+        },
+        { 
+          title: 'Custom AI Software & Automation', 
+          desc: 'Custom AI agents, LLM integrations, and backend automation pipelines', 
+          pageId: 'services/software' 
+        },
       ],
     },
     {
-      title: 'ORGANIZATIONS',
+      title: 'DELIVERY & PARTNERSHIP',
       links: [
-        { title: 'For Colleges', desc: 'Institutional placement analytics and curriculum-to-industry alignment', pageId: 'solutions' },
-        { title: 'For Companies', desc: 'Pre-vetted skill telemetry and role-fit matching without resume noise', pageId: 'hr-industry' },
+        { 
+          title: 'Our Process', 
+          desc: 'Agile sprints, rigorous QA, and 100% intellectual property ownership transfer', 
+          pageId: 'services/process' 
+        },
+        { 
+          title: 'Case Studies / Work', 
+          desc: 'Production systems shipped with measurable ROI and verified engineering quality', 
+          pageId: 'services/work' 
+        },
+        { 
+          title: 'Request a Quote', 
+          desc: 'Submit your project specifications and receive a scoped proposal in 24 hours', 
+          pageId: 'services/quote',
+          badge: 'Fast Response'
+        },
       ],
     },
   ],
@@ -59,25 +124,54 @@ export const MEGA_MENUS: Record<string, MegaMenuGroup[]> = {
     {
       title: 'ABOUT APTIVO',
       links: [
-        { title: 'About Aptivo AI', desc: 'Our founding vision, values, and engineering principles', pageId: 'company' },
-        { title: 'Founder & Leadership', desc: 'Pritam Lohar on engineering career infrastructure', pageId: 'company' },
+        { 
+          title: 'About Aptivo AI', 
+          desc: 'Our founding vision, values, and engineering principles', 
+          pageId: 'company' 
+        },
+        { 
+          title: 'Founder & Leadership', 
+          desc: 'Founded by Pritam Lohar on engineering career & AI infrastructure', 
+          pageId: 'company' 
+        },
       ],
     },
     {
-      title: 'CAREERS & NETWORK',
+      title: 'NETWORK & CAREERS',
       links: [
-        { title: 'Careers', desc: 'Join our distributed engineering and research team', pageId: 'careers' },
-        { title: 'Contact Us', desc: 'Direct access for partnerships, pilots, and enterprise', pageId: 'contact' },
+        { 
+          title: 'Careers (We\'re Hiring)', 
+          desc: 'Join our distributed engineering, AI research, and design team', 
+          pageId: 'careers',
+          badge: 'Hiring'
+        },
+        { 
+          title: 'Contact Us', 
+          desc: 'Direct access for partnerships, client projects, and corporate inquiries', 
+          pageId: 'contact' 
+        },
       ],
     },
   ],
   resources: [
     {
-      title: 'KNOWLEDGE BASE',
+      title: 'KNOWLEDGE & INSIGHTS',
       links: [
-        { title: 'Career Intelligence Insights', desc: 'Deep research on talent telemetry and skill graphs', pageId: 'resources' },
-        { title: 'Technical Preparation Guides', desc: 'System design, full-stack architectures, and interview rubrics', pageId: 'resources' },
-        { title: 'Future of Work', desc: 'How autonomous systems alter engineering hiring', pageId: 'resources' },
+        { 
+          title: 'Career Intelligence Insights', 
+          desc: 'Deep research on talent telemetry, skill graphs, and market demand', 
+          pageId: 'resources' 
+        },
+        { 
+          title: 'Technical Preparation Guides', 
+          desc: 'System design, full-stack architectures, and modern interview rubrics', 
+          pageId: 'resources' 
+        },
+        { 
+          title: 'Future of Work', 
+          desc: 'How autonomous AI systems reshape developer hiring and team structure', 
+          pageId: 'resources' 
+        },
       ],
     },
   ],

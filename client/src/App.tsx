@@ -5,19 +5,33 @@ import { Footer } from './components/layout/Footer';
 import { WaitlistModal } from './components/layout/WaitlistModal';
 import { LoginModal } from './components/layout/LoginModal';
 
-// Pages
+// Product & Platform Pages
 import { HomePage } from './pages/HomePage';
 import { PlatformPage } from './pages/PlatformPage';
 import { AiEnginePage } from './pages/AiEnginePage';
-import { SolutionsPage } from './pages/SolutionsPage';
+import { HowItWorksPage } from './pages/HowItWorksPage';
 import { StudentsPage } from './pages/StudentsPage';
 import { JobSeekersPage } from './pages/JobSeekersPage';
 import { HrIndustryPage } from './pages/HrIndustryPage';
-import { HowItWorksPage } from './pages/HowItWorksPage';
+import { SolutionsPage } from './pages/SolutionsPage';
+import { ResourcesPage } from './pages/ResourcesPage';
+import { PricingPage } from './pages/PricingPage';
+import { ProductHelpPage } from './pages/ProductHelpPage';
+
+// Services Pages
+import { ServicesPage } from './pages/ServicesPage';
+import { WebsiteSolutionsPage } from './pages/WebsiteSolutionsPage';
+import { CustomAiSoftwarePage } from './pages/CustomAiSoftwarePage';
+import { OurProcessPage } from './pages/OurProcessPage';
+import { CaseStudiesPage } from './pages/CaseStudiesPage';
+import { RequestQuotePage } from './pages/RequestQuotePage';
+
+// Company & Legal
 import { CompanyPage } from './pages/CompanyPage';
 import { CareersPage } from './pages/CareersPage';
-import { ResourcesPage } from './pages/ResourcesPage';
 import { ContactPage } from './pages/ContactPage';
+import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
 
 export function App() {
   const [currentPage, setCurrentPage] = useState<PageId>('home');
@@ -25,26 +39,42 @@ export function App() {
   const [waitlistRole, setWaitlistRole] = useState<string | undefined>(undefined);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-  // Sync with browser hash if present (e.g. #platform, #careers)
+  // Sync with browser hash / location
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '') as PageId;
+      const rawHash = window.location.hash.replace('#', '').replace(/^\//, '');
       const validPages: PageId[] = [
         'home',
+        'products',
         'platform',
+        'products/aptivo-careers',
         'ai-engine',
-        'solutions',
+        'how-it-works',
         'students',
         'job-seekers',
         'hr-industry',
-        'how-it-works',
+        'solutions',
+        'resources',
+        'products/pricing',
+        'products/help',
+        'products/contact',
+        'services',
+        'services/websites',
+        'services/software',
+        'services/process',
+        'services/work',
+        'services/quote',
         'company',
         'careers',
-        'resources',
+        'privacy',
+        'terms',
         'contact',
       ];
-      if (validPages.includes(hash)) {
-        setCurrentPage(hash);
+
+      if (validPages.includes(rawHash as PageId)) {
+        setCurrentPage(rawHash as PageId);
+      } else if (!rawHash) {
+        setCurrentPage('home');
       }
     };
 
@@ -68,36 +98,86 @@ export function App() {
     switch (currentPage) {
       case 'home':
         return <HomePage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      // Products & Platform
+      case 'products':
       case 'platform':
+      case 'products/aptivo-careers':
         return <PlatformPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
       case 'ai-engine':
         return <AiEnginePage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
-      case 'solutions':
-        return <SolutionsPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
-      case 'students':
-        return <StudentsPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
-      case 'job-seekers':
-        return <JobSeekersPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
-      case 'hr-industry':
-        return <HrIndustryPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
       case 'how-it-works':
         return <HowItWorksPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'students':
+        return <StudentsPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'job-seekers':
+        return <JobSeekersPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'hr-industry':
+        return <HrIndustryPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'solutions':
+        return <SolutionsPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'resources':
+        return <ResourcesPage onNavigate={handleNavigate} />;
+      
+      case 'products/pricing':
+        return <PricingPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'products/help':
+        return <ProductHelpPage onNavigate={handleNavigate} />;
+      
+      case 'products/contact':
+        return <ContactPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+
+      // Services & Solutions
+      case 'services':
+        return <ServicesPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'services/websites':
+        return <WebsiteSolutionsPage onNavigate={handleNavigate} />;
+      
+      case 'services/software':
+        return <CustomAiSoftwarePage onNavigate={handleNavigate} />;
+      
+      case 'services/process':
+        return <OurProcessPage onNavigate={handleNavigate} />;
+      
+      case 'services/work':
+        return <CaseStudiesPage onNavigate={handleNavigate} />;
+      
+      case 'services/quote':
+        return <RequestQuotePage onNavigate={handleNavigate} />;
+
+      // Company, Careers & Legal
       case 'company':
         return <CompanyPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
       case 'careers':
         return <CareersPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
-      case 'resources':
-        return <ResourcesPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
       case 'contact':
         return <ContactPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
+      
+      case 'privacy':
+        return <PrivacyPage onNavigate={handleNavigate} />;
+      
+      case 'terms':
+        return <TermsPage onNavigate={handleNavigate} />;
+
       default:
         return <HomePage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
     }
   };
 
   return (
-    <div className="min-h-screen bg-[#06070B] text-ink selection:bg-[#4C6FFF]/30 selection:text-ink flex flex-col font-sans">
-      {/* Top Fixed Header Navigation */}
+    <div className="min-h-screen bg-bg text-ink selection:bg-accent-blue/20 selection:text-ink flex flex-col font-sans">
+      {/* Global Header Navigation with Hover Mega-Menus */}
       <Navbar
         currentPage={currentPage}
         onNavigate={handleNavigate}
@@ -110,13 +190,14 @@ export function App() {
         {renderPage()}
       </main>
 
-      {/* Corporate Technical Footer */}
+      {/* 5-Column Professional Footer */}
       <Footer
+        currentPage={currentPage}
         onNavigate={handleNavigate}
-        onOpenWaitlist={handleOpenWaitlist}
+        onOpenWaitlist={() => handleOpenWaitlist()}
       />
 
-      {/* Global Interactive Modals */}
+      {/* Interactive Modals */}
       <WaitlistModal
         isOpen={isWaitlistOpen}
         onClose={() => setIsWaitlistOpen(false)}

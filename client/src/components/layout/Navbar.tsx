@@ -7,8 +7,8 @@ import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 interface NavbarProps {
   currentPage: PageId;
   onNavigate: (page: PageId) => void;
-  onOpenWaitlist: (role?: string) => void;
-  onOpenLogin: () => void;
+  onOpenWaitlist?: (role?: string) => void;
+  onOpenLogin?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -24,14 +24,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const handleMouseEnter = (key?: string) => {
-    if (menuTimeoutRef.current) clearTimeout(menuTimeoutRef.current);
+    if (menuTimeoutRef.current) {
+      clearTimeout(menuTimeoutRef.current);
+      menuTimeoutRef.current = null;
+    }
     if (key && MEGA_MENUS[key]) {
       setActiveMenu(key);
     } else {
@@ -42,41 +45,46 @@ export const Navbar: React.FC<NavbarProps> = ({
   const handleMouseLeave = () => {
     menuTimeoutRef.current = setTimeout(() => {
       setActiveMenu(null);
-    }, 180);
+    }, 200);
   };
 
   const handleMenuClick = (id: PageId) => {
-    onNavigate(id);
+    if (menuTimeoutRef.current) {
+      clearTimeout(menuTimeoutRef.current);
+    }
     setActiveMenu(null);
     setMobileOpen(false);
+    onNavigate(id);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? 'bg-bg/95 backdrop-blur-md border-b border-border shadow-sm py-3.5'
-          : 'bg-transparent border-b border-transparent py-5'
+          ? 'bg-white/95 backdrop-blur-md border-b border-border shadow-xs py-3'
+          : 'bg-white/90 backdrop-blur-md border-b border-border/80 py-3.5'
       }`}
       onMouseLeave={handleMouseLeave}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* Brand Mark */}
+          
+          {/* Logo with transparent icon & crisp typography - Always links to Home */}
           <button
             onClick={() => handleMenuClick('home')}
-            className="flex items-center text-left group focus:outline-none cursor-pointer"
+            className="flex items-center text-left group focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2 rounded-lg cursor-pointer select-none"
             aria-label="Aptivo AI Home"
           >
-            <AptivoLogo variant="lockup" size="md" glow={false} className="group-hover:opacity-80 transition-opacity" />
+            <AptivoLogo variant="lockup" size="md" className="group-hover:opacity-90 transition-opacity" />
           </button>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          {/* Desktop Navigation Links with Hover Mega-Menu Dropdowns */}
+          <nav className="hidden lg:flex items-center gap-1.5" aria-label="Main Navigation">
             {NAV_ITEMS.map((item) => {
-              const isCurrent = currentPage === item.id;
-              const hasMenu = !!item.menuKey;
+              const isCurrent = currentPage === item.id || (item.menuKey && currentPage.startsWith(item.menuKey));
+              const hasMenu = !!item.menuKey && !!MEGA_MENUS[item.menuKey];
+              const isOpen = activeMenu === item.menuKey;
 
               return (
                 <div
@@ -85,18 +93,19 @@ export const Navbar: React.FC<NavbarProps> = ({
                   onMouseEnter={() => handleMouseEnter(item.menuKey)}
                 >
                   <button
-                    onClick={() => handleMenuClick(item.id)}
-                    className={`px-4 py-2 text-sm font-semibold rounded-full flex items-center gap-1.5 transition-colors ${
-                      isCurrent
-                        ? 'text-ink bg-surface-2'
-                        : 'text-ink/70 hover:text-ink hover:bg-surface'
+                    id={`nav-${item.id}-btn`}
+                    onClick={() => hasMenu ? setActiveMenu(isOpen ? null : item.menuKey!) : handleMenuClick(item.id)}
+                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-full flex items-center gap-1 transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2 ${
+                      isOpen || isCurrent
+                        ? 'text-ink bg-surface-2 font-bold'
+                        : 'text-ink/80 hover:text-ink hover:bg-surface'
                     }`}
                   >
                     <span>{item.label}</span>
                     {hasMenu && (
                       <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                          activeMenu === item.menuKey ? 'rotate-180 text-accent-blue' : 'text-muted'
+                          isOpen ? 'rotate-180 text-accent-blue' : 'text-muted'
                         }`}
                       />
                     )}
@@ -106,66 +115,59 @@ export const Navbar: React.FC<NavbarProps> = ({
             })}
           </nav>
 
-          {/* Right Action CTAs */}
-          <div className="hidden sm:flex items-center gap-3">
+
+
+          {/* Mobile Hamburger Button */}
+          <div className="flex items-center gap-2 lg:hidden">
             <button
-              onClick={() => onOpenWaitlist()}
-              className="px-6 py-2.5 text-sm font-bold text-white bg-accent-blue hover:bg-accent-blue/90 rounded-full shadow-sm hover:shadow-accent-blue/20 transition-all flex items-center gap-1.5"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="p-2 text-muted hover:text-ink rounded-full bg-surface-2 border border-border cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2"
+              aria-label="Toggle navigation menu"
             >
-              <span>Get Started</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
 
-          {/* Mobile Hamburger Toggle */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={() => onOpenWaitlist()}
-              className="sm:hidden px-4 py-1.5 text-xs font-semibold text-white bg-accent-blue rounded-full"
-            >
-              Get Started
-            </button>
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-muted hover:text-ink rounded-full bg-surface-2 transition-colors border border-border"
-              aria-label="Toggle navigation menu"
-            >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
         </div>
       </div>
 
-      {/* Desktop Mega Menu Dropdown Container */}
+      {/* Desktop Mega-Menu Dropdown Card on Hover */}
       {activeMenu && MEGA_MENUS[activeMenu] && (
         <div
-          className="absolute top-full left-0 right-0 z-30 pt-2"
+          className="absolute top-full left-0 right-0 z-50 pt-2 transition-all duration-200 animate-in fade-in-0 zoom-in-95"
           onMouseEnter={() => handleMouseEnter(activeMenu)}
           onMouseLeave={handleMouseLeave}
         >
-          <div className="max-w-5xl mx-auto px-4 sm:px-6">
-            <div className="rounded-[24px] border border-border bg-white/95 backdrop-blur-xl p-8 shadow-xl shadow-black/5 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6">
+            <div className="rounded-[24px] border border-border bg-white/98 backdrop-blur-2xl p-6 sm:p-7 shadow-2xl shadow-black/8 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {MEGA_MENUS[activeMenu].map((group, idx) => (
-                <div key={idx} className="space-y-4">
-                  <div className="text-xs font-bold tracking-wider text-accent-blue uppercase border-b border-border pb-2">
+                <div key={idx} className="space-y-3">
+                  <div className="text-[11px] font-bold tracking-wider text-accent-blue uppercase border-b border-border/80 pb-2">
                     {group.title}
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5">
                     {group.links.map((link) => (
                       <button
                         key={link.pageId + link.title}
                         onClick={() => handleMenuClick(link.pageId)}
-                        className="w-full p-3 rounded-[20px] text-left hover:bg-surface-2 transition-colors group flex items-start justify-between border border-transparent hover:border-border"
+                        className="w-full p-3 rounded-2xl text-left hover:bg-surface-2 transition-all group flex items-start justify-between border border-transparent hover:border-border/60 cursor-pointer"
                       >
-                        <div>
-                          <div className="text-sm font-bold text-ink group-hover:text-accent-blue transition-colors">
-                            {link.title}
+                        <div className="pr-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs sm:text-sm font-bold text-ink group-hover:text-accent-blue transition-colors">
+                              {link.title}
+                            </span>
+                            {link.badge && (
+                              <span className="px-2 py-0.5 text-[10px] font-bold rounded-full bg-accent-blue-soft text-accent-blue">
+                                {link.badge}
+                              </span>
+                            )}
                           </div>
-                          <div className="text-xs text-muted mt-1 font-medium leading-relaxed">
+                          <div className="text-[11px] text-muted mt-0.5 leading-relaxed font-normal">
                             {link.desc}
                           </div>
                         </div>
-                        <ArrowUpRight className="w-4 h-4 text-muted group-hover:text-accent-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all mt-0.5 shrink-0" />
+                        <ArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-accent-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all mt-0.5 shrink-0" />
                       </button>
                     ))}
                   </div>
@@ -178,74 +180,67 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[65px] bottom-0 bg-white/98 backdrop-blur-2xl border-t border-border overflow-y-auto p-6 space-y-6">
+        <div className="lg:hidden fixed inset-x-0 top-[57px] bottom-0 bg-white/98 backdrop-blur-2xl border-t border-border overflow-y-auto p-6 space-y-6">
+          {/* Products Section */}
           <div className="space-y-2">
-            <div className="text-xs font-bold tracking-wider text-accent-blue uppercase pb-2">
-              MAIN SECTIONS
+            <div className="text-[11px] font-bold tracking-wider text-accent-blue uppercase pb-1 border-b border-border">
+              PRODUCTS
             </div>
-            {NAV_ITEMS.map((item) => (
+            {MEGA_MENUS.products?.[0]?.links.map((link) => (
               <button
-                key={item.id}
-                onClick={() => handleMenuClick(item.id)}
-                className={`w-full py-3 px-4 rounded-2xl text-left text-sm font-bold transition-colors ${
-                  currentPage === item.id
-                    ? 'bg-accent-blue-soft text-accent-blue border border-accent-blue/20'
-                    : 'text-ink/80 hover:text-ink hover:bg-surface border border-transparent'
-                }`}
+                key={link.pageId + link.title}
+                onClick={() => handleMenuClick(link.pageId)}
+                className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface transition-colors flex items-center justify-between"
               >
-                {item.label}
+                <span>{link.title}</span>
+                <ArrowUpRight className="w-3 h-3 text-muted" />
               </button>
             ))}
           </div>
 
-          {/* Specialized Routes */}
-          <div className="space-y-2 pt-4 border-t border-border">
-            <div className="text-xs font-bold tracking-wider text-accent-blue uppercase pb-2">
-              SPECIALIZED PATHWAYS
+          {/* Services Section */}
+          <div className="space-y-2">
+            <div className="text-[11px] font-bold tracking-wider text-ink uppercase pb-1 border-b border-border">
+              SERVICES
+            </div>
+            {MEGA_MENUS.services?.[0]?.links.map((link) => (
+              <button
+                key={link.pageId + link.title}
+                onClick={() => handleMenuClick(link.pageId)}
+                className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface transition-colors flex items-center justify-between"
+              >
+                <span>{link.title}</span>
+                <ArrowUpRight className="w-3 h-3 text-muted" />
+              </button>
+            ))}
+          </div>
+
+          {/* Company Section */}
+          <div className="space-y-2">
+            <div className="text-[11px] font-bold tracking-wider text-muted uppercase pb-1 border-b border-border">
+              COMPANY & CAREERS
             </div>
             <button
-              onClick={() => handleMenuClick('students')}
-              className="w-full py-2.5 px-4 rounded-2xl text-left text-sm font-semibold text-ink/70 hover:text-ink hover:bg-surface transition-colors"
+              onClick={() => handleMenuClick('company')}
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors"
             >
-              Students & Undergrads
-            </button>
-            <button
-              onClick={() => handleMenuClick('job-seekers')}
-              className="w-full py-2.5 px-4 rounded-2xl text-left text-sm font-semibold text-ink/70 hover:text-ink hover:bg-surface transition-colors"
-            >
-              Job Seekers & Lateral Transition
-            </button>
-            <button
-              onClick={() => handleMenuClick('hr-industry')}
-              className="w-full py-2.5 px-4 rounded-2xl text-left text-sm font-semibold text-ink/70 hover:text-ink hover:bg-surface transition-colors"
-            >
-              HR, Talent Teams & Industry
+              About Us (Pritam Lohar)
             </button>
             <button
               onClick={() => handleMenuClick('careers')}
-              className="w-full py-2.5 px-4 rounded-2xl text-left text-sm font-semibold text-ink/70 hover:text-ink hover:bg-surface transition-colors"
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors"
             >
-              We're Hiring (Careers)
+              Careers
             </button>
             <button
               onClick={() => handleMenuClick('contact')}
-              className="w-full py-2.5 px-4 rounded-2xl text-left text-sm font-semibold text-ink/70 hover:text-ink hover:bg-surface transition-colors"
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors"
             >
-              Contact & Partnerships
+              Contact
             </button>
           </div>
 
-          <div className="pt-6 border-t border-border space-y-3">
-            <button
-              onClick={() => {
-                setMobileOpen(false);
-                onOpenWaitlist();
-              }}
-              className="w-full py-3.5 rounded-full bg-accent-blue text-white text-sm font-bold shadow-sm"
-            >
-              Join Early Access Waitlist
-            </button>
-          </div>
+
         </div>
       )}
     </header>

@@ -1,15 +1,32 @@
 export type PageId = 
+  // Gateway
   | 'home'
+  // Products & Platform Area
+  | 'products'
   | 'platform'
+  | 'products/aptivo-careers'
   | 'ai-engine'
-  | 'solutions'
+  | 'how-it-works'
   | 'students'
   | 'job-seekers'
   | 'hr-industry'
-  | 'how-it-works'
+  | 'solutions'
+  | 'resources'
+  | 'products/pricing'
+  | 'products/help'
+  | 'products/contact'
+  // Services Area
+  | 'services'
+  | 'services/websites'
+  | 'services/software'
+  | 'services/process'
+  | 'services/work'
+  | 'services/quote'
+  // Company & Legal
   | 'company'
   | 'careers'
-  | 'resources'
+  | 'privacy'
+  | 'terms'
   | 'contact';
 
 export interface NavItem {
