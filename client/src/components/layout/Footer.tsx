@@ -2,6 +2,7 @@ import React from 'react';
 import { PageId } from '../../types';
 import { AptivoLogo } from '../common/AptivoLogo';
 import { Globe, ArrowUpRight } from 'lucide-react';
+import { getPagePath } from '../../utils/seo';
 
 interface FooterProps {
   currentPage?: PageId;
@@ -23,13 +24,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           
           {/* Brand Column */}
           <div className="lg:col-span-2 space-y-4">
-            <button
-              onClick={() => handleNav('home')}
-              className="text-left focus-visible:outline-2 focus-visible:outline-accent-blue rounded cursor-pointer"
+            <a
+              href="/"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav('home');
+              }}
+              className="text-left focus-visible:outline-2 focus-visible:outline-accent-blue rounded cursor-pointer inline-block"
               aria-label="Aptivo AI Home"
             >
               <AptivoLogo variant="lockup" size="md" />
-            </button>
+            </a>
             <p className="text-xs sm:text-sm text-muted leading-relaxed max-w-sm font-normal">
               Your Career, Engineered by AI.
             </p>
@@ -61,34 +66,76 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('products')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('products')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('products');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Products Home
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('products/how-it-works')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('how-it-works')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('how-it-works');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   How It Works
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('products/aptivo-careers')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('products/aptivo-careers')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('products/aptivo-careers');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Aptivo Careers
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('products/pricing')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('products/pricing')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('products/pricing');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Pricing Plans
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('products/help')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('products/help')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('products/help');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Help Center
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('products/contact')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('products/contact')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('products/contact');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Product Support
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -100,34 +147,76 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('services')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('services')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('services');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Services Overview
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('services/websites')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('services/websites')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('services/websites');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Website Solutions
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('services/software')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('services/software')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('services/software');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Software & Automation
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('services/process')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('services/process')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('services/process');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Our Process
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('services/work')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('services/work')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('services/work');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Case Studies
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('services/quote')} className="hover:text-accent-blue font-semibold transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('services/quote')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('services/quote');
+                  }}
+                  className="hover:text-accent-blue font-semibold transition-colors cursor-pointer block"
+                >
                   Request a Quote
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -139,19 +228,40 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('company')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('company')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('company');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   About Us
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('careers')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('careers')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('careers');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Careers
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('contact')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('contact')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('contact');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Contact
-                </button>
+                </a>
               </li>
             </ul>
           </div>
@@ -163,14 +273,28 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             </div>
             <ul className="space-y-2 text-xs">
               <li>
-                <button onClick={() => handleNav('privacy')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('privacy')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('privacy');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Privacy Policy
-                </button>
+                </a>
               </li>
               <li>
-                <button onClick={() => handleNav('terms')} className="hover:text-ink transition-colors cursor-pointer">
+                <a
+                  href={getPagePath('terms')}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNav('terms');
+                  }}
+                  className="hover:text-ink transition-colors cursor-pointer block"
+                >
                   Terms of Service
-                </button>
+                </a>
               </li>
             </ul>
           </div>

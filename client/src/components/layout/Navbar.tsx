@@ -3,6 +3,7 @@ import { PageId } from '../../types';
 import { NAV_ITEMS, MEGA_MENUS } from '../../data/navigation';
 import { AptivoLogo } from '../common/AptivoLogo';
 import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
+import { getPagePath } from '../../utils/seo';
 
 interface NavbarProps {
   currentPage: PageId;
@@ -71,13 +72,17 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="flex items-center justify-between">
           
           {/* Logo with transparent icon & crisp typography - Always links to Home */}
-          <button
-            onClick={() => handleMenuClick('home')}
+          <a
+            href="/"
+            onClick={(e) => {
+              e.preventDefault();
+              handleMenuClick('home');
+            }}
             className="flex items-center text-left group focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2 rounded-lg cursor-pointer select-none"
             aria-label="Aptivo AI Home"
           >
             <AptivoLogo variant="lockup" size="md" className="group-hover:opacity-90 transition-opacity" />
-          </button>
+          </a>
 
           {/* Desktop Navigation Links with Hover Mega-Menu Dropdowns */}
           <nav className="hidden lg:flex items-center gap-1.5" aria-label="Main Navigation">
@@ -147,9 +152,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   </div>
                   <div className="space-y-1.5">
                     {group.links.map((link) => (
-                      <button
+                      <a
                         key={link.pageId + link.title}
-                        onClick={() => handleMenuClick(link.pageId)}
+                        href={getPagePath(link.pageId)}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleMenuClick(link.pageId);
+                        }}
                         className="w-full p-3 rounded-2xl text-left hover:bg-surface-2 transition-all group flex items-start justify-between border border-transparent hover:border-border/60 cursor-pointer"
                       >
                         <div className="pr-2">
@@ -168,7 +177,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           </div>
                         </div>
                         <ArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-accent-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all mt-0.5 shrink-0" />
-                      </button>
+                      </a>
                     ))}
                   </div>
                 </div>
@@ -187,14 +196,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               PRODUCTS
             </div>
             {MEGA_MENUS.products?.[0]?.links.map((link) => (
-              <button
+              <a
                 key={link.pageId + link.title}
-                onClick={() => handleMenuClick(link.pageId)}
+                href={getPagePath(link.pageId)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMenuClick(link.pageId);
+                }}
                 className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface transition-colors flex items-center justify-between"
               >
                 <span>{link.title}</span>
                 <ArrowUpRight className="w-3 h-3 text-muted" />
-              </button>
+              </a>
             ))}
           </div>
 
@@ -204,14 +217,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               SERVICES
             </div>
             {MEGA_MENUS.services?.[0]?.links.map((link) => (
-              <button
+              <a
                 key={link.pageId + link.title}
-                onClick={() => handleMenuClick(link.pageId)}
+                href={getPagePath(link.pageId)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleMenuClick(link.pageId);
+                }}
                 className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface transition-colors flex items-center justify-between"
               >
                 <span>{link.title}</span>
                 <ArrowUpRight className="w-3 h-3 text-muted" />
-              </button>
+              </a>
             ))}
           </div>
 
@@ -220,24 +237,36 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="text-[11px] font-bold tracking-wider text-muted uppercase pb-1 border-b border-border">
               COMPANY & CAREERS
             </div>
-            <button
-              onClick={() => handleMenuClick('company')}
-              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors"
+            <a
+              href="/company"
+              onClick={(e) => {
+                e.preventDefault();
+                handleMenuClick('company');
+              }}
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors block"
             >
               About Us (Pritam Lohar)
-            </button>
-            <button
-              onClick={() => handleMenuClick('careers')}
-              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors"
+            </a>
+            <a
+              href="/careers"
+              onClick={(e) => {
+                e.preventDefault();
+                handleMenuClick('careers');
+              }}
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors block"
             >
               Careers
-            </button>
-            <button
-              onClick={() => handleMenuClick('contact')}
-              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors"
+            </a>
+            <a
+              href="/contact"
+              onClick={(e) => {
+                e.preventDefault();
+                handleMenuClick('contact');
+              }}
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors block"
             >
               Contact
-            </button>
+            </a>
           </div>
 
 

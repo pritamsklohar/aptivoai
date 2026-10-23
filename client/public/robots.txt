@@ -1,4 +1,20 @@
+# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
+# Disallow admin or sensitive internal paths if any
+Disallow: /api/
+Disallow: /admin
+
+# Allow major bots full access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# XML Sitemap Location
 Sitemap: https://aptivoai.in/sitemap.xml

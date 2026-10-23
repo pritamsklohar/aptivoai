@@ -140,10 +140,9 @@ export const MEGA_MENUS: Record<string, MegaMenuGroup[]> = {
       title: 'NETWORK & CAREERS',
       links: [
         { 
-          title: 'Careers (We\'re Hiring)', 
-          desc: 'Join our distributed engineering, AI research, and design team', 
-          pageId: 'careers',
-          badge: 'Hiring'
+          title: 'Careers', 
+          desc: 'Our engineering culture, values, and talent community', 
+          pageId: 'careers' 
         },
         { 
           title: 'Contact Us', 

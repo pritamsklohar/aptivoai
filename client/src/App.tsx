@@ -33,59 +33,50 @@ import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
 
+import { updatePageSeo, normalizePageId, getPagePath } from './utils/seo';
+
 export function App() {
-  const [currentPage, setCurrentPage] = useState<PageId>('home');
+  const [currentPage, setCurrentPage] = useState<PageId>(() => {
+    // Check initial URL from hash or clean pathname
+    const raw = window.location.hash || window.location.pathname;
+    return normalizePageId(raw);
+  });
   const [isWaitlistOpen, setIsWaitlistOpen] = useState(false);
   const [waitlistRole, setWaitlistRole] = useState<string | undefined>(undefined);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
-  // Sync with browser hash / location
+  // Synchronize SEO meta tags & Schema.org JSON-LD whenever currentPage changes
   useEffect(() => {
-    const handleHashChange = () => {
-      const rawHash = window.location.hash.replace('#', '').replace(/^\//, '');
-      const validPages: PageId[] = [
-        'home',
-        'products',
-        'platform',
-        'products/aptivo-careers',
-        'ai-engine',
-        'how-it-works',
-        'students',
-        'job-seekers',
-        'hr-industry',
-        'solutions',
-        'resources',
-        'products/pricing',
-        'products/help',
-        'products/contact',
-        'services',
-        'services/websites',
-        'services/software',
-        'services/process',
-        'services/work',
-        'services/quote',
-        'company',
-        'careers',
-        'privacy',
-        'terms',
-        'contact',
-      ];
+    updatePageSeo(currentPage);
+  }, [currentPage]);
 
-      if (validPages.includes(rawHash as PageId)) {
-        setCurrentPage(rawHash as PageId);
-      } else if (!rawHash) {
-        setCurrentPage('home');
-      }
+  // Sync with browser back/forward buttons (popstate) and hash changes
+  useEffect(() => {
+    const handleLocationChange = () => {
+      const raw = window.location.hash || window.location.pathname;
+      const target = normalizePageId(raw);
+      setCurrentPage(target);
     };
 
-    handleHashChange();
-    window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
+    return () => {
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
   }, []);
 
-  const handleNavigate = (page: PageId) => {
-    setCurrentPage(page);
-    window.location.hash = page === 'home' ? '' : page;
+  const handleNavigate = (page: PageId | string) => {
+    const canonicalPage = normalizePageId(page);
+    setCurrentPage(canonicalPage);
+
+    // Push clean URL to HTML5 history (e.g. /services, /platform, /)
+    const targetPath = getPagePath(canonicalPage);
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState({ page: canonicalPage }, '', targetPath);
+    }
+
+    updatePageSeo(canonicalPage);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
