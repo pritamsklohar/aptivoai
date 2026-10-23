@@ -13,6 +13,19 @@
       }
     }
   ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "aptivoai.vercel.app"
+        }
+      ],
+      "destination": "https://aptivoai.in/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/(.*)",
