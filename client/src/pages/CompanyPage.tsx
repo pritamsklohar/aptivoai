@@ -119,51 +119,56 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
 
       {/* FOUNDER SECTION */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-[24px] border border-border bg-surface shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
-            {/* Clean Portrait Container */}
-            <div className="md:col-span-4 flex justify-center">
-              <div className="w-56 h-56 rounded-[24px] border border-border bg-white flex flex-col items-center justify-center text-center p-4 shadow-sm">
+        <div className="p-6 sm:p-10 rounded-[28px] border border-border bg-surface shadow-sm relative overflow-hidden">
+          {/* Subtle ambient light accents */}
+          <div className="absolute top-0 right-0 w-80 h-80 bg-accent-blue/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-purple/5 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
+
+          <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 items-center">
+            {/* Clean, prominent founder portrait */}
+            <div className="md:col-span-5 flex justify-center">
+              <div className="relative w-full max-w-[280px] sm:max-w-[300px] aspect-square rounded-[22px] overflow-hidden border border-border/80 shadow-md bg-white group">
                 <img 
                   src="/prittt.jpg" 
-                  alt="Pritam Lohar" 
-                  className="w-24 h-24 rounded-full border border-border object-cover mb-4 shadow-sm"
+                  alt="Pritam Lohar - Founder & Architect" 
+                  className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="text-lg font-bold font-display text-ink">
-                  Pritam Lohar
-                </div>
-                <div className="text-xs font-bold text-accent-blue mt-1 uppercase tracking-wider">
-                  Founder & Architect
-                </div>
               </div>
             </div>
 
             {/* Founder Narrative */}
-            <div className="md:col-span-8 space-y-5">
-              <div className="text-xs font-bold text-accent-orange tracking-wider uppercase">
-                Founder's Perspective
+            <div className="md:col-span-7 space-y-4 sm:space-y-5 text-left">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-blue/10 border border-accent-blue/20 text-xs font-bold text-accent-blue uppercase tracking-wider">
+                Founder & Architect
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink">
-                Pritam Lohar
-              </h2>
+
+              <div>
+                <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
+                  Pritam Lohar
+                </h2>
+                <p className="text-xs font-bold text-accent-orange uppercase tracking-wider mt-1.5">
+                  Founder's Perspective
+                </p>
+              </div>
 
               <p className="text-base text-ink/80 leading-relaxed font-medium">
-                Founder building Aptivo AI to make career preparation more intelligent, personalized, and connected through AI.
-              </p>
-              <p className="text-sm text-muted leading-relaxed font-medium border-l-2 border-accent-blue/30 pl-4 py-1">
-                "We set out to build Aptivo AI because human career trajectories should not be held hostage by uncalibrated advice, geographic isolation, or static credentials. By building deep telemetry into how engineers learn, build, and solve problems, we are constructing a more meritocratic bridge between ambition and world-class technology companies."
+                Building Aptivo AI to make career preparation more intelligent, personalized, and connected through AI.
               </p>
 
-              <div className="pt-4">
+              <blockquote className="text-sm text-muted leading-relaxed font-medium border-l-2 border-accent-blue/40 pl-4 py-1 italic bg-surface-2/40 rounded-r-xl pr-3">
+                "We set out to build Aptivo AI because human career trajectories should not be held hostage by uncalibrated advice, geographic isolation, or static credentials. By building deep telemetry into how engineers learn, build, and solve problems, we are constructing a more meritocratic bridge between ambition and world-class technology companies."
+              </blockquote>
+
+              <div className="pt-2">
                 <a
                   href="http://www.linkedin.com/in/pritam-lohar"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-surface-2 hover:bg-border border border-border text-sm font-semibold text-ink transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-surface-2 border border-border text-sm font-semibold text-ink shadow-sm hover:shadow transition-all group"
                 >
                   <Globe className="w-4 h-4 text-accent-blue" />
                   <span>Connect on LinkedIn</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 text-muted group-hover:text-ink" />
                 </a>
               </div>
             </div>
