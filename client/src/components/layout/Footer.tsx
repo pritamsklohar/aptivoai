@@ -46,7 +46,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <div className="pt-2 flex items-center gap-2.5">
               {/* LinkedIn */}
               <a
-                href="http://www.linkedin.com/in/pritam-lohar"
+                href="https://www.linkedin.com/in/pritam-lohar"
                 target="_blank"
                 rel="noreferrer"
                 className="w-8 h-8 rounded-full bg-surface-2 border border-border flex items-center justify-center text-muted hover:text-ink hover:border-accent-blue/40 transition-colors"

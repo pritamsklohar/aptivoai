@@ -61,7 +61,7 @@ export const SEO_PAGES: Record<PageId, PageSeoMetadata> = {
         '@type': 'Person',
         name: 'Pritam Lohar',
         jobTitle: 'Founder & Architect',
-        sameAs: 'http://www.linkedin.com/in/pritam-lohar'
+        sameAs: 'https://www.linkedin.com/in/pritam-lohar'
       }
     }
   },
@@ -536,7 +536,7 @@ export const SEO_PAGES: Record<PageId, PageSeoMetadata> = {
           name: 'Aptivo AI'
         },
         image: `${BASE_URL}/prittt.jpg`,
-        sameAs: 'http://www.linkedin.com/in/pritam-lohar'
+        sameAs: 'https://www.linkedin.com/in/pritam-lohar'
       }
     }
   },

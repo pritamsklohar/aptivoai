@@ -80,7 +80,7 @@ export function updatePageSeo(pageId: PageId) {
     setMetaTag('meta[name="twitter:image"]', 'name', 'twitter:image', meta.ogImage);
   }
 
-  // 6. Structured Data: Organization & WebSite
+  // 6. Structured Data: Organization & Founder Person Entity
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -90,12 +90,26 @@ export function updatePageSeo(pageId: PageId) {
     logo: `${BASE_URL}/aptivo-logo.png`,
     founder: {
       '@type': 'Person',
+      '@id': `${BASE_URL}/#founder`,
       name: 'Pritam Lohar',
       jobTitle: 'Founder & Architect',
-      sameAs: 'http://www.linkedin.com/in/pritam-lohar'
+      url: `${BASE_URL}/company`,
+      image: `${BASE_URL}/prittt.jpg`,
+      sameAs: [
+        'https://www.linkedin.com/in/pritam-lohar',
+        'https://github.com/pritamsklohar'
+      ],
+      description: 'Founder & Architect of Aptivo AI, building autonomous career intelligence infrastructure and custom AI software.',
+      knowsAbout: [
+        'Artificial Intelligence',
+        'Machine Learning',
+        'Full Stack Software Engineering',
+        'Career Intelligence Systems',
+        'Cloud Architecture'
+      ]
     },
     sameAs: [
-      'http://www.linkedin.com/in/pritam-lohar'
+      'https://www.linkedin.com/in/pritam-lohar'
     ],
     contactPoint: {
       '@type': 'ContactPoint',

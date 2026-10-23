@@ -161,7 +161,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
 
               <div className="pt-2">
                 <a
-                  href="http://www.linkedin.com/in/pritam-lohar"
+                  href="https://www.linkedin.com/in/pritam-lohar"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white hover:bg-surface-2 border border-border text-sm font-semibold text-ink shadow-sm hover:shadow transition-all group"
