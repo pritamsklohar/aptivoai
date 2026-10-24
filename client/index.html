@@ -65,10 +65,10 @@
           "@type": "Person",
           "name": "Pritam Lohar",
           "jobTitle": "Founder & Architect",
-          "sameAs": "http://www.linkedin.com/in/pritam-lohar"
+          "sameAs": "https://www.linkedin.com/in/pritam-lohar"
         },
         "sameAs": [
-          "http://www.linkedin.com/in/pritam-lohar"
+          "https://www.linkedin.com/in/pritam-lohar"
         ],
         "contactPoint": {
           "@type": "ContactPoint",
@@ -92,7 +92,21 @@
 
 <body
   class="bg-bg text-ink antialiased selection:bg-accent-blue/30 selection:text-ink overflow-x-hidden font-sans">
-  <div id="root"></div>
+  <div id="root">
+    <!-- Pre-rendered semantic structure for search crawlers (Bingbot/Googlebot) before React hydrates -->
+    <header style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+      <h1>Aptivo AI — Autonomous Career Intelligence Platform &amp; Custom AI Software</h1>
+      <p>Aptivo AI transforms career preparation with deterministic AI roadmaps, verified engineering projects, and delivers custom enterprise AI software &amp; web solutions. Founded by Pritam Lohar.</p>
+      <nav aria-label="Main Navigation">
+        <a href="/">Home</a>
+        <a href="/platform">Platform</a>
+        <a href="/services">Services</a>
+        <a href="/company">About Aptivo AI &amp; Founder Pritam Lohar</a>
+        <a href="/careers">Careers</a>
+        <a href="/how-it-works">How It Works</a>
+      </nav>
+    </header>
+  </div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
 
