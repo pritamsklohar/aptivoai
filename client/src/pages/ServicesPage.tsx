@@ -150,11 +150,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             {servicesOfferings.map((service, idx) => (
               <div
                 key={idx}
-                className="bg-surface rounded-[24px] border border-border p-8 shadow-sm flex flex-col justify-between hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                className="glass-card rounded-[28px] border border-border/80 p-8 shadow-ambient flex flex-col justify-between hover:shadow-ambient-lg hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="space-y-5">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold uppercase tracking-wider text-accent-blue bg-accent-blue-soft px-3 py-1 rounded-full">
+                    <span className="text-xs font-bold uppercase tracking-wider text-accent-blue bg-accent-blue-soft px-3 py-1 rounded-full border border-accent-blue/20">
                       {service.badge}
                     </span>
                   </div>
@@ -178,7 +178,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
                 <div className="pt-8">
                   <button
                     onClick={() => onNavigate(service.pageId)}
-                    className="w-full py-3 rounded-full bg-surface-2 hover:bg-border border border-border text-ink text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                    className="w-full py-3 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-xs font-bold shadow-ambient transition-all flex items-center justify-center gap-1.5 cursor-pointer"
                   >
                     <span>View Specifications</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -190,7 +190,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
         </section>
 
         {/* WHY AI-ASSISTED */}
-        <section className="bg-surface rounded-[32px] border border-border p-8 sm:p-14 shadow-sm space-y-10">
+        <section className="glass-card rounded-[32px] border border-border/80 p-8 sm:p-14 shadow-ambient space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="text-xs font-bold text-accent-blue uppercase tracking-wider">
               The Aptivo Advantage
@@ -238,7 +238,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             {processSteps.map((step, idx) => (
               <div
                 key={idx}
-                className="bg-surface rounded-2xl border border-border p-6 shadow-sm space-y-3 flex flex-col justify-between"
+                className="glass-card rounded-2xl border border-border/80 p-6 shadow-ambient space-y-3 flex flex-col justify-between"
               >
                 <div className="space-y-2">
                   <span className="text-xs font-bold font-mono text-accent-blue">{step.step}</span>
@@ -275,11 +275,11 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             {servicesFaqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-border bg-surface overflow-hidden transition-all shadow-sm"
+                className="glass-card rounded-2xl border border-border/80 overflow-hidden transition-all shadow-ambient"
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-ink text-sm sm:text-base cursor-pointer"
+                  className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-ink text-sm sm:text-base cursor-pointer hover:bg-surface-2/50 transition-colors"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
@@ -299,7 +299,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
         </section>
 
         {/* CLOSING CTA */}
-        <section className="bg-surface rounded-[32px] border border-border p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden">
+        <section className="glass-card rounded-[32px] border border-border/80 p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden shadow-ambient">
           <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-bold font-display text-ink tracking-tight">
               Ready to build your next digital solution?
@@ -310,7 +310,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onNavigate }) => {
             <div className="pt-2">
               <button
                 onClick={() => onNavigate('services-quote')}
-                className="px-8 py-4 rounded-full bg-ink text-white font-semibold text-sm hover:bg-ink/90 shadow-sm transition-all inline-flex items-center gap-2 cursor-pointer"
+                className="px-8 py-4 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white font-semibold text-sm shadow-ambient transition-all inline-flex items-center gap-2 cursor-pointer"
               >
                 <span>Request a Quote</span>
                 <ArrowRight className="w-4 h-4" />

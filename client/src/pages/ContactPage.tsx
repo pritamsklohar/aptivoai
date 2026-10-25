@@ -58,7 +58,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
     <div className="pt-32 pb-24 space-y-20 bg-bg min-h-screen">
       {/* Hero */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-bold text-accent-orange tracking-wider uppercase">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20 self-center">
           Contact & Partnerships
         </div>
 
@@ -79,7 +79,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Contact Information & Direct Channels */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-8">
+            <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient space-y-8">
               <div>
                 <h3 className="text-2xl font-bold font-display text-ink">
                   Get in Touch
@@ -121,7 +121,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
 
           {/* Right: Contact Form */}
           <div className="lg:col-span-7">
-            <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-white shadow-sm">
+            <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient">
               {submitted ? (
                 <div className="py-16 text-center space-y-5">
                   <div className="w-16 h-16 rounded-full bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-500 mx-auto">
@@ -139,7 +139,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
                         setSubmitted(false);
                         setMessage('');
                       }}
-                      className="px-6 py-2.5 rounded-full bg-surface-2 border border-border text-sm font-semibold text-ink hover:bg-border transition-colors"
+                      className="px-6 py-2.5 rounded-full bg-accent-blue text-white text-sm font-semibold shadow-ambient hover:bg-accent-blue/90 transition-all cursor-pointer"
                     >
                       Send Another Message
                     </button>
@@ -155,10 +155,10 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
                           key={opt}
                           type="button"
                           onClick={() => setRoleType(opt)}
-                          className={`px-4 py-2 rounded-full text-sm font-semibold transition-all ${
+                          className={`px-4 py-2 rounded-full text-sm font-semibold transition-all cursor-pointer ${
                             roleType === opt
-                              ? 'bg-accent-blue text-white shadow-sm'
-                              : 'bg-surface text-muted border border-border hover:text-ink hover:bg-surface-2'
+                              ? 'bg-accent-blue text-white shadow-ambient'
+                              : 'bg-white text-muted border border-border/80 hover:text-ink hover:bg-surface-2 shadow-[0_1px_2px_rgba(0,0,0,0.03)]'
                           }`}
                         >
                           {opt}
@@ -176,7 +176,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="Your name"
-                        className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all"
+                        className="w-full px-4 py-3 rounded-[20px] bg-white border border-border/80 text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
                       />
                     </div>
 
@@ -188,7 +188,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="you@domain.com"
-                        className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all"
+                        className="w-full px-4 py-3 rounded-[20px] bg-white border border-border/80 text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
                       />
                     </div>
                   </div>
@@ -200,7 +200,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
                       value={org}
                       onChange={(e) => setOrg(e.target.value)}
                       placeholder="Company, University, or Independent"
-                      className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all"
+                      className="w-full px-4 py-3 rounded-[20px] bg-white border border-border/80 text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
                     />
                   </div>
 
@@ -212,7 +212,7 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate, onOpenWait
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Tell us about your team, timeline, or engineering goals..."
-                      className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-[20px] bg-white border border-border/80 text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all resize-none shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
                     />
                   </div>
 

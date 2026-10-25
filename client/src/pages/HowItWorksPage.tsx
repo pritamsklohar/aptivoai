@@ -14,12 +14,12 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate, onOp
     <div className="pt-32 pb-24 space-y-24 bg-bg min-h-screen">
       {/* Hero */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-bold text-accent-orange tracking-wider uppercase">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20 self-center">
           Execution Methodology
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-bold font-display text-ink tracking-tight leading-tight">
-          Eight steps. <span className="text-accent-orange">Zero</span> guesswork.
+          Eight steps. <span className="text-accent-blue">Zero</span> guesswork.
         </h1>
 
         <p className="text-base sm:text-lg text-ink/70 max-w-2xl mx-auto font-normal leading-relaxed">
@@ -29,7 +29,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate, onOp
         <div className="pt-4 flex items-center justify-center">
           <button
             onClick={onOpenWaitlist}
-            className="px-8 py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-semibold tracking-wide shadow-sm transition-all"
+            className="px-8 py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-semibold tracking-wide shadow-ambient transition-all cursor-pointer"
           >
             Start at Step 1
           </button>
@@ -53,8 +53,8 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate, onOp
               </div>
 
               {/* Step Content Card */}
-              <div className="p-6 sm:p-8 rounded-[24px] border border-border bg-surface space-y-5 shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border pb-4">
+              <div className="glass-card p-6 sm:p-8 rounded-[28px] border border-border/80 space-y-5 shadow-ambient hover:shadow-ambient-lg transition-all duration-300">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/70 pb-4">
                   <div>
                     <span className="text-xs font-bold text-muted uppercase tracking-wider">
                       {step.eyebrow}
@@ -76,7 +76,7 @@ export const HowItWorksPage: React.FC<HowItWorksPageProps> = ({ onNavigate, onOp
                   {step.detailPoints.map((point, pidx) => (
                     <div
                       key={pidx}
-                      className="p-3.5 rounded-[20px] bg-surface-2 border border-border text-sm text-ink font-medium flex items-start gap-2.5"
+                      className="p-3.5 rounded-[18px] bg-surface-2 border border-border/60 text-sm text-ink font-medium flex items-start gap-2.5"
                     >
                       <CheckCircle2 className="w-4 h-4 text-accent-blue shrink-0 mt-0.5" />
                       <span className="leading-snug">{point}</span>

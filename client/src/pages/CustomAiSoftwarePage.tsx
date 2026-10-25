@@ -137,7 +137,7 @@ export const CustomAiSoftwarePage: React.FC<CustomAiSoftwarePageProps> = ({ onNa
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {inclusions.map((item, idx) => (
-              <div key={idx} className="bg-surface rounded-[24px] border border-border p-8 shadow-sm space-y-3">
+              <div key={idx} className="glass-card rounded-[24px] border border-border/80 p-8 shadow-ambient hover:shadow-ambient-lg transition-all space-y-3">
                 <div className="w-8 h-8 rounded-full bg-accent-blue-soft text-accent-blue flex items-center justify-center font-bold text-xs">
                   <CheckCircle2 className="w-4 h-4" />
                 </div>
@@ -149,9 +149,9 @@ export const CustomAiSoftwarePage: React.FC<CustomAiSoftwarePageProps> = ({ onNa
         </section>
 
         {/* WHO IT SUITS */}
-        <section className="bg-surface rounded-[32px] border border-border p-8 sm:p-12 shadow-sm space-y-10">
+        <section className="glass-card rounded-[32px] border border-border/80 p-8 sm:p-12 shadow-ambient space-y-10">
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <div className="text-xs font-bold text-accent-blue uppercase tracking-wider">
+            <div className="text-xs font-bold text-accent-blue uppercase tracking-wider bg-accent-blue-soft/90 px-3.5 py-1.5 rounded-full inline-block border border-accent-blue/20">
               Ideal Fit
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink">
@@ -164,7 +164,7 @@ export const CustomAiSoftwarePage: React.FC<CustomAiSoftwarePageProps> = ({ onNa
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {whoItSuits.map((item, idx) => (
-              <div key={idx} className="bg-white rounded-2xl border border-border p-6 sm:p-8 space-y-3 shadow-sm">
+              <div key={idx} className="bg-white rounded-2xl border border-border/70 p-6 sm:p-8 space-y-3 shadow-xs">
                 <div className="flex items-center gap-2">
                   <Bot className="w-4 h-4 text-accent-blue" />
                   <h3 className="text-lg font-bold font-display text-ink">{item.title}</h3>
@@ -178,7 +178,7 @@ export const CustomAiSoftwarePage: React.FC<CustomAiSoftwarePageProps> = ({ onNa
         {/* EXAMPLE USE CASES */}
         <section className="space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <div className="text-xs font-bold text-accent-blue uppercase tracking-wider">
+            <div className="text-xs font-bold text-accent-blue uppercase tracking-wider bg-accent-blue-soft/90 px-3.5 py-1.5 rounded-full inline-block border border-accent-blue/20">
               High-Impact Automation
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink">
@@ -191,7 +191,7 @@ export const CustomAiSoftwarePage: React.FC<CustomAiSoftwarePageProps> = ({ onNa
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {useCases.map((uc, idx) => (
-              <div key={idx} className="bg-surface rounded-[24px] border border-border p-8 shadow-sm space-y-3">
+              <div key={idx} className="glass-card rounded-[24px] border border-border/80 p-8 shadow-ambient hover:shadow-ambient-lg transition-all space-y-3">
                 <h3 className="text-xl font-bold font-display text-ink">{uc.title}</h3>
                 <p className="text-sm text-muted leading-relaxed font-normal">{uc.summary}</p>
               </div>
@@ -200,7 +200,7 @@ export const CustomAiSoftwarePage: React.FC<CustomAiSoftwarePageProps> = ({ onNa
         </section>
 
         {/* CLOSING CTA */}
-        <section className="bg-surface rounded-[32px] border border-border p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden">
+        <section className="glass-card rounded-[32px] border border-border/80 p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden shadow-ambient">
           <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-bold font-display text-ink tracking-tight">
               Automate your business bottlenecks today.

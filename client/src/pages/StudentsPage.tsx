@@ -93,11 +93,11 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onNavigate, onOpenWa
 
       {/* Concrete Student Scenario Walkthrough */}
       <section id="student-trajectory" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-8">
+        <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient space-y-8">
           {/* Scenario Banner */}
-          <div className="p-6 rounded-[24px] border border-accent-blue/30 bg-accent-blue-soft/50 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
+          <div className="p-6 sm:p-8 rounded-[24px] border border-accent-blue/20 bg-accent-blue-soft/60 flex flex-col md:flex-row md:items-center justify-between gap-6 shadow-sm">
             <div className="space-y-2">
-              <span className="text-xs text-accent-blue font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md border border-accent-blue/20">
+              <span className="text-xs text-accent-blue font-bold uppercase tracking-wider bg-white px-3 py-1 rounded-full border border-accent-blue/20">
                 Example Student Trajectory
               </span>
               <h2 className="text-2xl font-bold font-display text-ink">
@@ -109,11 +109,11 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onNavigate, onOpenWa
             </div>
 
             <div className="flex items-center gap-4 shrink-0">
-              <div className="p-4 rounded-[20px] bg-white border border-border text-center shadow-sm min-w-[80px]">
+              <div className="p-4 rounded-[20px] bg-white border border-border/70 text-center shadow-ambient min-w-[84px]">
                 <div className="text-xl font-bold text-ink font-display">16</div>
                 <div className="text-xs text-muted font-medium mt-1">Total Weeks</div>
               </div>
-              <div className="p-4 rounded-[20px] bg-white border border-border text-center shadow-sm min-w-[80px]">
+              <div className="p-4 rounded-[20px] bg-white border border-border/70 text-center shadow-ambient min-w-[84px]">
                 <div className="text-xl font-bold text-accent-blue font-display">128</div>
                 <div className="text-xs text-muted font-medium mt-1">Total Hours</div>
               </div>
@@ -126,10 +126,10 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onNavigate, onOpenWa
               <button
                 key={s.phase}
                 onClick={() => setSelectedPhase(idx)}
-                className={`p-4 rounded-[20px] border text-left transition-all ${
+                className={`p-4 rounded-[20px] border text-left transition-all cursor-pointer ${
                   selectedPhase === idx
-                    ? 'border-accent-blue bg-accent-blue-soft text-ink shadow-sm'
-                    : 'border-border bg-white text-muted hover:text-ink hover:bg-surface-2'
+                    ? 'border-accent-blue bg-accent-blue-soft text-ink shadow-ambient'
+                    : 'border-border/80 bg-white text-muted hover:text-ink hover:bg-surface-2 shadow-[0_1px_2px_rgba(0,0,0,0.03)]'
                 }`}
               >
                 <div className={`text-[11px] font-mono font-bold mb-1.5 ${selectedPhase === idx ? 'text-accent-blue' : 'text-muted'}`}>
@@ -143,8 +143,8 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onNavigate, onOpenWa
           </div>
 
           {/* Active Phase Deep Dive */}
-          <div className="p-8 rounded-[24px] border border-border bg-white shadow-sm space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-5">
+          <div className="p-8 rounded-[24px] border border-border/70 bg-white shadow-ambient space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
               <div>
                 <span className="text-xs font-mono font-bold text-accent-blue uppercase tracking-wider">Phase {CSE_ROADMAP_STEPS[selectedPhase].phase} · {CSE_ROADMAP_STEPS[selectedPhase].timeline}</span>
                 <h3 className="text-2xl font-bold font-display text-ink mt-2">
@@ -160,7 +160,7 @@ export const StudentsPage: React.FC<StudentsPageProps> = ({ onNavigate, onOpenWa
               <span className="text-xs font-bold text-muted uppercase tracking-wider">Deliverables & Focus Areas:</span>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {CSE_ROADMAP_STEPS[selectedPhase].topics.map((topic, i) => (
-                  <div key={i} className="p-4 rounded-[20px] bg-surface border border-border text-sm text-ink font-medium flex items-start gap-3">
+                  <div key={i} className="p-4 rounded-[18px] bg-white border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)] text-sm text-ink font-medium flex items-start gap-3">
                     <CheckCircle2 className="w-5 h-5 text-accent-blue shrink-0" />
                     <span>{topic}</span>
                   </div>

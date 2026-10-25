@@ -10,6 +10,9 @@ Disallow: /admin
 User-agent: Googlebot
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
 User-agent: Bingbot
 Allow: /
 
@@ -17,4 +20,4 @@ User-agent: Applebot
 Allow: /
 
 # XML Sitemap Location
-Sitemap: https://aptivoai.in/sitemap.xml
+Sitemap: https://www.aptivoai.in/sitemap.xml

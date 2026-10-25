@@ -45,12 +45,12 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
     <div className="pt-32 pb-24 space-y-24 bg-bg min-h-screen">
       {/* Hero */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-bold text-accent-blue tracking-wider uppercase">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20 self-center">
           Research & Insights
         </div>
 
         <h1 className="text-4xl sm:text-6xl font-bold font-display text-ink tracking-tight leading-tight">
-          Ideas for the <span className="text-accent-orange">future</span> of career engineering.
+          Ideas for the <span className="text-accent-blue">future</span> of career engineering.
         </h1>
 
         <p className="text-base sm:text-lg text-ink/70 max-w-2xl mx-auto font-normal leading-relaxed">
@@ -63,10 +63,10 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
             <button
               key={cat}
               onClick={() => setSelectedTag(cat)}
-              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all cursor-pointer ${
                 selectedTag === cat
-                  ? 'bg-accent-blue text-white shadow-sm border border-transparent'
-                  : 'bg-surface text-ink border border-border hover:bg-surface-2'
+                  ? 'bg-accent-blue text-white shadow-ambient border border-transparent'
+                  : 'bg-white text-ink border border-border/80 hover:bg-surface-2 shadow-[0_1px_2px_rgba(0,0,0,0.03)]'
               }`}
             >
               {cat}
@@ -92,12 +92,12 @@ export const ResourcesPage: React.FC<ResourcesPageProps> = ({ onNavigate, onOpen
               <div
                 key={art.id}
                 onClick={() => setReadingArticle(art)}
-                className="p-8 rounded-[24px] border border-border bg-surface hover:shadow-md transition-shadow cursor-pointer flex flex-col justify-between space-y-5 group"
+                className="glass-card p-8 rounded-[28px] border border-border/80 hover:shadow-ambient-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col justify-between space-y-5 group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
                     <span className="text-accent-blue bg-accent-blue-soft px-2.5 py-1 rounded-md border border-accent-blue/20">{art.category}</span>
-                    <span className="text-muted flex items-center gap-1.5 bg-surface-2 px-2.5 py-1 rounded-md border border-border">
+                    <span className="text-muted flex items-center gap-1.5 bg-surface-2 px-2.5 py-1 rounded-md border border-border/60">
                       <Clock className="w-3.5 h-3.5" />
                       {art.readTime}
                     </span>

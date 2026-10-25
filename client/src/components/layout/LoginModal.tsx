@@ -31,14 +31,14 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/40 backdrop-blur-sm animate-modal-backdrop">
       <div 
-        className="relative w-full max-w-md rounded-[24px] border border-border bg-white p-6 sm:p-8 shadow-2xl text-ink space-y-6"
+        className="animate-modal-card relative w-full max-w-md rounded-[24px] border border-border bg-white p-6 sm:p-8 shadow-2xl text-ink space-y-6"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-2 text-muted hover:text-ink rounded-full hover:bg-surface-2 transition-colors border border-transparent hover:border-border"
+          className="absolute top-5 right-5 p-2 text-muted hover:text-ink rounded-full hover:bg-surface-2 transition-[background-color,color,transform] duration-150 active:scale-95 border border-transparent hover:border-border"
           aria-label="Close modal"
         >
           <X className="w-5 h-5" />
@@ -68,7 +68,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
           <div className="space-y-6">
             <div>
               <div className="mb-4">
-                <AptivoLogo variant="lockup" size="sm" glow={false} />
+                <AptivoLogo variant="lockup" size="sm" />
               </div>
               <div className="text-xs font-bold text-accent-blue uppercase tracking-wider bg-accent-blue-soft px-3 py-1 rounded-full inline-block border border-accent-blue/20">
                 Workspace Access
@@ -89,7 +89,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   setLoading(true);
                   setTimeout(() => { setLoading(false); setSent(true); setEmail('developer@github.com'); }, 400);
                 }}
-                className="w-full py-3 px-4 rounded-full bg-surface border border-border hover:bg-surface-2 text-sm font-semibold text-ink flex items-center justify-center gap-2.5 transition-colors shadow-sm"
+                className="w-full py-3 px-4 rounded-full bg-white border border-border/80 hover:bg-surface-2 text-sm font-semibold text-ink flex items-center justify-center gap-2.5 transition-colors shadow-xs"
               >
                 <Code className="w-4 h-4" />
                 <span>Continue with GitHub</span>
@@ -101,7 +101,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   setLoading(true);
                   setTimeout(() => { setLoading(false); setSent(true); setEmail('enterprise@work.com'); }, 400);
                 }}
-                className="w-full py-3 px-4 rounded-full bg-surface border border-border hover:bg-surface-2 text-sm font-semibold text-ink flex items-center justify-center gap-2.5 transition-colors shadow-sm"
+                className="w-full py-3 px-4 rounded-full bg-white border border-border/80 hover:bg-surface-2 text-sm font-semibold text-ink flex items-center justify-center gap-2.5 transition-colors shadow-xs"
               >
                 <span className="font-bold text-accent-blue text-lg leading-none">G</span>
                 <span>Continue with Google</span>
@@ -109,9 +109,9 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             <div className="flex items-center gap-3 my-4">
-              <div className="h-[1px] flex-1 bg-border" />
+              <div className="h-[1px] flex-1 bg-border/80" />
               <span className="text-xs font-bold text-muted uppercase tracking-wider">or with email</span>
-              <div className="h-[1px] flex-1 bg-border" />
+              <div className="h-[1px] flex-1 bg-border/80" />
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
@@ -125,7 +125,7 @@ export const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
                   placeholder="name@company.com or name@university.edu"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-4 py-3 rounded-[20px] bg-surface border border-border text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-all"
+                  className="w-full px-4 py-3 rounded-[20px] bg-white border border-border/80 text-sm text-ink placeholder-muted focus:outline-none focus:border-accent-blue focus:ring-1 focus:ring-accent-blue transition-[border-color,box-shadow] duration-150 shadow-xs"
                 />
               </div>
 

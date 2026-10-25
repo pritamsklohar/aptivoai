@@ -95,7 +95,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onNavigate, onOpen
           return (
             <div
               key={sol.id}
-              className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+              className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient hover:shadow-ambient-lg transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
             >
               <div className="lg:col-span-5 space-y-6">
                 <div className="flex items-center gap-4">
@@ -109,7 +109,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onNavigate, onOpen
                 </div>
 
                 <div className="space-y-3 text-sm">
-                  <div className="p-4 rounded-[20px] bg-red-50 border border-red-100">
+                  <div className="p-4 rounded-[20px] bg-red-50/80 border border-red-100">
                     <div className="text-red-500 font-bold mb-1">The Friction</div>
                     <p className="text-ink/80 leading-relaxed font-medium">{sol.problem}</p>
                   </div>
@@ -122,7 +122,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onNavigate, onOpen
                 <div className="pt-2">
                   <button
                     onClick={() => onNavigate(sol.targetPage)}
-                    className="px-6 py-3 rounded-full bg-surface-2 hover:bg-border border border-border text-sm font-semibold text-ink flex items-center gap-2 transition-colors"
+                    className="px-6 py-3 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-semibold flex items-center gap-2 shadow-ambient transition-all cursor-pointer"
                   >
                     <span>Explore Solution</span>
                     <ArrowRight className="w-4 h-4" />
@@ -131,7 +131,7 @@ export const SolutionsPage: React.FC<SolutionsPageProps> = ({ onNavigate, onOpen
               </div>
 
               <div className="lg:col-span-7">
-                <div className="p-8 rounded-[24px] border border-border bg-white shadow-sm space-y-5">
+                <div className="p-8 rounded-[24px] border border-border/70 bg-surface-2/40 shadow-sm space-y-5">
                   <div className="text-xs font-bold text-muted uppercase tracking-wider">
                     Core Capabilities
                   </div>

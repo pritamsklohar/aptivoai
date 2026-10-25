@@ -19,7 +19,7 @@ export const FloatingBadge: React.FC<FloatingBadgeProps> = ({
 }) => {
   return (
     <div
-      className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-border/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)] text-xs font-semibold text-ink select-none ${animationClass} ${className}`}
+      className={`inline-flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-white/95 backdrop-blur-md border border-border/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.12)] text-xs font-semibold text-ink select-none hover-lift cursor-default ${animationClass} ${className}`}
       {...props}
     >
       {avatarStack && avatarStack.length > 0 ? (

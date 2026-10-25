@@ -61,10 +61,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-[padding,background-color,border-color,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${
         isScrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-border shadow-xs py-3'
-          : 'bg-white/90 backdrop-blur-md border-b border-border/80 py-3.5'
+          ? 'bg-white/90 backdrop-blur-xl border-b border-border/80 shadow-ambient py-2.5'
+          : 'bg-white/80 backdrop-blur-lg border-b border-border/60 py-3.5'
       }`}
       onMouseLeave={handleMouseLeave}
     >
@@ -100,7 +100,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     id={`nav-${item.id}-btn`}
                     onClick={() => hasMenu ? setActiveMenu(isOpen ? null : item.menuKey!) : handleMenuClick(item.id)}
-                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-full flex items-center gap-1 transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2 ${
+                    className={`px-3.5 py-1.5 text-xs font-semibold rounded-full flex items-center gap-1 cursor-pointer transition-[color,background-color,transform] duration-140 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2 ${
                       isOpen || isCurrent
                         ? 'text-ink bg-surface-2 font-bold'
                         : 'text-ink/80 hover:text-ink hover:bg-surface'
@@ -109,7 +109,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <span>{item.label}</span>
                     {hasMenu && (
                       <ChevronDown
-                        className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                        className={`w-3.5 h-3.5 transition-transform duration-160 ease-[cubic-bezier(0.23,1,0.32,1)] ${
                           isOpen ? 'rotate-180 text-accent-blue' : 'text-muted'
                         }`}
                       />
@@ -126,7 +126,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2 lg:hidden">
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="p-2 text-muted hover:text-ink rounded-full bg-surface-2 border border-border cursor-pointer focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2"
+              className="p-2 text-muted hover:text-ink rounded-full bg-surface-2 border border-border cursor-pointer transition-[transform,background-color] duration-140 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.95] focus-visible:outline-2 focus-visible:outline-accent-blue focus-visible:outline-offset-2"
               aria-label="Toggle navigation menu"
             >
               {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
@@ -139,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Desktop Mega-Menu Dropdown Card on Hover */}
       {activeMenu && MEGA_MENUS[activeMenu] && (
         <div
-          className="absolute top-full left-0 right-0 z-50 pt-2 transition-all duration-200 animate-in fade-in-0 zoom-in-95"
+          className="absolute top-full left-0 right-0 z-50 pt-2 animate-popover-in"
           onMouseEnter={() => handleMouseEnter(activeMenu)}
           onMouseLeave={handleMouseLeave}
         >
@@ -159,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                           e.preventDefault();
                           handleMenuClick(link.pageId);
                         }}
-                        className="w-full p-3 rounded-2xl text-left hover:bg-surface-2 transition-all group flex items-start justify-between border border-transparent hover:border-border/60 cursor-pointer"
+                        className="w-full p-3 rounded-2xl text-left hover:bg-surface-2 transition-[background-color,border-color,transform] duration-140 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.98] group flex items-start justify-between border border-transparent hover:border-border/60 cursor-pointer"
                       >
                         <div className="pr-2">
                           <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                             {link.desc}
                           </div>
                         </div>
-                        <ArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-accent-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all mt-0.5 shrink-0" />
+                        <ArrowUpRight className="w-3.5 h-3.5 text-muted group-hover:text-accent-blue group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-140 ease-[cubic-bezier(0.23,1,0.32,1)] mt-0.5 shrink-0" />
                       </a>
                     ))}
                   </div>
@@ -203,7 +203,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   e.preventDefault();
                   handleMenuClick(link.pageId);
                 }}
-                className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface transition-colors flex items-center justify-between"
+                className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface-2 transition-colors flex items-center justify-between"
               >
                 <span>{link.title}</span>
                 <ArrowUpRight className="w-3 h-3 text-muted" />
@@ -224,7 +224,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   e.preventDefault();
                   handleMenuClick(link.pageId);
                 }}
-                className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface transition-colors flex items-center justify-between"
+                className="w-full py-2.5 px-3 rounded-xl text-left text-xs font-semibold text-ink hover:bg-surface-2 transition-colors flex items-center justify-between"
               >
                 <span>{link.title}</span>
                 <ArrowUpRight className="w-3 h-3 text-muted" />
@@ -243,7 +243,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 e.preventDefault();
                 handleMenuClick('company');
               }}
-              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors block"
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface-2 transition-colors block"
             >
               About Us (Pritam Lohar)
             </a>
@@ -253,7 +253,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 e.preventDefault();
                 handleMenuClick('careers');
               }}
-              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors block"
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface-2 transition-colors block"
             >
               Careers
             </a>
@@ -263,7 +263,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 e.preventDefault();
                 handleMenuClick('contact');
               }}
-              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface transition-colors block"
+              className="w-full py-2 px-3 rounded-xl text-left text-xs font-semibold text-ink/80 hover:bg-surface-2 transition-colors block"
             >
               Contact
             </a>

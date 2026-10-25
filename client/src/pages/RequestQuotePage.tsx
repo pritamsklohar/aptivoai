@@ -104,7 +104,7 @@ export const RequestQuotePage: React.FC<RequestQuotePageProps> = ({ onNavigate }
         </section>
 
         {/* QUOTE FORM CONTAINER */}
-        <div className="bg-surface rounded-[28px] border border-border p-8 sm:p-12 shadow-sm">
+        <div className="glass-card rounded-[28px] border border-border/80 p-8 sm:p-12 shadow-ambient">
           {submitted ? (
             <div className="py-12 text-center space-y-5">
               <div className="w-16 h-16 rounded-full bg-green-100 text-green-700 flex items-center justify-center mx-auto">

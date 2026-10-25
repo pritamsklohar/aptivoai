@@ -104,15 +104,15 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
         {/* PRICING CARDS */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
           {/* Free Tier */}
-          <div className="bg-surface rounded-[24px] border border-border p-8 sm:p-10 shadow-sm flex flex-col justify-between">
+          <div className="glass-card rounded-[28px] border border-border/85 p-8 sm:p-10 shadow-ambient flex flex-col justify-between hover:shadow-ambient-lg transition-[box-shadow,transform] duration-200">
             <div className="space-y-6">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-muted">Foundational Tier</span>
-                <h3 className="text-2xl font-bold font-display text-ink mt-1">Free Tier</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold font-display text-ink mt-1">Free Tier</h3>
                 <p className="text-xs sm:text-sm text-muted mt-2">Essential career exploration for self-driven students.</p>
               </div>
 
-              <div className="py-2 border-y border-border/60">
+              <div className="py-2.5 border-y border-border/60">
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-bold font-display text-ink">$0</span>
                   <span className="text-xs text-muted font-medium">/ month</span>
@@ -146,7 +146,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
             <div className="pt-8">
               <button
                 onClick={() => onOpenWaitlist('Student')}
-                className="w-full py-3.5 rounded-full bg-surface-2 hover:bg-border border border-border text-ink text-xs sm:text-sm font-semibold transition-all cursor-pointer"
+                className="w-full py-3.5 rounded-full bg-surface-2 hover:bg-border/80 border border-border/80 text-ink text-xs sm:text-sm font-semibold transition-[transform,background-color] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] cursor-pointer"
               >
                 Join Free Tier
               </button>
@@ -154,27 +154,29 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
           </div>
 
           {/* Paid / Pro Tier */}
-          <div className="bg-surface rounded-[24px] border-2 border-accent-blue/30 p-8 sm:p-10 shadow-sm flex flex-col justify-between relative overflow-hidden">
+          <div className="glass-card rounded-[28px] border-2 border-accent-blue/40 p-8 sm:p-10 shadow-ambient-lg flex flex-col justify-between relative overflow-hidden ring-1 ring-accent-blue/15 hover:shadow-2xl transition-[box-shadow,transform] duration-200">
+            {/* Subtle top ambient glow */}
+            <div className="absolute top-0 right-0 w-48 h-48 bg-accent-blue/10 rounded-full blur-2xl pointer-events-none" />
+
             <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 rounded-full bg-accent-blue text-white text-[10px] font-bold uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full bg-accent-blue text-white text-[10px] font-bold uppercase tracking-wider shadow-xs">
                 Full Telemetry
               </span>
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-6 relative z-10">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-accent-blue">Pro Tier</span>
-                <h3 className="text-2xl font-bold font-display text-ink mt-1">Career Pro</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold font-display text-ink mt-1">Career Pro</h3>
                 <p className="text-xs sm:text-sm text-muted mt-2">Comprehensive AST analysis and dynamic AI recalibration.</p>
               </div>
 
-              <div className="py-2 border-y border-border/60">
+              <div className="py-2.5 border-y border-border/60">
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl sm:text-4xl font-bold font-display text-accent-blue">[Tier Price]</span>
-                  <span className="text-xs text-muted font-medium">/ month</span>
+                  <span className="text-2xl sm:text-3xl font-bold font-display text-accent-blue">Early Access</span>
                 </div>
-                <div className="text-xs text-muted mt-1 font-medium italic">
-                  * Official launch pricing announced soon. Waitlist lock-in available.
+                <div className="text-xs text-muted mt-1 font-medium">
+                  Free during beta cohort · Grandfathered discounts locked in for waitlist members.
                 </div>
               </div>
 
@@ -205,10 +207,10 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
               </div>
             </div>
 
-            <div className="pt-8">
+            <div className="pt-8 relative z-10">
               <button
-                onClick={() => onOpenWaitlist('Student')}
-                className="w-full py-3.5 rounded-full bg-accent-blue text-white hover:bg-accent-blue/90 text-xs sm:text-sm font-semibold transition-all shadow-sm cursor-pointer"
+                onClick={() => onOpenWaitlist('Pro Plan')}
+                className="w-full py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue/95 text-white text-xs sm:text-sm font-semibold transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] shadow-ambient inner-highlight cursor-pointer"
               >
                 Join Pro Waitlist
               </button>
@@ -227,11 +229,11 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
             </h2>
           </div>
 
-          <div className="rounded-[24px] border border-border bg-surface overflow-hidden shadow-sm">
+          <div className="glass-card rounded-[28px] border border-border/80 overflow-hidden shadow-ambient">
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs sm:text-sm">
                 <thead>
-                  <tr className="border-b border-border bg-surface-2/60">
+                  <tr className="border-b border-border/70 bg-surface-2/40">
                     <th className="py-4 px-6 font-bold text-ink">Feature</th>
                     <th className="py-4 px-6 font-bold text-ink w-1/3 text-center">Free Tier</th>
                     <th className="py-4 px-6 font-bold text-accent-blue w-1/3 text-center">Pro Tier</th>
@@ -239,7 +241,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
                 </thead>
                 <tbody className="divide-y divide-border/60">
                   {comparisonFeatures.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-white/50 transition-colors">
+                    <tr key={idx} className="hover:bg-surface-2/40 transition-colors">
                       <td className="py-4 px-6 font-medium text-ink/90">{row.feature}</td>
                       <td className="py-4 px-6 text-center text-muted">
                         {typeof row.free === 'boolean' ? (
@@ -286,11 +288,11 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
             {billingFaqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-border bg-surface overflow-hidden transition-all"
+                className="glass-card rounded-2xl border border-border/80 overflow-hidden transition-all shadow-ambient"
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-semibold text-ink text-xs sm:text-sm"
+                  className="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-4 font-semibold text-ink text-xs sm:text-sm cursor-pointer hover:bg-surface-2/40 transition-colors"
                 >
                   <span>{faq.q}</span>
                   <ChevronDown
@@ -310,7 +312,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
         </section>
 
         {/* CTA */}
-        <section className="bg-surface rounded-[28px] border border-border p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-4">
+        <section className="glass-card rounded-[28px] border border-border/80 p-8 sm:p-12 text-center max-w-3xl mx-auto space-y-4 shadow-ambient">
           <h3 className="text-2xl sm:text-3xl font-bold font-display text-ink">
             Have questions about group or campus licensing?
           </h3>
@@ -320,7 +322,7 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onNavigate, onOpenWait
           <div className="pt-2">
             <button
               onClick={() => onNavigate('product-contact')}
-              className="px-7 py-3 rounded-full bg-accent-blue text-white text-xs sm:text-sm font-semibold hover:bg-accent-blue/90 transition-all inline-flex items-center gap-2 cursor-pointer"
+              className="px-7 py-3 rounded-full bg-accent-blue text-white text-xs sm:text-sm font-semibold hover:bg-accent-blue/90 shadow-ambient transition-all inline-flex items-center gap-2 cursor-pointer"
             >
               <span>Contact Product Support</span>
               <ArrowRight className="w-4 h-4" />

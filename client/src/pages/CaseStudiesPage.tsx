@@ -73,7 +73,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate }) 
         </section>
 
         {/* NDA & CONFIDENTIALITY NOTICE */}
-        <section className="bg-surface rounded-2xl border border-border p-6 sm:p-8 flex items-start gap-4 shadow-sm max-w-4xl mx-auto">
+        <section className="glass-card rounded-2xl border border-border/80 p-6 sm:p-8 flex items-start gap-4 shadow-ambient max-w-4xl mx-auto">
           <Lock className="w-6 h-6 text-accent-blue shrink-0 mt-0.5" />
           <div className="space-y-1">
             <h3 className="text-sm font-bold text-ink">Strict Client Non-Disclosure Standard</h3>
@@ -101,15 +101,15 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate }) 
             {frameworks.map((fw, idx) => (
               <div
                 key={idx}
-                className="bg-surface rounded-[28px] border border-border p-8 sm:p-10 shadow-sm space-y-6"
+                className="glass-card rounded-[28px] border border-border/80 p-8 sm:p-10 shadow-ambient space-y-6"
               >
                 <div className="flex flex-wrap items-center justify-between gap-3">
-                  <span className="text-xs font-bold uppercase tracking-wider text-accent-blue bg-accent-blue-soft px-3 py-1 rounded-full">
+                  <span className="text-xs font-bold uppercase tracking-wider text-accent-blue bg-accent-blue-soft px-3 py-1 rounded-full border border-accent-blue/20">
                     {fw.badge}
                   </span>
                   <div className="flex flex-wrap items-center gap-1.5">
                     {fw.techStack.map((tech, tIdx) => (
-                      <span key={tIdx} className="px-2.5 py-1 rounded-full bg-white border border-border text-[11px] font-mono text-muted">
+                      <span key={tIdx} className="px-2.5 py-1 rounded-full bg-white border border-border/70 text-[11px] font-mono text-muted shadow-xs">
                         {tech}
                       </span>
                     ))}
@@ -121,8 +121,8 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate }) 
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                  <div className="space-y-2 p-5 rounded-2xl bg-white border border-border">
-                    <div className="text-xs font-bold text-accent-orange uppercase tracking-wider">
+                  <div className="space-y-2 p-5 rounded-2xl bg-white border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+                    <div className="text-xs font-bold text-accent-blue uppercase tracking-wider">
                       Business Challenge
                     </div>
                     <p className="text-xs sm:text-sm text-ink/80 leading-relaxed font-medium">
@@ -130,7 +130,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate }) 
                     </p>
                   </div>
 
-                  <div className="space-y-2 p-5 rounded-2xl bg-white border border-border">
+                  <div className="space-y-2 p-5 rounded-2xl bg-white border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                     <div className="text-xs font-bold text-accent-blue uppercase tracking-wider">
                       Architectural Solution
                     </div>
@@ -145,7 +145,7 @@ export const CaseStudiesPage: React.FC<CaseStudiesPageProps> = ({ onNavigate }) 
         </section>
 
         {/* CLOSING CTA */}
-        <section className="bg-surface rounded-[32px] border border-border p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden">
+        <section className="glass-card rounded-[32px] border border-border/80 p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden shadow-ambient">
           <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-bold font-display text-ink tracking-tight">
               Request a confidential consultation.

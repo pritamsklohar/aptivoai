@@ -1,7 +1,7 @@
 import { PageId } from '../types';
 import { SEO_PAGES, normalizePageId, getPagePath } from '../data/seoData';
 
-const BASE_URL = 'https://aptivoai.in';
+const BASE_URL = 'https://www.aptivoai.in';
 
 /**
  * Sets or creates a meta tag by name or property
@@ -47,7 +47,8 @@ function setJsonLdSchema(id: string, data: object) {
  * Updates full SEO meta tags and Schema.org structured data whenever the page changes
  */
 export function updatePageSeo(pageId: PageId) {
-  const meta = SEO_PAGES[pageId] || SEO_PAGES.home;
+  const canonical = normalizePageId(pageId);
+  const meta = SEO_PAGES[canonical] || SEO_PAGES.home;
 
   // 1. Document Title
   document.title = meta.title;

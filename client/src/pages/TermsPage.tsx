@@ -29,7 +29,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* OVERVIEW */}
-        <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-sm">
+        <div className="glass-card rounded-[24px] border border-border/80 p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-ambient">
           <h2 className="text-lg font-bold font-display text-ink">1. Acceptance of Terms</h2>
           <p>
             By accessing or using the website, software, and services provided by Aptivo AI ("Company", "we", or "us"), founded by Pritam Lohar, you agree to be bound by these Terms of Service. If you do not agree to these terms, you must discontinue use immediately.
@@ -37,7 +37,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* CLAUSES FOR SAAS PRODUCTS */}
-        <div className="bg-surface rounded-[24px] border border-accent-blue/30 p-6 sm:p-8 space-y-4 shadow-sm">
+        <div className="glass-card rounded-[24px] border border-accent-blue/30 p-6 sm:p-8 space-y-4 shadow-ambient">
           <div className="flex items-center gap-2 text-accent-blue font-bold text-xs uppercase tracking-wider">
             <Lock className="w-4 h-4" />
             <span>Clauses Specific to SaaS Products (Aptivo Careers)</span>
@@ -58,7 +58,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* CLAUSES FOR SERVICES */}
-        <div className="bg-surface rounded-[24px] border border-border p-6 sm:p-8 space-y-4 shadow-sm">
+        <div className="glass-card rounded-[24px] border border-border/80 p-6 sm:p-8 space-y-4 shadow-ambient">
           <div className="flex items-center gap-2 text-muted font-bold text-xs uppercase tracking-wider">
             <ShieldCheck className="w-4 h-4 text-ink" />
             <span>Clauses Specific to Client Engineering Services</span>
@@ -79,7 +79,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* LIMITATION OF LIABILITY */}
-        <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-sm">
+        <div className="glass-card rounded-[24px] border border-border/80 p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-ambient">
           <h2 className="text-lg font-bold font-display text-ink">4. Limitation of Liability</h2>
           <p>
             To the maximum extent permitted by applicable law, Aptivo AI and its officers shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the platforms or services.
@@ -87,7 +87,7 @@ export const TermsPage: React.FC<TermsPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* CONTACT */}
-        <div className="bg-surface-2 rounded-2xl border border-border p-6 text-center space-y-2 text-xs sm:text-sm text-muted">
+        <div className="glass-card rounded-[20px] border border-border/80 p-6 text-center space-y-2 text-xs sm:text-sm text-muted shadow-ambient">
           <p>
             Questions or inquiries regarding these Terms of Service can be sent to:
           </p>

@@ -26,11 +26,11 @@ export const TrustPositioningSection: React.FC<TrustPositioningSectionProps> = (
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="text-xs font-bold text-accent-orange tracking-wider uppercase bg-accent-orange/10 px-3 py-1.5 rounded-full inline-block">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20">
             A Fundamental Shift
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
-            Career preparation is <span className="text-accent-orange">fragmented</span>.
+            Career preparation is <span className="text-accent-blue">fragmented</span>.
           </h2>
           <p className="text-sm sm:text-base text-muted leading-relaxed">
             Engineers and students juggle disconnected tools that do not communicate, causing months of blind spots and wasted effort.
@@ -40,13 +40,13 @@ export const TrustPositioningSection: React.FC<TrustPositioningSectionProps> = (
         {/* Clean Side-by-Side Comparison */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* Fragmented Reality */}
-          <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface flex flex-col justify-between space-y-6">
+          <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 flex flex-col justify-between space-y-6 shadow-ambient">
             <div className="space-y-6">
-              <div className="flex items-center justify-between pb-5 border-b border-border">
+              <div className="flex items-center justify-between pb-5 border-b border-border/70">
                 <h3 className="text-xl font-bold font-display text-ink">
                   Fragmented Approach
                 </h3>
-                <span className="text-xs text-red-500 font-bold bg-red-50 px-2 py-1 rounded-md">Disconnected</span>
+                <span className="text-xs text-red-500 font-bold bg-red-50 px-2.5 py-1 rounded-md border border-red-100">Disconnected</span>
               </div>
 
               <div className="space-y-5">
@@ -64,13 +64,13 @@ export const TrustPositioningSection: React.FC<TrustPositioningSectionProps> = (
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-surface-2 border border-border text-sm text-ink font-medium">
+            <div className="p-4 rounded-xl bg-surface-2 border border-border/60 text-sm text-ink font-medium">
               Result: 80% of preparation effort is lost between disconnected platforms.
             </div>
           </div>
 
           {/* Unified Aptivo AI System */}
-          <div className="p-8 sm:p-10 rounded-[24px] border-2 border-accent-blue/30 bg-accent-blue-soft/30 flex flex-col justify-between space-y-6 shadow-sm relative overflow-hidden">
+          <div className="p-8 sm:p-10 rounded-[28px] border-2 border-accent-blue/30 bg-accent-blue-soft/30 flex flex-col justify-between space-y-6 shadow-ambient relative overflow-hidden">
             <div className="absolute inset-0 bg-white/40 pointer-events-none" />
             <div className="relative z-10 space-y-6">
               <div className="flex items-center justify-between pb-5 border-b border-border">

@@ -51,7 +51,7 @@ export const HrIndustryPage: React.FC<HrIndustryPageProps> = ({ onNavigate, onOp
       {/* Employer 7-Step Workflow */}
       <section id="employer-funnel" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center mb-10 space-y-3">
-          <div className="text-xs font-bold text-muted tracking-wider uppercase bg-surface px-3 py-1.5 rounded-full inline-block border border-border">
+          <div className="text-xs font-bold text-accent-blue tracking-wider uppercase bg-accent-blue-soft/90 px-3.5 py-1.5 rounded-full inline-block border border-accent-blue/20">
             Hiring Workflow
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold font-display text-ink">
@@ -63,7 +63,7 @@ export const HrIndustryPage: React.FC<HrIndustryPageProps> = ({ onNavigate, onOp
           {EMPLOYER_WORKFLOW.map((wf) => (
             <div
               key={wf.step}
-              className="p-5 rounded-[24px] border border-border bg-white shadow-sm space-y-3 hover:shadow-md transition-shadow"
+              className="glass-card p-6 rounded-[24px] border border-border/80 shadow-ambient space-y-3 hover:shadow-ambient-lg transition-all"
             >
               <div className="w-8 h-8 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-xs font-bold text-accent-blue">
                 {wf.step}
@@ -80,11 +80,11 @@ export const HrIndustryPage: React.FC<HrIndustryPageProps> = ({ onNavigate, onOp
       </section>
 
       {/* Enterprise Talent Console Preview */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-5">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
             <div>
-              <span className="text-xs text-accent-orange font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md border border-accent-orange/20">Enterprise Console</span>
+              <span className="text-xs text-accent-blue font-bold uppercase tracking-wider bg-accent-blue-soft px-3 py-1 rounded-full border border-accent-blue/20">Enterprise Console</span>
               <h3 className="text-2xl font-bold font-display text-ink mt-3">
                 Pre-Screened Engineering Cohort
               </h3>
@@ -100,7 +100,7 @@ export const HrIndustryPage: React.FC<HrIndustryPageProps> = ({ onNavigate, onOp
               { id: 'Candidate #7118', role: 'Systems Backend Engineer', readiness: 89, verifiedStack: 'Go, Kafka, Docker, Postgres Indexing', prCoverage: '91% Concurrency Verification' },
               { id: 'Candidate #9420', role: 'Infrastructure SRE', readiness: 87, verifiedStack: 'Kubernetes, Terraform, AWS, Prometheus', prCoverage: 'Zero Production Incident History' },
             ].map((cand, i) => (
-              <div key={i} className="p-5 rounded-[20px] border border-border bg-white shadow-sm space-y-4">
+              <div key={i} className="p-5 rounded-[20px] border border-border/70 bg-white shadow-[0_1px_2px_rgba(0,0,0,0.03)] space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <h4 className="text-base font-bold text-ink">{cand.id} <span className="text-muted font-normal mx-1">·</span> {cand.role}</h4>

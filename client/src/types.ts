@@ -1,4 +1,4 @@
-export type PageId = 
+export type CanonicalPageId = 
   // Gateway
   | 'home'
   // Products & Platform Area
@@ -28,6 +28,14 @@ export type PageId =
   | 'privacy'
   | 'terms'
   | 'contact';
+
+export type PageId = CanonicalPageId
+  | 'product-contact'
+  | 'services-websites'
+  | 'services-software'
+  | 'services-process'
+  | 'services-work'
+  | 'services-quote';
 
 export interface NavItem {
   id: PageId;

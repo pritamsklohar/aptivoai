@@ -25,3 +25,9 @@ server/.env
 *.njsproj
 *.sln
 *.sw?
+
+# Agents & Skills & Plugins
+.agents/
+skills-lock.json
+plugins/
+client/public/plugins/

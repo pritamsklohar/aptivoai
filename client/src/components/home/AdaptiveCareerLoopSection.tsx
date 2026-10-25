@@ -32,8 +32,8 @@ export const AdaptiveCareerLoopSection: React.FC = () => {
                   onClick={() => setActiveStep(idx)}
                   className={`p-4 rounded-[20px] border text-left transition-all ${
                     isCurrent
-                      ? 'border-accent-blue bg-accent-blue-soft text-ink shadow-sm'
-                      : 'border-border bg-surface text-muted hover:text-ink hover:bg-surface-2'
+                      ? 'border-accent-blue bg-accent-blue-soft text-ink shadow-ambient'
+                      : 'border-border/80 bg-white text-muted hover:text-ink hover:bg-surface-2 shadow-xs'
                   }`}
                 >
                   <div className={`text-[10px] font-mono mb-1.5 font-bold ${isCurrent ? 'text-accent-blue' : 'text-muted'}`}>
@@ -48,15 +48,15 @@ export const AdaptiveCareerLoopSection: React.FC = () => {
           </div>
 
           {/* Active Step Showcase */}
-          <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-4 mt-8">
-            <div className="flex items-center justify-between border-b border-border pb-5">
+          <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient space-y-4 mt-8">
+            <div className="flex items-center justify-between border-b border-border/70 pb-5">
               <div>
                 <span className="text-xs font-mono font-bold text-accent-blue uppercase tracking-wider">Step {ADAPTIVE_LOOP_STEPS[activeStep].step}</span>
                 <h3 className="text-2xl font-bold font-display text-ink mt-1">
                   {ADAPTIVE_LOOP_STEPS[activeStep].title}
                 </h3>
               </div>
-              <span className="text-xs text-muted font-medium bg-surface-2 px-3 py-1.5 rounded-full hidden sm:inline-block">
+              <span className="text-xs text-accent-blue font-semibold bg-accent-blue-soft px-3 py-1.5 rounded-full border border-accent-blue/20 hidden sm:inline-block">
                 Closed-Loop Recalibration
               </span>
             </div>
@@ -67,11 +67,11 @@ export const AdaptiveCareerLoopSection: React.FC = () => {
 
             <div className="pt-6 flex items-center gap-6 text-sm text-muted">
               <span className="flex items-center gap-2 text-ink font-medium">
-                <CheckCircle2 className="w-4 h-4 text-accent-orange" />
+                <CheckCircle2 className="w-4 h-4 text-accent-blue" />
                 <span>Automated Feedback</span>
               </span>
               <span className="flex items-center gap-2 text-ink font-medium">
-                <CheckCircle2 className="w-4 h-4 text-accent-orange" />
+                <CheckCircle2 className="w-4 h-4 text-accent-blue" />
                 <span>Adaptive Milestones</span>
               </span>
             </div>

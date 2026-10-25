@@ -101,7 +101,7 @@ export const OurProcessPage: React.FC<OurProcessPageProps> = ({ onNavigate }) =>
             {steps.map((st, idx) => (
               <div
                 key={idx}
-                className="bg-surface rounded-[24px] border border-border p-8 shadow-sm space-y-4 flex flex-col justify-between"
+                className="glass-card rounded-[24px] border border-border/80 p-8 shadow-ambient hover:shadow-ambient-lg transition-all space-y-4 flex flex-col justify-between"
               >
                 <div className="space-y-3">
                   <div className="w-10 h-10 rounded-full bg-accent-blue-soft text-accent-blue flex items-center justify-center font-bold text-sm">
@@ -118,7 +118,7 @@ export const OurProcessPage: React.FC<OurProcessPageProps> = ({ onNavigate }) =>
         {/* CLIENT PROVISIONS, OWNERSHIP & REVISIONS */}
         <section className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* What the Client Provides */}
-          <div className="bg-surface rounded-[24px] border border-border p-8 shadow-sm space-y-4">
+          <div className="glass-card rounded-[24px] border border-border/80 p-8 shadow-ambient space-y-4">
             <div className="w-10 h-10 rounded-full bg-surface-2 text-ink flex items-center justify-center font-bold">
               <FileText className="w-5 h-5 text-accent-blue" />
             </div>
@@ -145,7 +145,7 @@ export const OurProcessPage: React.FC<OurProcessPageProps> = ({ onNavigate }) =>
           </div>
 
           {/* 100% Ownership */}
-          <div className="bg-surface rounded-[24px] border border-border p-8 shadow-sm space-y-4">
+          <div className="glass-card rounded-[24px] border border-border/80 p-8 shadow-ambient space-y-4">
             <div className="w-10 h-10 rounded-full bg-surface-2 text-ink flex items-center justify-center font-bold">
               <Key className="w-5 h-5 text-accent-blue" />
             </div>
@@ -172,7 +172,7 @@ export const OurProcessPage: React.FC<OurProcessPageProps> = ({ onNavigate }) =>
           </div>
 
           {/* Revision Rounds */}
-          <div className="bg-surface rounded-[24px] border border-border p-8 shadow-sm space-y-4">
+          <div className="glass-card rounded-[24px] border border-border/80 p-8 shadow-ambient space-y-4">
             <div className="w-10 h-10 rounded-full bg-surface-2 text-ink flex items-center justify-center font-bold">
               <RefreshCw className="w-5 h-5 text-accent-blue" />
             </div>
@@ -200,7 +200,7 @@ export const OurProcessPage: React.FC<OurProcessPageProps> = ({ onNavigate }) =>
         </section>
 
         {/* CLOSING CTA */}
-        <section className="bg-surface rounded-[32px] border border-border p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden">
+        <section className="glass-card rounded-[32px] border border-border/80 p-10 sm:p-16 text-center max-w-4xl mx-auto relative overflow-hidden shadow-ambient">
           <div className="relative z-10 space-y-6 max-w-2xl mx-auto">
             <h2 className="text-3xl sm:text-5xl font-bold font-display text-ink tracking-tight">
               Start with a discovery call.

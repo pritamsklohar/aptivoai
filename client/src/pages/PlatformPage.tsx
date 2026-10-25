@@ -45,12 +45,12 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
           <div
             key={module.id}
             id={module.id}
-            className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
+            className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient hover:shadow-ambient-lg transition-all duration-300 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           >
             {/* Left Col: Module Description */}
             <div className="lg:col-span-5 space-y-6">
               <div>
-                <span className="text-xs font-bold text-muted uppercase tracking-wider">0{idx + 1} — {module.eyebrow}</span>
+                <span className="text-xs font-bold text-accent-blue uppercase tracking-wider">0{idx + 1} — {module.eyebrow}</span>
                 <h2 className="text-2xl sm:text-3xl font-bold font-display text-ink mt-2">
                   {module.title}
                 </h2>
@@ -72,7 +72,7 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
               <div className="pt-4">
                 <button
                   onClick={() => onOpenWaitlist(module.title)}
-                  className="px-6 py-3 rounded-full bg-surface-2 hover:bg-border border border-border text-sm font-semibold text-ink flex items-center gap-2 transition-colors"
+                  className="px-6 py-3 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-semibold flex items-center gap-2 shadow-ambient transition-all cursor-pointer"
                 >
                   <span>Request Access</span>
                   <ArrowRight className="w-4 h-4" />
@@ -82,11 +82,11 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
 
             {/* Right Col: Clean Module UI Mockup Preview */}
             <div className="lg:col-span-7">
-              <div className="rounded-[24px] border border-border bg-white shadow-sm p-6 sm:p-8 space-y-5">
+              <div className="rounded-[24px] border border-border/70 bg-surface-2/40 shadow-sm p-6 sm:p-8 space-y-5">
                 {/* 01: Career Intelligence Preview */}
                 {module.mockupType === 'graph' && (
                   <div className="space-y-5">
-                    <div className="flex items-center justify-between border-b border-border pb-4">
+                    <div className="flex items-center justify-between border-b border-border/70 pb-4">
                       <div>
                         <div className="text-xs text-muted font-bold uppercase tracking-wider">Trajectory Target</div>
                         <div className="text-sm font-bold text-ink mt-1">Senior Distributed Backend Engineer</div>
@@ -97,11 +97,11 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                     </div>
 
                     <div className="grid grid-cols-2 gap-4 text-xs">
-                      <div className="p-4 rounded-[20px] bg-surface border border-border">
+                      <div className="p-4 rounded-[18px] bg-white border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                         <span className="text-[11px] text-muted font-bold uppercase block mb-1">Verified Stack</span>
                         <span className="text-ink font-bold">Go, Kafka, Docker, gRPC</span>
                       </div>
-                      <div className="p-4 rounded-[20px] bg-surface border border-border">
+                      <div className="p-4 rounded-[18px] bg-white border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                         <span className="text-[11px] text-muted font-bold uppercase block mb-1">Identified Gaps</span>
                         <span className="text-accent-blue font-bold">Raft Consensus, eBPF Tracing</span>
                       </div>
@@ -120,7 +120,7 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                 {/* 02: Build Engine Preview */}
                 {module.mockupType === 'build' && (
                   <div className="space-y-5">
-                    <div className="flex items-center justify-between border-b border-border pb-4">
+                    <div className="flex items-center justify-between border-b border-border/70 pb-4">
                       <div>
                         <div className="text-xs text-muted font-bold uppercase tracking-wider">Automated Pull Request Review</div>
                         <div className="text-sm font-bold text-ink mt-1">Event-Driven Notification Broker</div>
@@ -130,7 +130,7 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                       </span>
                     </div>
 
-                    <div className="bg-surface p-4 rounded-[20px] font-mono text-xs text-ink/80 space-y-1.5 border border-border">
+                    <div className="bg-white p-4 rounded-[18px] font-mono text-xs text-ink/80 space-y-1.5 border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                       <div className="text-emerald-600">+ func (b *Broker) HandleDeadLetter(msg []byte) error</div>
                       <div className="text-emerald-600">+   return b.retryPolicy.Execute(context.Background(), msg)</div>
                       <div className="text-muted">// Test coverage: 91.4% with race detector enabled</div>
@@ -149,17 +149,17 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                 {/* 03: Prepare Engine Preview */}
                 {module.mockupType === 'prepare' && (
                   <div className="space-y-5">
-                    <div className="flex items-center justify-between border-b border-border pb-4">
+                    <div className="flex items-center justify-between border-b border-border/70 pb-4">
                       <div>
                         <div className="text-xs text-muted font-bold uppercase tracking-wider">Mock Technical Simulation</div>
                         <div className="text-sm font-bold text-ink mt-1">Global Distributed Rate Limiter</div>
                       </div>
-                      <span className="text-xs text-accent-orange font-bold bg-accent-orange/10 px-3 py-1.5 rounded-full border border-accent-orange/20">
+                      <span className="text-xs text-accent-blue font-bold bg-accent-blue-soft px-3 py-1.5 rounded-full border border-accent-blue/20">
                         Rubric Evaluated
                       </span>
                     </div>
 
-                    <div className="p-4 rounded-[20px] bg-surface border border-border text-sm space-y-3">
+                    <div className="p-4 rounded-[18px] bg-white border border-border/70 text-sm space-y-3 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                       <div className="flex justify-between items-center">
                         <span className="text-muted font-medium">Concurrency Architecture:</span>
                         <span className="text-ink font-bold">88/100</span>
@@ -189,7 +189,7 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                 {/* 04: Profile Optimization Preview */}
                 {module.mockupType === 'profile' && (
                   <div className="space-y-5">
-                    <div className="flex items-center justify-between border-b border-border pb-4">
+                    <div className="flex items-center justify-between border-b border-border/70 pb-4">
                       <div>
                         <div className="text-xs text-muted font-bold uppercase tracking-wider">Resume Impact Analysis</div>
                         <div className="text-sm font-bold text-ink mt-1">Semantic ATS Parsing</div>
@@ -199,7 +199,7 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                       </span>
                     </div>
 
-                    <div className="p-4 rounded-[20px] bg-surface border border-border text-sm space-y-3">
+                    <div className="p-4 rounded-[18px] bg-white border border-border/70 text-sm space-y-3 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                       <div className="text-muted text-xs font-bold uppercase">Original Bullet:</div>
                       <div className="text-red-500 line-through bg-red-50 p-2 rounded-lg border border-red-100">"Worked on backend APIs and helped speed up queries."</div>
                       <div className="text-muted text-xs font-bold uppercase pt-2">Quantified Specification:</div>
@@ -219,7 +219,7 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                 {/* 05: Discover / Job Matching Preview */}
                 {module.mockupType === 'discover' && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b border-border pb-4">
+                    <div className="flex items-center justify-between border-b border-border/70 pb-4">
                       <div>
                         <div className="text-xs text-muted font-bold uppercase tracking-wider">Direct Requisition Matching</div>
                         <div className="text-sm font-bold text-ink mt-1">Candidate Alignment</div>
@@ -233,17 +233,17 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                         { title: 'Core Platform Backend Engineer', co: 'Fintech Payments Unicorn', score: '87% Match' },
                         { title: 'Infrastructure SRE II', co: 'Real-time Telemetry Platform', score: '81% Match' },
                       ].map((j, i) => (
-                        <div key={i} className="p-4 rounded-[20px] bg-surface border border-border flex items-center justify-between text-sm">
+                        <div key={i} className="p-4 rounded-[18px] bg-white border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)] flex items-center justify-between text-sm">
                           <div>
                             <div className="font-bold text-ink">{j.title}</div>
                             <div className="text-xs font-medium text-muted mt-1">{j.co}</div>
                           </div>
-                          <span className="text-accent-blue font-bold bg-accent-blue-soft px-2 py-1 rounded-md">{j.score}</span>
+                          <span className="text-accent-blue font-bold bg-accent-blue-soft px-2.5 py-1 rounded-md border border-accent-blue/20">{j.score}</span>
                         </div>
                       ))}
                     </div>
 
-                    <div className="p-4 rounded-[20px] bg-surface-2 border border-border text-sm text-ink/80 font-medium text-center">
+                    <div className="p-4 rounded-[18px] bg-white border border-border/70 text-sm text-ink/80 font-medium text-center shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
                       Direct engineering review triggered without recruiter keyword screening.
                     </div>
                   </div>
@@ -252,7 +252,7 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                 {/* 06: Employers Preview */}
                 {module.mockupType === 'employer' && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-between border-b border-border pb-4">
+                    <div className="flex items-center justify-between border-b border-border/70 pb-4">
                       <div>
                         <div className="text-xs text-muted font-bold uppercase tracking-wider">Enterprise Talent Console</div>
                         <div className="text-sm font-bold text-ink mt-1">Verified Engineering Cohort</div>
@@ -265,12 +265,12 @@ export const PlatformPage: React.FC<PlatformPageProps> = ({ onNavigate, onOpenWa
                         { name: 'Candidate #8841', stack: 'Go, Kafka, Distributed Caching', score: '92% Readiness' },
                         { name: 'Candidate #9102', stack: 'Rust, WebAssembly, Networking', score: '89% Readiness' },
                       ].map((c, i) => (
-                        <div key={i} className="p-4 rounded-[20px] bg-surface border border-border flex items-center justify-between text-sm">
+                        <div key={i} className="p-4 rounded-[18px] bg-white border border-border/70 shadow-[0_1px_2px_rgba(0,0,0,0.03)] flex items-center justify-between text-sm">
                           <div>
                             <div className="font-bold text-ink">{c.name}</div>
                             <div className="text-xs font-medium text-muted mt-1">{c.stack}</div>
                           </div>
-                          <span className="text-accent-blue font-bold bg-accent-blue-soft px-2 py-1 rounded-md">{c.score}</span>
+                          <span className="text-accent-blue font-bold bg-accent-blue-soft px-2.5 py-1 rounded-md border border-accent-blue/20">{c.score}</span>
                         </div>
                       ))}
                     </div>

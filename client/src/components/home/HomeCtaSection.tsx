@@ -12,14 +12,12 @@ export const HomeCtaSection: React.FC<HomeCtaSectionProps> = ({ onNavigate, onOp
     <section className="py-24 relative bg-bg overflow-hidden">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div 
-            className="rounded-[32px] p-10 md:p-16 text-center space-y-6 shadow-xl relative overflow-hidden"
-            style={{ background: 'linear-gradient(135deg, var(--color-accent-orange) 0%, #FFFFFF 50%, var(--color-accent-blue) 100%)' }}
+            className="glass-card rounded-[32px] p-10 md:p-16 text-center space-y-6 shadow-ambient-lg border border-border/80 relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, rgba(59,91,255,0.06) 0%, #FFFFFF 50%, rgba(59,91,255,0.10) 100%)' }}
         >
-          <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] pointer-events-none" />
-
           <div className="relative z-10 flex flex-col items-center">
-            <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center mb-4">
-                <Zap className="w-5 h-5 text-accent-orange" />
+            <div className="w-12 h-12 rounded-full bg-white shadow-ambient border border-border/70 flex items-center justify-center mb-4">
+                <Zap className="w-5 h-5 text-accent-blue" />
             </div>
 
             <h2 className="text-4xl sm:text-5xl font-bold font-display text-ink tracking-tight max-w-2xl">
@@ -33,7 +31,7 @@ export const HomeCtaSection: React.FC<HomeCtaSectionProps> = ({ onNavigate, onOp
             <div className="pt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <button
                 onClick={onOpenWaitlist}
-                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-ink text-white text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-lg transition-all hover:-translate-y-0.5"
+                className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-ambient transition-all hover:-translate-y-0.5 cursor-pointer"
               >
                 <span>Join Aptivo AI</span>
                 <ArrowRight className="w-4 h-4" />

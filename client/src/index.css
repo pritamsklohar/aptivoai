@@ -6,8 +6,8 @@
   --font-mono: "JetBrains Mono", monospace;
   
   --color-bg: #FFFFFF;
-  --color-surface: #F4F5F7;
-  --color-surface-2: #EDEFF3;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F8F9FB;
   --color-border: #E4E6EB;
   --color-ink: #111318;
   --color-muted: #6B7280;
@@ -18,7 +18,15 @@
 }
 
 :root {
+  --color-surface: #FFFFFF;
+  --color-surface-2: #F8F9FB;
   --gradient-blob: linear-gradient(135deg, #F5941C 0%, #FFFFFF 45%, #3B5BFF 100%);
+  
+  /* Emil Kowalski Custom Easing Curves (Linear / Apple caliber) */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.15);
 }
 
 @layer base {
@@ -26,11 +34,14 @@
     background-color: var(--color-bg);
     color: var(--color-ink);
     font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: var(--color-ink);
   }
 
@@ -39,13 +50,65 @@
     outline: 2px solid var(--color-accent-blue);
     outline-offset: 2px;
   }
+
+  /* Emil Kowalski: Buttons must feel responsive to press */
+  button:active:not(:disabled),
+  [role="button"]:active:not(:disabled),
+  a.cursor-pointer:active {
+    transform: scale(0.97);
+    transition: transform 120ms var(--ease-out) !important;
+  }
 }
 
-/* Animations */
+/* Emil Kowalski High-Craft Surface Utilities */
+.glass-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(228, 230, 235, 0.85);
+  box-shadow: 0 1px 3px rgba(17, 19, 24, 0.03), 0 12px 32px -4px rgba(17, 19, 24, 0.05);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(228, 230, 235, 0.85);
+  box-shadow: 0 2px 8px -2px rgba(17, 19, 24, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.shadow-ambient {
+  box-shadow: 0 1px 2px rgba(17, 19, 24, 0.03), 0 8px 24px -4px rgba(17, 19, 24, 0.06);
+}
+
+.shadow-ambient-lg {
+  box-shadow: 0 2px 4px rgba(17, 19, 24, 0.02), 0 20px 48px -10px rgba(17, 19, 24, 0.08);
+}
+
+.inner-highlight {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+}
+
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(0.92);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtlePulse 2.4s ease-in-out infinite;
+}
+
+/* Animations: never animate from scale(0); start from 0.95 */
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -56,7 +119,7 @@
 @keyframes badgeScaleIn {
   0% {
     opacity: 0;
-    transform: scale(0.9) translateY(6px);
+    transform: scale(0.95) translateY(4px);
   }
   100% {
     opacity: 1;
@@ -64,28 +127,83 @@
   }
 }
 
+@keyframes popoverScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes modalBackdropIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 .animate-fade-up {
-  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeUp 280ms var(--ease-out) forwards;
+}
+
+.animate-popover-in {
+  animation: popoverScaleIn 180ms var(--ease-out) forwards;
+  transform-origin: top center;
+}
+
+.animate-modal-backdrop {
+  animation: modalBackdropIn 180ms var(--ease-out) forwards;
+}
+
+.animate-modal-card {
+  animation: modalScaleIn 220ms var(--ease-out) forwards;
+  transform-origin: center center;
 }
 
 .animate-badge-in-1 {
-  animation: badgeScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  animation: badgeScaleIn 240ms var(--ease-out) 0.1s forwards;
   opacity: 0;
 }
 
 .animate-badge-in-2 {
-  animation: badgeScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+  animation: badgeScaleIn 240ms var(--ease-out) 0.18s forwards;
   opacity: 0;
 }
 
 .animate-badge-in-3 {
-  animation: badgeScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  animation: badgeScaleIn 240ms var(--ease-out) 0.26s forwards;
   opacity: 0;
 }
 
 .animate-badge-in-4 {
-  animation: badgeScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.65s forwards;
+  animation: badgeScaleIn 240ms var(--ease-out) 0.34s forwards;
   opacity: 0;
+}
+
+/* Emil Kowalski: Gate hover effects on touch devices to prevent sticky hover */
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition: transform 180ms var(--ease-out), box-shadow 180ms var(--ease-out);
+  }
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -93,9 +211,13 @@
   .animate-badge-in-1,
   .animate-badge-in-2,
   .animate-badge-in-3,
-  .animate-badge-in-4 {
+  .animate-badge-in-4,
+  .animate-popover-in,
+  .animate-modal-backdrop,
+  .animate-modal-card {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
   }
 }
+

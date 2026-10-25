@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { PageId } from '../types';
-import { Search, ChevronDown, HelpCircle, ArrowRight, MessageSquare, BookOpen, Layers } from 'lucide-react';
+import { Search, ChevronDown, HelpCircle, ArrowRight, MessageSquare, BookOpen, Layers, X } from 'lucide-react';
 
 interface ProductHelpPageProps {
   onNavigate: (page: PageId) => void;
@@ -88,7 +88,7 @@ export const ProductHelpPage: React.FC<ProductHelpPageProps> = ({ onNavigate, on
         
         {/* HEADER */}
         <section className="text-center space-y-4 pt-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent-blue-soft text-accent-blue text-xs font-bold uppercase tracking-wider border border-accent-blue/20">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20">
             <HelpCircle className="w-3.5 h-3.5 text-accent-blue" />
             <span>Product Help Center</span>
           </div>
@@ -101,28 +101,40 @@ export const ProductHelpPage: React.FC<ProductHelpPageProps> = ({ onNavigate, on
             Search our comprehensive knowledge base for answers on Aptivo Careers, roadmaps, telemetry, and scoring.
           </p>
 
-          {/* SEARCH INPUT */}
-          <div className="pt-4 max-w-2xl mx-auto relative">
-            <Search className="w-5 h-5 text-muted absolute left-5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search topics (e.g., Readiness Score, AST analysis, roadmap)..."
-              className="w-full pl-13 pr-5 py-4 rounded-full bg-surface border border-border text-ink text-sm sm:text-base placeholder:text-muted focus:outline-none focus:border-accent-blue shadow-sm transition-all"
-            />
+          {/* SEARCH INPUT (Pixel-Perfect Centered Icon) */}
+          <div className="pt-4 max-w-2xl mx-auto">
+            <div className="relative flex items-center">
+              <Search className="w-5 h-5 text-muted/80 absolute left-4.5 pointer-events-none shrink-0" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search topics (e.g., Readiness Score, AST analysis, roadmap)..."
+                className="w-full pl-12 pr-11 py-3.5 rounded-full bg-white border border-border/85 text-ink text-sm sm:text-base placeholder:text-muted/60 focus:outline-none focus:border-accent-blue focus:ring-2 focus:ring-accent-blue/10 shadow-ambient transition-[border-color,box-shadow] duration-150"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3.5 p-1 rounded-full text-muted hover:text-ink hover:bg-surface-2 cursor-pointer transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X className="w-4 h-4" />
+                </button>
+              )}
+            </div>
           </div>
 
           {/* CATEGORY CHIPS */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-2">
+          <div className="pt-3 flex flex-wrap items-center justify-center gap-2">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-4 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
+                className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-[background-color,color,transform,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] cursor-pointer ${
                   selectedCategory === cat
-                    ? 'bg-accent-blue text-white shadow-sm'
-                    : 'bg-surface-2 text-ink/70 hover:text-ink hover:bg-border'
+                    ? 'bg-accent-blue text-white shadow-ambient inner-highlight font-bold'
+                    : 'bg-surface-2 text-ink/75 hover:text-ink hover:bg-border/80 border border-border/70'
                 }`}
               >
                 {cat}
@@ -140,32 +152,43 @@ export const ProductHelpPage: React.FC<ProductHelpPageProps> = ({ onNavigate, on
 
           {filteredFaqs.length > 0 ? (
             <div className="space-y-3">
-              {filteredFaqs.map((faq, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-border bg-surface overflow-hidden transition-all shadow-sm"
-                >
-                  <button
-                    onClick={() => toggleFaq(idx)}
-                    className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-ink text-sm sm:text-base cursor-pointer"
+              {filteredFaqs.map((faq, idx) => {
+                const isOpen = openFaq === idx;
+                return (
+                  <div
+                    key={idx}
+                    className="glass-card rounded-2xl border border-border/80 overflow-hidden shadow-ambient transition-[border-color,box-shadow] duration-200"
                   >
-                    <span>{faq.q}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-muted transition-transform duration-200 shrink-0 ${
-                        openFaq === idx ? 'rotate-180 text-accent-blue' : ''
+                    <button
+                      onClick={() => toggleFaq(idx)}
+                      className="w-full p-5 text-left flex items-center justify-between gap-4 font-semibold text-ink text-sm sm:text-base cursor-pointer hover:bg-surface/50 transition-colors"
+                      aria-expanded={isOpen}
+                    >
+                      <span className="leading-snug">{faq.q}</span>
+                      <ChevronDown
+                        className={`w-4 h-4 text-muted transition-transform duration-200 shrink-0 ${
+                          isOpen ? 'rotate-180 text-accent-blue' : ''
+                        }`}
+                      />
+                    </button>
+                    {/* Emil Kowalski Smooth CSS Grid Expansion */}
+                    <div
+                      className={`grid transition-[grid-template-rows,opacity] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+                        isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
                       }`}
-                    />
-                  </button>
-                  {openFaq === idx && (
-                    <div className="px-5 pb-5 text-sm text-muted leading-relaxed font-normal border-t border-border/50 pt-3">
-                      {faq.a}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="px-5 pb-5 text-sm text-muted leading-relaxed font-normal border-t border-border/50 pt-3">
+                          {faq.a}
+                        </div>
+                      </div>
                     </div>
-                  )}
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </div>
           ) : (
-            <div className="p-12 text-center bg-surface rounded-2xl border border-border space-y-3">
+            <div className="p-12 text-center glass-card rounded-2xl border border-border/80 space-y-3 shadow-ambient">
               <p className="text-sm font-semibold text-ink">No answers match your search term.</p>
               <p className="text-xs text-muted">Try using different keywords or contact our product support team directly.</p>
             </div>
@@ -173,17 +196,17 @@ export const ProductHelpPage: React.FC<ProductHelpPageProps> = ({ onNavigate, on
         </section>
 
         {/* STILL NEED HELP */}
-        <section className="bg-surface rounded-[24px] border border-border p-8 text-center space-y-4">
+        <section className="glass-card rounded-[28px] border border-border/85 p-8 sm:p-10 text-center space-y-4 shadow-ambient-lg">
           <h3 className="text-xl sm:text-2xl font-bold font-display text-ink">
             Can't find what you're looking for?
           </h3>
-          <p className="text-sm text-muted max-w-md mx-auto">
+          <p className="text-sm text-muted max-w-md mx-auto leading-relaxed">
             Our product team is on standby to assist with waitlist inquiries, technical issues, and roadmap questions.
           </p>
           <div className="pt-2">
             <button
-              onClick={() => onNavigate('product-contact')}
-              className="px-6 py-3 rounded-full bg-accent-blue text-white text-xs sm:text-sm font-semibold hover:bg-accent-blue/90 transition-all inline-flex items-center gap-2 cursor-pointer"
+              onClick={() => onNavigate('products/contact')}
+              className="px-6 py-3.5 rounded-full bg-accent-blue text-white text-xs sm:text-sm font-semibold hover:bg-accent-blue/95 transition-[transform,background-color,box-shadow] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] inline-flex items-center gap-2 cursor-pointer shadow-ambient inner-highlight"
             >
               <MessageSquare className="w-4 h-4" />
               <span>Contact Product Support</span>

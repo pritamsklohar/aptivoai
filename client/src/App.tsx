@@ -115,13 +115,13 @@ export function App() {
         return <SolutionsPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
       
       case 'resources':
-        return <ResourcesPage onNavigate={handleNavigate} />;
+        return <ResourcesPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
       
       case 'products/pricing':
         return <PricingPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
       
       case 'products/help':
-        return <ProductHelpPage onNavigate={handleNavigate} />;
+        return <ProductHelpPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
       
       case 'products/contact':
         return <ContactPage onNavigate={handleNavigate} onOpenWaitlist={handleOpenWaitlist} />;
@@ -176,9 +176,11 @@ export function App() {
         onOpenLogin={() => setIsLoginOpen(true)}
       />
 
-      {/* Main Page Content */}
+      {/* Main Page Content with smooth transition */}
       <main className="flex-1">
-        {renderPage()}
+        <div key={currentPage} className="animate-fade-up">
+          {renderPage()}
+        </div>
       </main>
 
       {/* 5-Column Professional Footer */}

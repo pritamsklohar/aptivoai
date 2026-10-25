@@ -50,9 +50,9 @@ export const JobSeekersPage: React.FC<JobSeekersPageProps> = ({ onNavigate, onOp
       </section>
 
       {/* 8-Stage Conversion Pipeline */}
-      <section id="conversion-pipeline" className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section id="conversion-pipeline" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div className="text-center mb-10 space-y-3">
-          <div className="text-xs font-bold text-muted tracking-wider uppercase bg-surface px-3 py-1.5 rounded-full inline-block border border-border">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20">
             Systematic Methodology
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold font-display text-ink">
@@ -60,11 +60,11 @@ export const JobSeekersPage: React.FC<JobSeekersPageProps> = ({ onNavigate, onOp
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {CONVERSION_STAGES.map((st) => (
             <div
               key={st.step}
-              className="p-6 rounded-[24px] border border-border bg-white shadow-sm space-y-3 hover:shadow-md transition-shadow"
+              className="glass-card p-6 rounded-[24px] border border-border/80 shadow-ambient hover:shadow-ambient-lg hover:-translate-y-0.5 transition-all duration-300 space-y-3.5"
             >
               <div className="w-8 h-8 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-xs font-bold text-accent-blue">
                 {st.step}
@@ -74,7 +74,7 @@ export const JobSeekersPage: React.FC<JobSeekersPageProps> = ({ onNavigate, onOp
                 {st.title}
               </h3>
 
-              <p className="text-sm text-ink/80 leading-relaxed font-medium">
+              <p className="text-sm text-ink/75 leading-relaxed font-normal">
                 {st.desc}
               </p>
             </div>
@@ -83,16 +83,16 @@ export const JobSeekersPage: React.FC<JobSeekersPageProps> = ({ onNavigate, onOp
       </section>
 
       {/* Job Matching Showcase */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-5">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border/70 pb-5">
             <div>
-              <span className="text-xs text-accent-blue font-bold uppercase tracking-wider bg-white px-2 py-1 rounded-md border border-accent-blue/20">Requisition Matching</span>
+              <span className="text-xs text-accent-blue font-bold uppercase tracking-wider bg-accent-blue-soft px-3 py-1 rounded-full border border-accent-blue/20">Requisition Matching</span>
               <h3 className="text-2xl font-bold font-display text-ink mt-3">
                 Live Opportunity Overlap Analysis
               </h3>
             </div>
-            <div className="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-full border border-emerald-100">
+            <div className="text-xs font-bold text-emerald-600 bg-emerald-50 px-3.5 py-1.5 rounded-full border border-emerald-100 self-start sm:self-auto">
               Calibrated for Series B+ & Enterprise
             </div>
           </div>
@@ -103,7 +103,7 @@ export const JobSeekersPage: React.FC<JobSeekersPageProps> = ({ onNavigate, onOp
               { role: 'Senior Distributed Backend Engineer', match: 87, org: 'Fintech Payments Infrastructure', salary: '$185k - $220k', gaps: '1 gap in review: Distributed Consensus' },
               { role: 'Systems Reliability Architect', match: 81, org: 'High-Throughput Streaming Network', salary: '$175k - $210k', gaps: '2 gaps: Kernel bypass networking, eBPF' },
             ].map((j, i) => (
-              <div key={i} className="p-5 rounded-[20px] border border-border bg-white shadow-sm space-y-4">
+              <div key={i} className="p-6 rounded-[22px] border border-border/70 bg-white hover:border-accent-blue/30 shadow-[0_1px_3px_rgba(0,0,0,0.03)] hover:shadow-ambient transition-all duration-200 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                   <div>
                     <h4 className="text-base font-bold text-ink">{j.role}</h4>
@@ -113,7 +113,7 @@ export const JobSeekersPage: React.FC<JobSeekersPageProps> = ({ onNavigate, onOp
                     {j.match}% Alignment
                   </span>
                 </div>
-                <div className="text-xs text-ink/80 font-medium flex items-center gap-2 pt-3 border-t border-border">
+                <div className="text-xs text-ink/80 font-medium flex items-center gap-2 pt-3 border-t border-border/60">
                   <CheckCircle2 className="w-4 h-4 text-accent-blue shrink-0" />
                   <span>{j.gaps}</span>
                 </div>

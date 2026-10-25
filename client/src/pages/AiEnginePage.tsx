@@ -20,7 +20,7 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
     <div className="pt-32 pb-24 space-y-24 bg-bg min-h-screen">
       {/* Hero Section */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-5 pb-32 md:pb-40 min-h-[45vh] flex flex-col justify-center">
-        <div className="text-xs font-bold text-accent-orange tracking-wider uppercase">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20 self-center">
           Autonomous Career Computation
         </div>
 
@@ -69,16 +69,16 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
                 {/* Layer Card */}
                 <div
                   onClick={() => setSelectedLayerIndex(idx)}
-                  className={`p-6 sm:p-8 rounded-[24px] border transition-all cursor-pointer ${
+                  className={`p-6 sm:p-8 rounded-[28px] border transition-all cursor-pointer ${
                     isSelected
-                      ? 'border-accent-blue bg-accent-blue-soft shadow-sm'
-                      : 'border-border bg-surface hover:bg-surface-2'
+                      ? 'border-accent-blue bg-accent-blue-soft/80 shadow-ambient'
+                      : 'border-border/80 glass-card hover:shadow-ambient hover:-translate-y-0.5'
                   }`}
                 >
-                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-border">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-5 border-b border-border/70">
                     <div className="flex items-center gap-4">
                       <span className={`w-8 h-8 rounded-full flex items-center justify-center font-mono text-xs font-bold ${
-                        isSelected ? 'bg-accent-blue text-white' : 'bg-border text-muted'
+                        isSelected ? 'bg-accent-blue text-white' : 'bg-surface-2 text-muted'
                       }`}>
                         {layer.code}
                       </span>
@@ -92,7 +92,7 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
                       </div>
                     </div>
 
-                    <span className={`text-xs font-bold px-3 py-1.5 rounded-full ${isSelected ? 'bg-white text-accent-blue border border-accent-blue/20' : 'text-muted'}`}>
+                    <span className={`text-xs font-bold px-3 py-1.5 rounded-full ${isSelected ? 'bg-white text-accent-blue border border-accent-blue/20 shadow-xs' : 'text-muted'}`}>
                       {layer.items.length} Subsystems
                     </span>
                   </div>
@@ -102,7 +102,7 @@ export const AiEnginePage: React.FC<AiEnginePageProps> = ({ onNavigate, onOpenWa
                     {layer.items.map((comp) => (
                       <div
                         key={comp.title}
-                        className="p-4 rounded-[20px] bg-white border border-border text-sm space-y-1.5 shadow-sm"
+                        className="p-4 rounded-[18px] bg-white border border-border/70 text-sm space-y-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.03)]"
                       >
                         <div className="font-bold text-ink flex items-center gap-2">
                           <CheckCircle2 className={`w-4 h-4 ${isSelected ? 'text-accent-blue' : 'text-muted'}`} />

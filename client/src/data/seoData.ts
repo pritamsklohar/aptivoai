@@ -1,4 +1,4 @@
-import { PageId } from '../types';
+import { PageId, CanonicalPageId } from '../types';
 
 export interface BreadcrumbItem {
   name: string;
@@ -6,7 +6,7 @@ export interface BreadcrumbItem {
 }
 
 export interface PageSeoMetadata {
-  pageId: PageId;
+  pageId: CanonicalPageId;
   path: string;
   title: string;
   description: string;
@@ -21,10 +21,10 @@ export interface PageSeoMetadata {
   changefreq: 'daily' | 'weekly' | 'monthly' | 'yearly';
 }
 
-const BASE_URL = 'https://aptivoai.in';
+const BASE_URL = 'https://www.aptivoai.in';
 const DEFAULT_OG_IMAGE = `${BASE_URL}/aptivo-logo.png`;
 
-export const SEO_PAGES: Record<PageId, PageSeoMetadata> = {
+export const SEO_PAGES: Record<CanonicalPageId, PageSeoMetadata> = {
   home: {
     pageId: 'home',
     path: '/',
@@ -632,7 +632,7 @@ export const SEO_PAGES: Record<PageId, PageSeoMetadata> = {
 /**
  * Normalizes any route string, hash, or legacy alias into a canonical PageId
  */
-export function normalizePageId(raw: string): PageId {
+export function normalizePageId(raw: string): CanonicalPageId {
   if (!raw) return 'home';
 
   // Strip leading slash, hashes, trailing slashes, whitespace
@@ -642,11 +642,11 @@ export function normalizePageId(raw: string): PageId {
 
   // Check direct matches
   if (clean in SEO_PAGES) {
-    return clean as PageId;
+    return clean as CanonicalPageId;
   }
 
   // Handle common alias conversions
-  const aliasMap: Record<string, PageId> = {
+  const aliasMap: Record<string, CanonicalPageId> = {
     'services-quote': 'services/quote',
     'services/quote': 'services/quote',
     'quote': 'services/quote',
@@ -689,6 +689,7 @@ export function normalizePageId(raw: string): PageId {
  * Get clean canonical path for any PageId (e.g. 'home' -> '/', 'services' -> '/services')
  */
 export function getPagePath(pageId: PageId): string {
-  const meta = SEO_PAGES[pageId];
+  const canonical = normalizePageId(pageId);
+  const meta = SEO_PAGES[canonical];
   return meta ? meta.path : '/';
 }

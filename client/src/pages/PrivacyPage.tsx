@@ -29,7 +29,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* OVERVIEW */}
-        <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-sm">
+        <div className="glass-card rounded-[24px] border border-border/80 p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-ambient">
           <h2 className="text-lg font-bold font-display text-ink">1. Overview & Scope</h2>
           <p>
             Aptivo AI ("we", "our", or "us"), founded by Pritam Lohar, operates two distinct business lines: SaaS Products (including Aptivo Careers) and Client Engineering Services. This Privacy Policy governs the collection, use, and disclosure of information across both domains.
@@ -40,7 +40,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* SPECIFIC CLAUSES: PRODUCTS (SAAS) */}
-        <div className="bg-surface rounded-[24px] border border-accent-blue/30 p-6 sm:p-8 space-y-4 shadow-sm">
+        <div className="glass-card rounded-[24px] border border-accent-blue/30 p-6 sm:p-8 space-y-4 shadow-ambient">
           <div className="flex items-center gap-2 text-accent-blue font-bold text-xs uppercase tracking-wider">
             <Lock className="w-4 h-4" />
             <span>Clauses Specific to SaaS Products (Aptivo Careers)</span>
@@ -61,7 +61,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* SPECIFIC CLAUSES: SERVICES (CLIENT ENGINEERING) */}
-        <div className="bg-surface rounded-[24px] border border-border p-6 sm:p-8 space-y-4 shadow-sm">
+        <div className="glass-card rounded-[24px] border border-border/80 p-6 sm:p-8 space-y-4 shadow-ambient">
           <div className="flex items-center gap-2 text-muted font-bold text-xs uppercase tracking-wider">
             <FileText className="w-4 h-4 text-ink" />
             <span>Clauses Specific to Client Engineering Services</span>
@@ -82,7 +82,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* DATA RETENTION & SECURITY */}
-        <div className="bg-surface rounded-2xl border border-border p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-sm">
+        <div className="glass-card rounded-[24px] border border-border/80 p-6 sm:p-8 space-y-3 text-sm text-muted leading-relaxed font-normal shadow-ambient">
           <h2 className="text-lg font-bold font-display text-ink">4. Security & Data Retention</h2>
           <p>
             We implement industry-standard encryption protocols (TLS 1.3 in transit and AES-256 at rest) for all databases and communications. User accounts may request complete deletion of their profiles, roadmaps, and submissions at any time by contacting support.
@@ -90,7 +90,7 @@ export const PrivacyPage: React.FC<PrivacyPageProps> = ({ onNavigate }) => {
         </div>
 
         {/* CONTACT */}
-        <div className="bg-surface-2 rounded-2xl border border-border p-6 text-center space-y-2 text-xs sm:text-sm text-muted">
+        <div className="glass-card rounded-[20px] border border-border/80 p-6 text-center space-y-2 text-xs sm:text-sm text-muted shadow-ambient">
           <p>
             Questions or requests regarding this Privacy Policy may be directed to our data protection team:
           </p>

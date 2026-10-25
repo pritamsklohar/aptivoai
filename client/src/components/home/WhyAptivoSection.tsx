@@ -40,7 +40,7 @@ export const WhyAptivoSection: React.FC<WhyAptivoSectionProps> = () => {
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="text-xs font-bold text-accent-orange tracking-wider uppercase bg-accent-orange/10 px-3 py-1.5 rounded-full inline-block">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20">
             The Difference
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
@@ -52,16 +52,16 @@ export const WhyAptivoSection: React.FC<WhyAptivoSectionProps> = () => {
         </div>
 
         {/* Clean Comparison Table / Cards */}
-        <div className="rounded-[24px] border border-border bg-surface overflow-hidden shadow-sm">
-          <div className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 border-b border-border bg-surface-2 text-xs font-semibold text-muted">
+        <div className="glass-card rounded-[28px] border border-border/80 overflow-hidden shadow-ambient">
+          <div className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 border-b border-border/70 bg-surface-2/40 text-xs font-semibold text-muted">
             <div className="md:col-span-4 uppercase tracking-wider">Dimension</div>
             <div className="md:col-span-4 uppercase tracking-wider text-muted hidden md:block">Traditional Preparation</div>
             <div className="md:col-span-4 uppercase tracking-wider text-accent-blue hidden md:block">Aptivo AI Platform</div>
           </div>
 
-          <div className="divide-y divide-border">
+          <div className="divide-y divide-border/60">
             {COMPARISON_ROWS.map((row, idx) => (
-              <div key={idx} className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 gap-3 md:gap-4 items-center bg-bg/50 hover:bg-bg transition-colors">
+              <div key={idx} className="grid grid-cols-1 md:grid-cols-12 p-4 sm:p-5 gap-3 md:gap-4 items-center hover:bg-surface-2/40 transition-colors">
                 <div className="md:col-span-4 text-sm font-semibold text-ink">
                   {row.topic}
                 </div>
@@ -72,7 +72,7 @@ export const WhyAptivoSection: React.FC<WhyAptivoSectionProps> = () => {
                 </div>
 
                 <div className="md:col-span-4 text-sm text-ink flex items-start gap-2">
-                  <Check className="w-4 h-4 text-accent-orange shrink-0 mt-0.5" />
+                  <Check className="w-4 h-4 text-accent-blue shrink-0 mt-0.5" />
                   <span className="leading-relaxed font-medium">{row.aptivo}</span>
                 </div>
               </div>

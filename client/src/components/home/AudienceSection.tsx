@@ -57,11 +57,11 @@ export const AudienceSection: React.FC<AudienceSectionProps> = ({ onNavigate }) 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <div className="text-xs font-bold text-accent-blue tracking-wider uppercase bg-accent-blue/10 px-3 py-1.5 rounded-full inline-block">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20">
             Tailored Pathways
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
-            Built around your <span className="text-accent-orange">career</span> objective.
+            Built around your <span className="text-accent-blue">career</span> objective.
           </h2>
           <p className="text-sm sm:text-base text-muted leading-relaxed">
             Whether starting out, seeking a senior promotion, or building high-performing engineering teams, Aptivo AI adapts to your context.
@@ -75,7 +75,7 @@ export const AudienceSection: React.FC<AudienceSectionProps> = ({ onNavigate }) 
             return (
               <div
                 key={card.id}
-                className="p-8 rounded-[24px] border border-border bg-surface hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-8"
+                className="glass-card p-8 rounded-[28px] border border-border/80 shadow-ambient hover:shadow-ambient-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between space-y-8"
               >
                 <div>
                   <div className="w-12 h-12 rounded-full bg-accent-blue-soft border border-accent-blue/20 flex items-center justify-center text-accent-blue mb-6">
@@ -92,10 +92,10 @@ export const AudienceSection: React.FC<AudienceSectionProps> = ({ onNavigate }) 
                     {card.description}
                   </p>
 
-                  <div className="space-y-3 pt-6 border-t border-border">
+                  <div className="space-y-3 pt-6 border-t border-border/70">
                     {card.features.map((feat, i) => (
                       <div key={i} className="flex items-start gap-3 text-sm text-ink font-medium">
-                        <Check className="w-4 h-4 text-accent-orange shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-accent-blue shrink-0 mt-0.5" />
                         <span>{feat}</span>
                       </div>
                     ))}
@@ -104,7 +104,7 @@ export const AudienceSection: React.FC<AudienceSectionProps> = ({ onNavigate }) 
 
                 <button
                   onClick={() => onNavigate(card.id)}
-                  className="w-full py-3.5 px-6 rounded-full bg-surface-2 hover:bg-border border border-border hover:border-border/80 text-sm font-semibold text-ink flex items-center justify-center gap-2 transition-all group"
+                  className="w-full py-3.5 px-6 rounded-full bg-accent-blue hover:bg-accent-blue/90 text-white shadow-ambient text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer group"
                 >
                   <span>{card.cta}</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

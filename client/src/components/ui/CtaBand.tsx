@@ -21,7 +21,7 @@ export const CtaBand: React.FC<CtaBandProps> = ({
 }) => {
   return (
     <div
-      className={`rounded-[32px] p-8 sm:p-14 text-center relative overflow-hidden bg-gradient-to-r from-accent-orange/15 via-white to-accent-blue/15 border border-border shadow-sm ${className}`}
+      className={`glass-card rounded-[32px] p-8 sm:p-14 text-center relative overflow-hidden bg-gradient-to-r from-accent-blue/10 via-white to-accent-blue/10 border border-border/80 shadow-ambient ${className}`}
     >
       <div className="relative z-10 max-w-2xl mx-auto space-y-5">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold font-display text-ink tracking-tight">

@@ -13,7 +13,7 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onOpenWaitlist }) => {
 
       {/* Hero */}
       <section className="relative px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-5">
-        <div className="text-xs font-bold text-accent-orange tracking-wider uppercase">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent-blue-soft/90 text-accent-blue text-xs font-semibold uppercase tracking-wider border border-accent-blue/20">
           Join the Founding Team
         </div>
 
@@ -28,11 +28,11 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onOpenWaitlist }) => {
 
       {/* No Openings Banner */}
       <section className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
-        <div className="rounded-[28px] border border-border bg-white shadow-sm p-10 sm:p-14 text-center space-y-5">
+        <div className="glass-card rounded-[28px] border border-border/80 shadow-ambient p-10 sm:p-14 text-center space-y-5">
 
           {/* Icon */}
-          <div className="w-14 h-14 mx-auto rounded-2xl bg-surface-2 border border-border flex items-center justify-center">
-            <Bell className="w-6 h-6 text-muted" />
+          <div className="w-14 h-14 mx-auto rounded-2xl bg-surface-2 border border-border/70 flex items-center justify-center">
+            <Bell className="w-6 h-6 text-accent-blue" />
           </div>
 
           <div>
@@ -48,7 +48,7 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onOpenWaitlist }) => {
           <div className="pt-2 flex items-center justify-center">
             <a
               href="mailto:hr@aptivoai.in"
-              className="px-6 py-3 rounded-full bg-surface-2 hover:bg-border border border-border text-sm font-semibold text-ink transition-colors"
+              className="px-6 py-3 rounded-full bg-white hover:bg-surface-2 border border-border/80 text-sm font-semibold text-ink shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-colors"
             >
               hr@aptivoai.in
             </a>
@@ -66,7 +66,7 @@ export const CareersPage: React.FC<CareersPageProps> = ({ onOpenWaitlist }) => {
           ].map((v) => (
             <div
               key={v.label}
-              className="p-6 rounded-[20px] border border-border bg-white space-y-2"
+              className="glass-card p-6 rounded-[22px] border border-border/80 shadow-ambient space-y-2"
             >
               <div className="text-sm font-bold text-ink">{v.label}</div>
               <p className="text-xs text-muted leading-relaxed">{v.desc}</p>

@@ -33,8 +33,8 @@ app.use('/api', limiter);
 // Standard Middleware
 app.use(cors({ 
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://aptivoai.in', 'https://www.aptivoai.in'] 
-    : 'http://localhost:5173',
+    ? ['https://aptivoai.in', 'https://www.aptivoai.in', 'https://aptivoai.vercel.app'] 
+    : ['http://localhost:5173', 'http://localhost:3000', 'http://localhost:3001'],
   credentials: true 
 }));
 app.use(express.json({ limit: '10kb' })); // Limit body payload to prevent DOS

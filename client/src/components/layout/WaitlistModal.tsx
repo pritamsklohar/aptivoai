@@ -57,7 +57,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
     width: '100%',
     padding: '11px 15px',
     borderRadius: '12px',
-    background: '#F4F5F7',
+    background: '#FFFFFF',
     border: '1.5px solid #E4E6EB',
     color: '#111318',
     fontSize: '13.5px',
@@ -75,16 +75,17 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
   const inputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     e.target.style.borderColor = '#E4E6EB';
     e.target.style.boxShadow = 'none';
-    e.target.style.background = '#F4F5F7';
+    e.target.style.background = '#FFFFFF';
   };
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-modal-backdrop"
       style={{ background: 'rgba(17,19,24,0.45)', backdropFilter: 'blur(10px)' }}
       onClick={onClose}
     >
       <div
+        className="animate-modal-card"
         style={{
           position: 'relative',
           width: '100%',
@@ -111,9 +112,10 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
           style={{
             position: 'absolute', top: '16px', right: '16px', zIndex: 10,
             width: '32px', height: '32px', borderRadius: '50%',
-            background: '#F4F5F7', border: '1px solid #E4E6EB',
+            background: '#F8F9FB', border: '1px solid #E4E6EB',
             color: '#6B7280', cursor: 'pointer', display: 'flex',
-            alignItems: 'center', justifyContent: 'center', transition: 'all 0.18s',
+            alignItems: 'center', justifyContent: 'center',
+            transition: 'transform 120ms var(--ease-out), background-color 150ms var(--ease-out), color 150ms var(--ease-out)',
           }}
           aria-label="Close modal"
           onMouseEnter={e => {
@@ -121,7 +123,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
             (e.currentTarget as HTMLButtonElement).style.color = '#111318';
           }}
           onMouseLeave={e => {
-            (e.currentTarget as HTMLButtonElement).style.background = '#F4F5F7';
+            (e.currentTarget as HTMLButtonElement).style.background = '#F8F9FB';
             (e.currentTarget as HTMLButtonElement).style.color = '#6B7280';
           }}
         >
@@ -154,7 +156,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
                 onClick={handleReset}
                 style={{
                   padding: '10px 28px', borderRadius: '50px',
-                  background: '#F4F5F7', border: '1px solid #E4E6EB',
+                  background: '#FFFFFF', border: '1px solid #E4E6EB',
                   color: '#111318', fontSize: '13px', fontWeight: 600,
                   cursor: 'pointer', transition: 'all 0.2s',
                 }}
@@ -204,9 +206,9 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
                           style={{
                             display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '5px',
                             padding: '10px 6px', borderRadius: '12px', cursor: 'pointer',
-                            transition: 'all 0.18s',
+                            transition: 'transform 120ms cubic-bezier(0.23, 1, 0.32, 1), background-color 150ms, border-color 150ms, box-shadow 150ms',
                             border: isActive ? '1.5px solid #3B5BFF' : '1.5px solid #E4E6EB',
-                            background: isActive ? '#E7ECFF' : '#F4F5F7',
+                            background: isActive ? '#E7ECFF' : '#FFFFFF',
                             color: isActive ? '#3B5BFF' : '#6B7280',
                             boxShadow: isActive ? '0 0 0 3px rgba(59,91,255,0.08)' : 'none',
                             fontFamily: 'inherit',
@@ -223,7 +225,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
                 </div>
 
                 {/* ── Divider ── */}
-                <div style={{ height: '1px', background: '#F4F5F7', margin: '0 -4px' }} />
+                <div style={{ height: '1px', background: '#E4E6EB', margin: '0 -4px' }} />
 
                 {/* ── Full Name ── */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -297,7 +299,7 @@ export const WaitlistModal: React.FC<WaitlistModalProps> = ({ isOpen, onClose, d
                     alignItems: 'center',
                     justifyContent: 'center',
                     gap: '8px',
-                    transition: 'all 0.2s',
+                    transition: 'transform 120ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 150ms',
                     boxShadow: '0 6px 20px rgba(59,91,255,0.28)',
                     fontFamily: 'inherit',
                     marginTop: '2px',

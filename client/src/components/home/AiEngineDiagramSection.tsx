@@ -47,7 +47,7 @@ export const AiEngineDiagramSection: React.FC<AiEngineDiagramSectionProps> = ({ 
         {/* 3-Column Pipeline Architecture */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           {/* Column 1: Candidate Inputs */}
-          <div className="p-7 rounded-[24px] border border-border bg-surface space-y-6">
+          <div className="glass-card p-7 rounded-[28px] border border-border/80 shadow-ambient space-y-6">
             <div>
               <div className="text-xs font-semibold text-muted mb-1 uppercase tracking-wider">Step 1</div>
               <h3 className="text-lg font-bold font-display text-ink">
@@ -62,7 +62,7 @@ export const AiEngineDiagramSection: React.FC<AiEngineDiagramSectionProps> = ({ 
               {INPUT_SIGNALS.map((inp, idx) => (
                 <div
                   key={idx}
-                  className="p-4 rounded-[20px] border border-border bg-white shadow-sm"
+                  className="p-4 rounded-[20px] border border-border/70 bg-white shadow-xs"
                 >
                   <div className="text-xs font-semibold text-ink">{inp.name}</div>
                   <div className="text-[11px] text-muted mt-0.5 font-medium">{inp.note}</div>
@@ -72,7 +72,7 @@ export const AiEngineDiagramSection: React.FC<AiEngineDiagramSectionProps> = ({ 
           </div>
 
           {/* Column 2: Aptivo AI Core */}
-          <div className="p-7 rounded-[24px] border-2 border-accent-blue/40 bg-accent-blue-soft/50 space-y-6 shadow-sm relative overflow-hidden">
+          <div className="glass-card p-7 rounded-[28px] border-2 border-accent-blue/40 bg-accent-blue-soft/50 space-y-6 shadow-ambient relative overflow-hidden">
             <div className="absolute inset-0 bg-white/40 pointer-events-none" />
             <div className="relative z-10">
                 <div>
@@ -89,7 +89,7 @@ export const AiEngineDiagramSection: React.FC<AiEngineDiagramSectionProps> = ({ 
                 {REASONING_STEPS.map((step, idx) => (
                     <div
                     key={idx}
-                    className="p-4 rounded-[20px] border border-border bg-white flex items-start gap-2.5 text-xs text-ink font-medium shadow-sm"
+                    className="p-4 rounded-[20px] border border-border/70 bg-white flex items-start gap-2.5 text-xs text-ink font-medium shadow-xs"
                     >
                     <CheckCircle2 className="w-4 h-4 text-accent-blue shrink-0 mt-0.5" />
                     <span className="leading-relaxed">{step}</span>
@@ -100,7 +100,7 @@ export const AiEngineDiagramSection: React.FC<AiEngineDiagramSectionProps> = ({ 
           </div>
 
           {/* Column 3: High-Confidence Outputs */}
-          <div className="p-7 rounded-[24px] border border-border bg-surface space-y-6">
+          <div className="glass-card p-7 rounded-[28px] border border-border/80 shadow-ambient space-y-6">
             <div>
               <div className="text-xs font-semibold text-muted mb-1 uppercase tracking-wider">Step 3</div>
               <h3 className="text-lg font-bold font-display text-ink">

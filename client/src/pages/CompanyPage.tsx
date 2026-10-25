@@ -34,7 +34,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
       <section id="company-vision" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Why We Exist */}
-          <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-4">
+          <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient hover:shadow-ambient-lg transition-all space-y-4">
             <h2 className="text-2xl font-bold font-display text-ink">
               Why We Exist
             </h2>
@@ -47,7 +47,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
           </div>
 
           {/* Vision & Mission */}
-          <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-4">
+          <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient hover:shadow-ambient-lg transition-all space-y-4">
             <h2 className="text-2xl font-bold font-display text-ink">
               Vision & Mission
             </h2>
@@ -60,7 +60,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
           </div>
 
           {/* Core Technology */}
-          <div className="p-8 sm:p-10 rounded-[24px] border border-border bg-surface shadow-sm space-y-6 md:col-span-2">
+          <div className="glass-card p-8 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient hover:shadow-ambient-lg transition-all space-y-6 md:col-span-2">
             <div>
               <h2 className="text-2xl font-bold font-display text-ink">
                 Core Technology Principles
@@ -119,7 +119,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
 
       {/* FOUNDER SECTION */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-6 sm:p-10 rounded-[28px] border border-border bg-surface shadow-sm relative overflow-hidden">
+        <div className="glass-card p-6 sm:p-10 rounded-[28px] border border-border/80 shadow-ambient relative overflow-hidden">
           {/* Subtle ambient light accents */}
           <div className="absolute top-0 right-0 w-80 h-80 bg-accent-blue/5 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
           <div className="absolute bottom-0 left-0 w-80 h-80 bg-accent-purple/5 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
@@ -146,7 +146,7 @@ export const CompanyPage: React.FC<CompanyPageProps> = ({ onNavigate, onOpenWait
                 <h2 className="text-3xl sm:text-4xl font-bold font-display text-ink tracking-tight">
                   Pritam Lohar
                 </h2>
-                <p className="text-xs font-bold text-accent-orange uppercase tracking-wider mt-1.5">
+                <p className="text-xs font-bold text-accent-blue uppercase tracking-wider mt-1.5">
                   Founder's Perspective
                 </p>
               </div>

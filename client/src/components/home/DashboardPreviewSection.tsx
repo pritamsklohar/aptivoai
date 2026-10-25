@@ -18,9 +18,9 @@ export const DashboardPreviewSection: React.FC = () => {
         </div>
 
         {/* Clean Dashboard Window containing the provided image */}
-        <div className="max-w-5xl mx-auto rounded-[24px] border border-border bg-white shadow-xl shadow-black/5 overflow-hidden">
+        <div className="max-w-5xl mx-auto rounded-[28px] border border-border/80 bg-white shadow-ambient-lg overflow-hidden">
           {/* Top Browser Bar */}
-          <div className="px-5 py-3.5 bg-surface border-b border-border flex items-center justify-between">
+          <div className="px-5 py-3.5 bg-white/90 border-b border-border/70 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="w-3 h-3 rounded-full bg-border inline-block" />
               <span className="w-3 h-3 rounded-full bg-border inline-block" />
