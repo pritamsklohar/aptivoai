@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { PageId } from '../../types';
 import { NAV_ITEMS, MEGA_MENUS } from '../../data/navigation';
 import { AptivoLogo } from '../common/AptivoLogo';
-import { ChevronDown, Menu, X, ArrowUpRight, Sparkles, LogIn } from 'lucide-react';
+import { ChevronDown, Menu, X, ArrowUpRight } from 'lucide-react';
 import { getPagePath } from '../../utils/seo';
 
 interface NavbarProps {
@@ -220,31 +220,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           }}
         >
           <div className="p-5 pb-32 space-y-6 max-w-lg mx-auto">
-
-            {/* Quick Action CTAs */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-              <button
-                onClick={() => {
-                  setMobileOpen(false);
-                  onOpenWaitlist?.();
-                }}
-                className="w-full py-3 px-4 rounded-xl text-xs font-bold text-white bg-accent-blue hover:bg-accent-blue/90 shadow-md shadow-accent-blue/20 flex items-center justify-center gap-2 transition-transform active:scale-[0.98]"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Join Early Access Waitlist</span>
-              </button>
-              <button
-                onClick={() => {
-                  setMobileOpen(false);
-                  onOpenLogin?.();
-                }}
-                className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold text-ink bg-surface-2 border border-border hover:bg-surface flex items-center justify-center gap-2 transition-transform active:scale-[0.98]"
-              >
-                <LogIn className="w-3.5 h-3.5 text-muted" />
-                <span>Sign In to Platform</span>
-              </button>
-            </div>
-
             {/* Products Section (All Groups: Core Platform & Specialized Access) */}
             <div className="space-y-3">
               <div className="text-[11px] font-bold tracking-wider text-accent-blue uppercase pb-1.5 border-b border-border">
