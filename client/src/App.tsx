@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { PageId } from './types';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { WaitlistModal } from './components/layout/WaitlistModal';
 import { LoginModal } from './components/layout/LoginModal';
 
-// Product & Platform Pages
+// Eagerly loaded landing page for instant first contentful paint
 import { HomePage } from './pages/HomePage';
-import { PlatformPage } from './pages/PlatformPage';
-import { AiEnginePage } from './pages/AiEnginePage';
-import { HowItWorksPage } from './pages/HowItWorksPage';
-import { StudentsPage } from './pages/StudentsPage';
-import { JobSeekersPage } from './pages/JobSeekersPage';
-import { HrIndustryPage } from './pages/HrIndustryPage';
-import { SolutionsPage } from './pages/SolutionsPage';
-import { ResourcesPage } from './pages/ResourcesPage';
-import { PricingPage } from './pages/PricingPage';
-import { ProductHelpPage } from './pages/ProductHelpPage';
+
+// Lazy-loaded routes for code-splitting & minimal initial bundle
+const PlatformPage = lazy(() => import('./pages/PlatformPage').then(m => ({ default: m.PlatformPage })));
+const AiEnginePage = lazy(() => import('./pages/AiEnginePage').then(m => ({ default: m.AiEnginePage })));
+const HowItWorksPage = lazy(() => import('./pages/HowItWorksPage').then(m => ({ default: m.HowItWorksPage })));
+const StudentsPage = lazy(() => import('./pages/StudentsPage').then(m => ({ default: m.StudentsPage })));
+const JobSeekersPage = lazy(() => import('./pages/JobSeekersPage').then(m => ({ default: m.JobSeekersPage })));
+const HrIndustryPage = lazy(() => import('./pages/HrIndustryPage').then(m => ({ default: m.HrIndustryPage })));
+const SolutionsPage = lazy(() => import('./pages/SolutionsPage').then(m => ({ default: m.SolutionsPage })));
+const ResourcesPage = lazy(() => import('./pages/ResourcesPage').then(m => ({ default: m.ResourcesPage })));
+const PricingPage = lazy(() => import('./pages/PricingPage').then(m => ({ default: m.PricingPage })));
+const ProductHelpPage = lazy(() => import('./pages/ProductHelpPage').then(m => ({ default: m.ProductHelpPage })));
 
 // Services Pages
-import { ServicesPage } from './pages/ServicesPage';
-import { WebsiteSolutionsPage } from './pages/WebsiteSolutionsPage';
-import { CustomAiSoftwarePage } from './pages/CustomAiSoftwarePage';
-import { OurProcessPage } from './pages/OurProcessPage';
-import { CaseStudiesPage } from './pages/CaseStudiesPage';
-import { RequestQuotePage } from './pages/RequestQuotePage';
+const ServicesPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
+const WebsiteSolutionsPage = lazy(() => import('./pages/WebsiteSolutionsPage').then(m => ({ default: m.WebsiteSolutionsPage })));
+const CustomAiSoftwarePage = lazy(() => import('./pages/CustomAiSoftwarePage').then(m => ({ default: m.CustomAiSoftwarePage })));
+const OurProcessPage = lazy(() => import('./pages/OurProcessPage').then(m => ({ default: m.OurProcessPage })));
+const CaseStudiesPage = lazy(() => import('./pages/CaseStudiesPage').then(m => ({ default: m.CaseStudiesPage })));
+const RequestQuotePage = lazy(() => import('./pages/RequestQuotePage').then(m => ({ default: m.RequestQuotePage })));
 
 // Company & Legal
-import { CompanyPage } from './pages/CompanyPage';
-import { CareersPage } from './pages/CareersPage';
-import { ContactPage } from './pages/ContactPage';
-import { PrivacyPage } from './pages/PrivacyPage';
-import { TermsPage } from './pages/TermsPage';
+const CompanyPage = lazy(() => import('./pages/CompanyPage').then(m => ({ default: m.CompanyPage })));
+const CareersPage = lazy(() => import('./pages/CareersPage').then(m => ({ default: m.CareersPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
+const TermsPage = lazy(() => import('./pages/TermsPage').then(m => ({ default: m.TermsPage })));
 
 import { updatePageSeo, normalizePageId, getPagePath } from './utils/seo';
 
@@ -178,9 +180,15 @@ export function App() {
 
       {/* Main Page Content with smooth transition */}
       <main className="flex-1">
-        <div key={currentPage} className="animate-fade-up">
-          {renderPage()}
-        </div>
+        <Suspense fallback={
+          <div className="min-h-[60vh] flex items-center justify-center">
+            <div className="w-6 h-6 border-2 border-accent-blue/30 border-t-accent-blue rounded-full animate-spin" />
+          </div>
+        }>
+          <div key={currentPage} className="animate-fade-up">
+            {renderPage()}
+          </div>
+        </Suspense>
       </main>
 
       {/* 5-Column Professional Footer */}

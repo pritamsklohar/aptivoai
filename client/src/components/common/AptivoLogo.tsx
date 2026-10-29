@@ -27,13 +27,20 @@ export const AptivoLogo: React.FC<AptivoLogoProps> = ({
     xl: 'text-3xl sm:text-4xl',
   };
 
-  // The crisp transparent 3D ribbon mark
+  // The crisp transparent 3D ribbon mark (optimized WebP with PNG fallback)
   const IconElement = (
-    <img
-      src="/aptivo-icon.png"
-      alt="Aptivo AI Icon"
-      className={`${iconSizes[size]} object-contain shrink-0 drop-shadow-xs select-none`}
-    />
+    <picture className="shrink-0 inline-flex items-center">
+      <source srcSet="/aptivo-icon.webp" type="image/webp" />
+      <img
+        src="/aptivo-icon.png"
+        alt="Aptivo AI Icon"
+        width="36"
+        height="36"
+        className={`${iconSizes[size]} object-contain shrink-0 drop-shadow-xs select-none`}
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
   );
 
   if (variant === 'icon') {

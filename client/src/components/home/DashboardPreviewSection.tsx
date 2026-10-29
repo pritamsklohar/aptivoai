@@ -36,11 +36,16 @@ export const DashboardPreviewSection: React.FC = () => {
 
           {/* Internal Dashboard Image */}
           <div className="w-full bg-[#f8f9fa] flex items-center justify-center">
-            <img 
-              src="/aptivo-dashboard.png" 
-              alt="Aptivo AI Dashboard Interface" 
-              className="w-full h-auto object-cover"
-            />
+            <picture className="w-full">
+              <source srcSet="/aptivo-dashboard.webp" type="image/webp" />
+              <img 
+                src="/aptivo-dashboard.png" 
+                alt="Aptivo AI Dashboard Interface" 
+                className="w-full h-auto object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
           </div>
         </div>
       </div>
